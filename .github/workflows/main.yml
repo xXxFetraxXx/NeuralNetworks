@@ -34,7 +34,6 @@ jobs:
 
   mkdocs_deploy:
     runs-on: ubuntu-latest
-    needs: python_publish
     steps:
       - uses: actions/checkout@v3
 
