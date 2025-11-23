@@ -1,3 +1,10 @@
+# NeuralNetworksBeta - Multi-Layer Perceptrons avec encodage Fourier
+# Copyright (C) 2025 Alexandre Brun
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
 import numpy as np
 import torch
 import torch.optim as optim
@@ -5,8 +12,6 @@ import torch.nn as nn
 import torch.quantization as tq
 from torch.utils.data import TensorDataset, DataLoader
 
-import torchviz
-from torchviz import make_dot
 import visualtorch
 
 from torchmetrics.image import PeakSignalNoiseRatio as PSNR
@@ -24,7 +29,6 @@ from io import BytesIO
 import rff
 from tqdm import tqdm
 
-import pandas as pd
 from IPython.display import display, clear_output
 
 # --- Device global ---
@@ -106,14 +110,14 @@ Criterion_list = {
 def Optim_list(self, learning_rate):
     """
     Renvoie un dictionnaire d’optimiseurs PyTorch pour le MLP donné.
-    
+
     Paramètres
     ----------
     self : objet
         Objet contenant `self.model` à optimiser.
     learning_rate : float
         Taux d’apprentissage à appliquer aux optimisateurs.
-    
+
     Retour
     ------
     dict
@@ -140,12 +144,12 @@ def Optim_list(self, learning_rate):
 def rglen(list):
     """
     Renvoie un range correspondant aux indices d’une liste.
-    
+
     Paramètres
     ----------
     list : list-like
         Objet dont on souhaite obtenir les indices.
-    
+
     Retour
     ------
     range
@@ -156,17 +160,17 @@ def rglen(list):
 def tensorise(obj):
     """
     Convertit un objet en tenseur PyTorch float32 et l’envoie sur le device global.
-    
+
     Paramètres
     ----------
     obj : array-like, list, np.ndarray, torch.Tensor
         Objet à convertir en tenseur.
-    
+
     Retour
     ------
     torch.Tensor
         Tenseur float32 sur le device global (CPU ou GPU).
-    
+
     Notes
     -----
     - Harmonise les types pour MLP et autres traitements PyTorch.
@@ -199,3 +203,4 @@ def fPrintDoc(obj):
     Ceci est le docstring.
     """
     return lambda: print(obj.__doc__)
+

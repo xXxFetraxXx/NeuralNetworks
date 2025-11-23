@@ -1,0 +1,9 @@
+numpy
+matplotlib
+tqdm
+torch
+torchvision
+torchaudio
+torchmetrics
+visualtorch
+random-fourier-features-pytorch

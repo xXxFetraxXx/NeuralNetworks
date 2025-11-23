@@ -1,4 +1,11 @@
-from NeuralNetworksBeta.libs.Dependances import *
+# NeuralNetworksBeta - Multi-Layer Perceptrons avec encodage Fourier
+# Copyright (C) 2025 Alexandre Brun
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+from .Dependances import *
 
 def image_from_url(url, img_size=256):
     """
@@ -34,11 +41,11 @@ def image_from_url(url, img_size=256):
       avec des MLP utilisant Fourier Features ou activations standard.
     - Les tenseurs `inputs` et `outputs` sont prêts à être envoyés sur GPU si nécessaire.
     """
-    
+
     # --- Téléchargement et ouverture de l'image ---
     response = requests.get(url)
     img = Image.open(BytesIO(response.content)).convert("RGB")
-    
+
     # --- Redimensionnement et conversion en tenseur normalisé ---
     transform = Compose([
         Resize((img_size, img_size)),
@@ -51,7 +58,7 @@ def image_from_url(url, img_size=256):
 
     # Conversion en tableau NumPy (H, W, 3) pour affichage
     img_array = img_tensor.permute(1, 2, 0).numpy()
-    
+
     # --- Création d'une grille normalisée des coordonnées des pixels ---
     x_coords = torch.linspace(0, 1, w)
     y_coords = torch.linspace(0, 1, h)

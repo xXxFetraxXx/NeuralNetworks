@@ -1,4 +1,11 @@
-from NeuralNetworksBeta.libs.Dependances import *
+# NeuralNetworksBeta - Multi-Layer Perceptrons avec encodage Fourier
+# Copyright (C) 2025 Alexandre Brun
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+from .Dependances import *
 
 def compare(img_array, inputs, *nets):
     """
@@ -17,7 +24,7 @@ def compare(img_array, inputs, *nets):
     inputs : tensor-like of shape (H*W, 2)
         Coordonnées normalisées des pixels correspondant à chaque point de l'image.
     nets : MLP
-        Un ou plusieurs réseaux possédant les méthodes `.encoding()` et `.model()`, 
+        Un ou plusieurs réseaux possédant les méthodes `.encoding()` et `.model()`,
         et l’attribut `.losses`.
 
     Notes
@@ -83,7 +90,7 @@ def plot(img_array, inputs, *nets):
     inputs : tensor-like of shape (H*W, 2)
         Coordonnées normalisées des pixels correspondant à chaque point de l'image.
     nets : MLP
-        Un ou plusieurs réseaux possédant les méthodes `.encoding()` et `.model()`, 
+        Un ou plusieurs réseaux possédant les méthodes `.encoding()` et `.model()`,
         et l’attribut `.losses`.
 
     Notes
@@ -146,7 +153,7 @@ def losses(*nets):
     Parameters
     ----------
     nets : MLP
-        Un ou plusieurs réseaux possédant un attribut `.losses` 
+        Un ou plusieurs réseaux possédant un attribut `.losses`
         contenant l'historique des pertes (liste de float).
 
     Notes
