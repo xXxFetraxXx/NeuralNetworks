@@ -55,9 +55,6 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 - `tensorise(obj)`  
   Convertit un objet array-like ou tensor en `torch.Tensor` float32 sur le device actif.
 
-- `list_to_cpu(cuda_tensors)`  
-  Copie une liste de tenseurs CUDA et les transfère sur le CPU.
-
 - `rglen(list)`  
   Renvoie un range correspondant aux indices d'une liste.
 
