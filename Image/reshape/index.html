@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/mlp/params/">
+        <link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/Image/reshape/">
       
       
-        <link rel="prev" href="../__repr__/">
+        <link rel="prev" href="../image_from_url/">
       
-      
-        <link rel="next" href="../neurons/">
       
       
         
@@ -25,7 +23,7 @@
     
     
       
-        <title>Poids (params) - NeuralNetworks</title>
+        <title>Reconstruction (reshape) - NeuralNetworks</title>
       
     
     
@@ -66,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#extraction-des-poids-du-mlp-params" class="md-skip">
+        <a href="#reconstruction-dimage-depuis-tenseur-plat-reshape_pred_to_image" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Poids (params)
+              Reconstruction (reshape)
             
           </span>
         </div>
@@ -246,20 +244,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -280,7 +276,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -298,7 +294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../MLP/" class="md-nav__link">
         
   
   
@@ -326,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../__init__/" class="md-nav__link">
+      <a href="../../MLP/__init__/" class="md-nav__link">
         
   
   
@@ -354,7 +350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../__call__/" class="md-nav__link">
+      <a href="../../MLP/__call__/" class="md-nav__link">
         
   
   
@@ -382,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../__repr__/" class="md-nav__link">
+      <a href="../../MLP/__repr__/" class="md-nav__link">
         
   
   
@@ -390,6 +386,424 @@
     
   
     Représentation (__repr__)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MLP/params/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Poids (params)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MLP/neurons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neurones (neurons)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MLP/nb_params/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Nombre de paramètres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MLP/Create_MLP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Création MLP (Create_MLP)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MLP/plot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Affichage (plot)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MLP/train/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entraînement (train)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plots
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plots
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plots/plot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Affichage Multiples (plot)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plots/compare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Erreur Multiples (compare)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plots/losses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Résidus Multiples (losses)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Plots/train/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entraînement Multiples (train)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Image
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../image_from_url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Téléchargement depuis un url (image_from_url)
   
 
     
@@ -426,7 +840,7 @@
   <span class="md-ellipsis">
     
   
-    Poids (params)
+    Reconstruction (reshape)
   
 
     
@@ -444,7 +858,7 @@
   <span class="md-ellipsis">
     
   
-    Poids (params)
+    Reconstruction (reshape)
   
 
     
@@ -470,10 +884,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#retour" class="md-nav__link">
+  <a href="#parametres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Retour
+        Paramètres
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retours
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes
       
     </span>
   </a>
@@ -484,146 +920,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../neurons/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Neurones (neurons)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nb_params/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Nombre de paramètres
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Create_MLP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Création MLP (Create_MLP)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../plot/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Affichage (plot)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../train/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Entraînement (train)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -663,10 +959,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#retour" class="md-nav__link">
+  <a href="#parametres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Retour
+        Paramètres
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retours
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes
       
     </span>
   </a>
@@ -693,35 +1011,55 @@
   
 
 
-<h1 id="extraction-des-poids-du-mlp-params">Extraction des poids du MLP (<code>params</code>)</h1>
-<p>Retourne la liste de tous les poids (weights) du MLP.</p>
-<p>Cette fonction extrait uniquement les matrices de poids des couches linéaires, en ignorant les biais.<br />
-Dans un <code>nn.Linear</code>, <code>parameters()</code> renvoie dans l'ordre :<br />
-- les poids (indice pair)<br />
-- les biais (indice impair)</p>
-<p>La méthode :</p>
-<ul>
-<li>Parcourt les paramètres du réseau  </li>
-<li>Sélectionne uniquement ceux correspondant aux poids  </li>
-<li>Sépare chaque ligne de la matrice de poids  </li>
-<li>Convertit chaque ligne en <code>ndarray</code> CPU détaché</li>
-</ul>
+<h1 id="reconstruction-dimage-depuis-tenseur-plat-reshape_pred_to_image">Reconstruction d'image depuis tenseur plat (<code>reshape_pred_to_image</code>)</h1>
+<p>Reshape un tenseur plat de prédiction en image (H, W, 3) en utilisant les dimensions de l’image originale.</p>
 <hr />
-<h2 id="retour">Retour</h2>
+<h2 id="parametres">Paramètres</h2>
 <table>
 <thead>
 <tr>
+<th>Paramètre</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>list[np.ndarray]</code></td>
-<td>Liste contenant chaque ligne des matrices de poids (chaque élément est un vecteur numpy).</td>
+<td><code>img_array</code></td>
+<td>np.ndarray (H, W, 3)</td>
+<td>Image originale servant de référence pour récupérer la hauteur (H) et la largeur (W).</td>
+</tr>
+<tr>
+<td><code>array</code></td>
+<td>tensor-like ou ndarray (H*W, 3)</td>
+<td>Tableau plat contenant les valeurs RGB prédites pour chaque pixel.</td>
 </tr>
 </tbody>
 </table>
+<hr />
+<h2 id="retours">Retours</h2>
+<table>
+<thead>
+<tr>
+<th>Nom</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>np.ndarray (H, W, 3)</td>
+<td>Image reconstruite à partir du tableau plat.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Ne modifie pas les valeurs, fait uniquement un reshape.  </li>
+<li>Utile après une prédiction de type MLP qui renvoie un tableau (N, 3).  </li>
+</ul>
 
 
 
