@@ -16,3 +16,11 @@ nav:
       - Création MLP (Create_MLP): mlp/Create_MLP.md
       - Affichage (plot): mlp/plot.md
       - Entraînement (train): mlp/train.md
+  - Plots:
+      - Affichage Multiples (plot): Plots/plot.md
+      - Erreur Multiples (compare): Plots/compare.md
+      - Résidus Multiples (losses): Plots/losses.md
+      - Entraînement Multiples (train): Plots/train.md
+  - Image:
+    - Téléchargement depuis un url (image_from_url): Image/image_from_url.md
+    - Reconstruction (reshape): Image/reshape.md
