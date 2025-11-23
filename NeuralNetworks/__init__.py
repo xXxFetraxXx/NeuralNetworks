@@ -107,13 +107,13 @@ Notes générales
 """
 
 # Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
-from Dependances import *
+from .Dependances import *
 
 # Fonctions de chargement/preprocessing des images
-from Image import *
+from .Image import *
 
 # Fonctions d'affichage : reconstruction, comparaison, courbes de pertes
-from Plot import *
+from .Plot import *
 
 # Modèle MLP principal + fonction d'entraînement associée
-from MLP import *
+from .MLP import *
