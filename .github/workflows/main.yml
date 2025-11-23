@@ -62,4 +62,4 @@ jobs:
 
       - name: Build and Deploy MkDocs
         run: |
-          mkdocs gh-deploy --force
+          mkdocs gh-deploy --force -f Documentation/mkdocs.yml
