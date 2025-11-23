@@ -35,6 +35,11 @@ coverage.xml
 # Jupyter notebooks
 .ipynb_checkpoints
 
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
 # Environments
 .env
 .venv
