@@ -34,9 +34,7 @@ jobs:
 
   mkdocs_deploy:
     runs-on: ubuntu-latest
-    needs: python_publish
     steps:
-      # 1️⃣ Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
