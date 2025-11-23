@@ -1,0 +1,18 @@
+site_name: NeuralNetworks
+site_url: https://xXxFetraxXx.github.io/NeuralNetworks
+repo_url: https://github.com/xXxFetraxXx/NeuralNetworks
+theme:
+  name: material
+nav:
+  - Accueil: index.md
+  - MLP:
+      - Présentation: mlp/index.md
+      - Initialisation (__init__): mlp/__init__.md
+      - Inférence (__call__): mlp/__call__.md
+      - Représentation (__repr__): mlp/__repr__.md
+      - Poids (params): mlp/params.md
+      - Neurones (neurons): mlp/neurons.md
+      - Nombre de paramètres: mlp/nb_params.md
+      - Création MLP (Create_MLP): mlp/Create_MLP.md
+      - Affichage (plot): mlp/plot.md
+      - Entraînement (train): mlp/train.md

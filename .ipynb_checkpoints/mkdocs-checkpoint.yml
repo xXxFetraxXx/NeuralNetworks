@@ -1,0 +1,7 @@
+site_name: NeuralNetworks
+site_url: https://github.com/RealAntEngineer/BE_01/tree/main/Alex/NeuralNetworksBeta
+theme:
+  name: material
+nav:
+  - Accueil: index.md
+  - MLP: mlp.md
