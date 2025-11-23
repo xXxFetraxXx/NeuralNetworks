@@ -1,0 +1,8 @@
+numpy==2.3.5
+torch==2.9.1
+torchaudio==2.9.1
+torchmetrics==1.8.2
+torchvision==0.24.1
+tqdm==4.66.1
+visualtorch==0.2.4
+random-fourier-features-pytorch==1.0.1
