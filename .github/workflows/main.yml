@@ -51,4 +51,4 @@ jobs:
       - name: Build and Deploy MkDocs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mkdocs gh-deploy
+        run: mkdocs gh-deploy -f Documentation/mkdocs.yml
