@@ -50,5 +50,5 @@ jobs:
       - name: Deploy MkDocs
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.DOCUMENTATION_TOKEN }}  # PAT secret
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./Documentation/site
