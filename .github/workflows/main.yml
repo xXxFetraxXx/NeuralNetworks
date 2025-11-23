@@ -51,4 +51,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Documentation/site
+          publish_dir: /home/runner/work/NeuralNetworks/NeuralNetworks/Documentation/site
