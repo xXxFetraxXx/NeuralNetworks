@@ -3,7 +3,7 @@ NeuralNetworks Module
 ====================
 
 Module complet pour la création, l'entraînement et la visualisation de Multi-Layer Perceptrons (MLP)
-avec encodage optionnel Fourier, gestion automatique des pertes, compilation Torch et outils 
+avec encodage optionnel Fourier, gestion automatique des pertes, compilation Torch et outils
 de traitement d'images pour l'apprentissage sur des images RGB.
 
 Contenu principal
@@ -77,7 +77,7 @@ Objets et dictionnaires
 -----------------------
 
 Norm_list : dict
-   Contient les modules PyTorch correspondant aux fonctions de normalisation/activation 
+   Contient les modules PyTorch correspondant aux fonctions de normalisation/activation
    disponibles (ReLU, GELU, Sigmoid, Tanh, etc.)
 
 Criterion_list : dict
@@ -107,13 +107,13 @@ Notes générales
 """
 
 # Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
-from .libs.Dependances import *
+from Dependances import *
 
 # Fonctions de chargement/preprocessing des images
-from .libs.Image import *
+from Image import *
 
 # Fonctions d'affichage : reconstruction, comparaison, courbes de pertes
-from .libs.Plot import *
+from Plot import *
 
 # Modèle MLP principal + fonction d'entraînement associée
-from .libs.MLP import *
+from MLP import *
