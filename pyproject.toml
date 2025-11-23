@@ -2,6 +2,17 @@
 requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "NeuralNetworks"
+version = "0.1.0"
+description = "Multi-Layer Perceptrons with Fourier encoding, visualization and PyTorch compilation"
+authors = [
+    { name="Alexandre Brun", email="alexandre51160@gmail.com" }
+]
+readme = "README.md"
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.9"
+
 [project.urls]
 Documentation = "https://xxxfetraxxx.github.io/NeuralNetworks/"
 Source = "https://github.com/xXxFetraxXx/NeuralNetworks"
