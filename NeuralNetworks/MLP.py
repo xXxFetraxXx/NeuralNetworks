@@ -99,8 +99,8 @@ class MLP():
     """
 
     def __init__(self, layers=[1,1,1], learning_rate=1e-3, Fourier=True,
-                 optimizer="ADAM", criterion="MSE", normalizer="Relu",
-                 name="Net", Iscompiled=True):
+                 optimizer="Adam", criterion="MSE", normalizer="Relu",
+                 name="Net", Iscompiled=False):
         """
         Initialise un réseau MLP avec options avancées : encodage Fourier,
         normalisation, choix d’optimiseur et de fonction de perte, et compilation.
@@ -163,7 +163,7 @@ class MLP():
                 sigma=10.0,
                 input_size=self.layers[0],
                 encoded_size=self.layers[1]
-            ).to(device)
+            )
             self.layers[0] = self.layers[1] * 2  # chaque entrée est doublée après encodage
         else:
             self.encoding = nn.Identity()  # passthrough si pas de Fourier
@@ -187,6 +187,9 @@ class MLP():
             raise ValueError(f"{optimizer} n'est pas reconnu")
         
         # --- Compilation optionnelle du modèle pour accélérer l’inférence ---
+        if not has_gcc():
+            Iscompiled = False
+        
         if Iscompiled:
             self.model = torch.compile(
                 self.model,
@@ -243,7 +246,7 @@ class MLP():
         # Utilisation de visualtorch pour tracer l’architecture
         ax.imshow(
             visualtorch.graph_view(
-                Create_MLP(fakelayers),
+                self.Create_MLP(fakelayers),
                 (1, fakelayers[0]),
                 ellipsize_after=34,
                 background_fill=(0, 0, 0, 0),
@@ -528,27 +531,24 @@ class MLP():
         inputs, outputs, n_samples = tensorise(inputs), tensorise(outputs), inputs.size(0)
     
         # --- Initialisation du scaler pour l'entraînement en précision mixte ---
-        scaler = torch.amp.GradScaler("cuda")
+        dev = str(device)
+        scaler = GradScaler(dev)
     
         # --- Boucle principale sur les époques ---
-        for epoch in tqdm(range(num_epochs), desc="train iter"):
+        for epoch in tqdm(range(num_epochs), desc="train epoch"):
             # Génération d'un ordre aléatoire des indices
             perm = torch.randperm(n_samples, device=device)
-    
             epoch_loss = 0.0
     
             # --- Parcours des mini-batchs ---
             for i in range(0, n_samples, batch_size):
-                idx = perm[i : i + batch_size]
+                idx = perm[i:i+batch_size]
     
                 # Fonction interne calculant la perte et les gradients
                 def closure():
                     self.optimizer.zero_grad(set_to_none=True)
-                    with torch.amp.autocast("cuda"):                    # AMP
-                        loss = self.criterion(
-                            self.model(self.encoding(inputs[idx])),
-                            outputs[idx]
-                        )
+                    with autocast(dev): # AMP
+                        loss = self.criterion(self.model(self.encoding(inputs[idx])),outputs[idx])
                     scaler.scale(loss).backward()
                     return loss
     

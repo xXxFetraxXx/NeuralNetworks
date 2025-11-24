@@ -6,16 +6,16 @@ theme:
 nav:
   - Accueil: index.md
   - MLP:
-      - Présentation: mlp/index.md
-      - Initialisation (__init__): mlp/__init__.md
-      - Inférence (__call__): mlp/__call__.md
-      - Représentation (__repr__): mlp/__repr__.md
-      - Poids (params): mlp/params.md
-      - Neurones (neurons): mlp/neurons.md
-      - Nombre de paramètres: mlp/nb_params.md
-      - Création MLP (Create_MLP): mlp/Create_MLP.md
-      - Affichage (plot): mlp/plot.md
-      - Entraînement (train): mlp/train.md
+      - Présentation: MLP/index.md
+      - Initialisation (__init__): MLP/__init__.md
+      - Inférence (__call__): MLP/__call__.md
+      - Représentation (__repr__): MLP/__repr__.md
+      - Poids (params): MLP/params.md
+      - Neurones (neurons): MLP/neurons.md
+      - Nombre de paramètres: MLP/nb_params.md
+      - Création MLP (Create_MLP): MLP/Create_MLP.md
+      - Affichage (plot): MLP/plot.md
+      - Entraînement (train): MLP/train.md
   - Plots:
       - Affichage Multiples (plot): Plots/plot.md
       - Erreur Multiples (compare): Plots/compare.md

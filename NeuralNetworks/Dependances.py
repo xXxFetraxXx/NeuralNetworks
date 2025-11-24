@@ -10,6 +10,7 @@ import torch
 import torch.optim as optim
 import torch.nn as nn
 import torch.quantization as tq
+from torch.amp import autocast, GradScaler
 from torch.utils.data import TensorDataset, DataLoader
 
 import visualtorch
@@ -22,8 +23,10 @@ from PIL import Image
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 
+import platform
 import copy
 import math
+import subprocess
 import requests
 from io import BytesIO
 import rff
@@ -31,9 +34,91 @@ from tqdm import tqdm
 
 from IPython.display import display, clear_output
 
+torch.cuda.empty_cache()
+
 # --- Device global ---
 # Utilise GPU si disponible, sinon CPU
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+def get_best_device():
+    """
+    Détermine automatiquement le meilleur backend PyTorch disponible selon l'OS
+    et les GPU présents sur la machine.
+
+    La priorité dépend du système :
+
+    macOS (Apple Silicon)
+    ---------------------
+    - Utilise Metal/MPS si disponible.
+    - Sinon CPU.
+
+    Windows
+    -------
+    - CUDA si une GPU Nvidia CUDA est détectée.
+    - Sinon DirectML (AMD / Intel / Nvidia sans CUDA).
+    - Sinon CPU.
+
+    Linux
+    -----
+    - CUDA (Nvidia)
+    - ROCm (AMD)
+    - oneAPI / XPU (Intel GPU)
+    - Sinon CPU.
+
+    Retour
+    ------
+    torch.device
+        Le device optimal pour exécuter PyTorch selon le matériel détecté.
+
+    Notes
+    -----
+    - Sur ROCm, PyTorch expose l'alias "cuda", ce qui est normal.
+    - DirectML permet un fallback GPU universel sous Windows.
+    - Cette fonction ne lance aucun test de performance, elle se base uniquement
+      sur les backends disponibles dans l'installation PyTorch.
+    """
+
+    os_name = platform.system().lower()
+
+    # =========== APPLE SILICON (macOS) ===========
+    if os_name == "darwin":
+        if torch.backends.mps.is_available():
+            return torch.device("mps")
+ 
+    # =========== WINDOWS ===========
+    if os_name == "windows":
+        # 1) CUDA
+        if torch.cuda.is_available():
+            return torch.device("cuda")
+
+    # =========== LINUX ===========
+    if os_name == "linux":
+        # 1) CUDA (Nvidia)
+        if torch.cuda.is_available():
+            return torch.device("cuda")
+        # 2) ROCm (AMD)
+        elif hasattr(torch.backends, "hip") and torch.backends.hip.is_available():
+            return torch.device("cuda")
+
+        # 3) Intel oneAPI / XPU
+        elif hasattr(torch, "xpu") and torch.xpu.is_available():
+            return torch.device("xpu")
+
+    # =========== Unknown OS ===========
+    return torch.device("cpu")
+
+device = get_best_device()
+
+def has_gcc():
+    """Return True if GCC is installed and callable."""
+    try:
+        r = subprocess.run(
+            ["gcc", "--version"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        return r.returncode == 0
+    except FileNotFoundError:
+        return False
 
 # --- Paramètres graphiques globaux ---
 # Fond transparent et couleur gris uniforme
@@ -204,3 +289,4 @@ def fPrintDoc(obj):
     """
     return lambda: print(obj.__doc__)
 
+torch.cuda.empty_cache()

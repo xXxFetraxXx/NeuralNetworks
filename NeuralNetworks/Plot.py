@@ -217,7 +217,8 @@ def train(inputs, outputs, *nets, num_epochs=1500, batch_size=1024, img_array=No
 
     # --- Conversion des données en tensors et récupération du nombre d'échantillons ---
     inputs, outputs, n_samples = tensorise(inputs), tensorise(outputs), inputs.size(0)
-    scaler = torch.amp.GradScaler("cuda")
+    dev = str(device)
+    scaler = GradScaler(dev)
     visual = False
 
     # --- Initialisation de l'affichage interactif si une image de référence est fournie ---
@@ -276,7 +277,7 @@ def train(inputs, outputs, *nets, num_epochs=1500, batch_size=1024, img_array=No
                 def closure():
                     """Calcul de la loss et backpropagation pour un mini-batch."""
                     net.optimizer.zero_grad(set_to_none=True)
-                    with torch.amp.autocast("cuda"):
+                    with autocast(dev):
                         loss = net.criterion(net.model(net.encoding(inputs[idx])), outputs[idx])
                     scaler.scale(loss).backward()
                     return loss
