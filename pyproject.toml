@@ -28,7 +28,8 @@ dependencies = [
     "torchmetrics>=1.8",
     "visualtorch>=0.2",
     "random-fourier-features-pytorch>=1.0",
-    "IPython>=8.16"
+    "IPython>=8.16",
+    "requests"
 ]
 
 [project.urls]

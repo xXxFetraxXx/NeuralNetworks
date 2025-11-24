@@ -216,7 +216,8 @@ def train(inputs, outputs, *nets, num_epochs=1500, batch_size=1024, img_array=No
     """
 
     # --- Conversion des données en tensors et récupération du nombre d'échantillons ---
-    inputs, outputs, n_samples = tensorise(inputs), tensorise(outputs), inputs.size(0)
+    inputs, outputs, n_samples = tensorise(inputs).to(device), tensorise(outputs).to(device), inputs.size(0)
+    self.model = self.model.to(device)
     dev = str(device)
     scaler = GradScaler(dev)
     visual = False

@@ -163,10 +163,10 @@ class MLP():
                 sigma=10.0,
                 input_size=self.layers[0],
                 encoded_size=self.layers[1]
-            )
+            ).to(device)
             self.layers[0] = self.layers[1] * 2  # chaque entrée est doublée après encodage
         else:
-            self.encoding = nn.Identity()  # passthrough si pas de Fourier
+            self.encoding = nn.Identity().to(device)  # passthrough si pas de Fourier
     
         # --- Sélection du normalisateur / activation ---
         self.norm = Norm_list.get(normalizer)
@@ -238,6 +238,13 @@ class MLP():
         else:
             # Sinon, on garde les dimensions réelles
             fakelayers = self.layers
+
+        # Affichage console des dimensions réelles
+        print("Tailles réelles :")
+        print(str(self.layers))
+        print("")
+        print("Tailles affichées :")
+        print(str(fakelayers))
     
         # --- Visualisation du MLP ---
         fig, ax = plt.subplots(figsize=(12, 6))
@@ -255,11 +262,7 @@ class MLP():
         )
     
         plt.show()
-    
-        # Affichage console des dimensions réelles
-        print(str(self.layers))
-    
-        return f"Scaled down to {fakelayers}"
+        return ""
 
     def __call__(self, x):
         """
@@ -528,7 +531,8 @@ class MLP():
         """
     
         # --- Conversion en tensors et récupération du nombre d'échantillons ---
-        inputs, outputs, n_samples = tensorise(inputs), tensorise(outputs), inputs.size(0)
+        inputs, outputs, n_samples = tensorise(inputs).to(device), tensorise(outputs).to(device), inputs.size(0)
+        self.model = self.model.to(device)
     
         # --- Initialisation du scaler pour l'entraînement en précision mixte ---
         dev = str(device)
