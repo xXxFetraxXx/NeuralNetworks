@@ -70,7 +70,6 @@ try:
                     except Exception:
                         pytest.fail(f"MLP(Fourier={fourier},optim={optim}, crit={crit}, norm={norm},Iscompiled={compilation}) failed train()")
                         print(Exception)
-                    print(f"MLP(Fourier={fourier},optim={optim}, crit={crit}, norm={norm},Iscompiled={compilation}) success")
                 except Exception:
                     pytest.fail(f"MLP(Fourier={fourier},optim={optim}, crit={crit}, norm={norm},Iscompiled={compilation}) failed __init__")
                     print(Exception)
