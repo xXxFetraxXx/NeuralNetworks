@@ -166,8 +166,6 @@ norm_list = {
     "Sigmoid": nn.Sigmoid(),
     "Tanh": nn.Tanh(),
     "Hardtanh": nn.Hardtanh(),
-    "PReLU": nn.PReLU(),
-    "RReLU": nn.RReLU(),
     "Softplus": nn.Softplus(),
     "Softsign": nn.Softsign()
 }
