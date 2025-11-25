@@ -167,7 +167,7 @@ def losses(*nets):
     fig = plt.figure(figsize=(5, 5))
 
     # --- Définition des limites des axes ---
-    plt = [ [loss.item() for loss in net.losses] for net in nets ]
+    all_losses = [ [loss.item() for loss in net.losses] for net in nets ]
     plt.xlim(1, max(len(lst) for lst in all_losses)) # X : epochs
     plt.ylim(0, max(max(lst) for lst in all_losses)) # Y : valeurs de pertes
 
