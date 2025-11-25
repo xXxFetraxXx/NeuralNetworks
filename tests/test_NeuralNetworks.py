@@ -9,9 +9,9 @@ try:
                     for crit in crit_list.keys():
                         for optim in optims_list:
                             try:
-                                net = MLP(Fourier=fourier,optim=optim, crit=crit, norm=norm,Iscompiled=compilation)
+                                net = MLP([2,1,3],Fourier=fourier,optim=optim, crit=crit, norm=norm,Iscompiled=compilation)
                                 try:
-                                    net.train(inputs,outputs,1,64)
+                                    net.train(inputs,outputs,1,1024)
                                     try:
                                         net
                                     except Exception:
@@ -42,9 +42,9 @@ try:
                                     except Exception:
                                         pytest.fail(f"MLP(Fourier={fourier},optim={optim}, crit={crit}, norm={norm},Iscompiled={compilation}) failed plot()")
                                         print(Exception)
-                                    net2 = MLP(Fourier=fourier,optim=optim, crit=crit, norm=norm,Iscompiled=compilation)
+                                    net2 = MLP([2,1,3],Fourier=fourier,optim=optim, crit=crit, norm=norm,Iscompiled=compilation)
                                     try:
-                                        train(inputs,outputs,1,64,net,net2)
+                                        train(inputs,outputs,1,1024,net,net2)
                                         try:
                                             plot(img,inputs,net,net2)
                                         except Exception:
