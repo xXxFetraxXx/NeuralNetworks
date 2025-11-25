@@ -7,7 +7,7 @@ try:
             for compilation in [False, True]:
                 for norm in norm_list.keys():
                     for crit in crit_list.keys():
-                        for optim in optims_list.keys():
+                        for optim in optims_list:
                             try:
                                 net = MLP(Fourier=fourier,optim=optim, crit=crit, norm=norm,Iscompiled=compilation)
                                 try:

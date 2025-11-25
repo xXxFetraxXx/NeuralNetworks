@@ -244,21 +244,19 @@ def optim_list(self, learning_rate):
         "Rprop": optim.Rprop(self.model.parameters(), lr=learning_rate),
         "SGD": optim.SGD(self.model.parameters(), lr=learning_rate)
     }
-
-optims_list = {
-    "Adadelta": "",
-    "Adafactor": "",
-    "Adam": "",
-    "AdamW": "",
-    "Adamax": "",
-    "ASGD": "",
-    "NAdam": "",
-    "RAdam": "",
-    "RMSprop": "",
-    "Rprop": "",
-    "SGD": "",
-}
-    
+optims_list = [
+    "Adadelta",
+    "Adafactor",
+    "Adam",
+    "AdamW",
+    "Adamax",
+    "ASGD",
+    "NAdam",
+    "RAdam",
+    "RMSprop",
+    "Rprop",
+    "SGD"
+]
 optims = lambda: print("""
 "Adadelta"
 "Adafactor"
