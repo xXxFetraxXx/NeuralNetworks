@@ -167,14 +167,14 @@ def losses(*nets):
     fig = plt.figure(figsize=(5, 5))
 
     # --- Définition des limites des axes ---
-    all_losses = [ [loss.item() for loss in net.losses] for net in nets ]
-    plt.set_xlim(1, max(len(lst) for lst in all_losses)) # X : epochs
-    plt.set_ylim(0, max(max(lst) for lst in all_losses)) # Y : valeurs de pertes
+    plt = [ [loss.item() for loss in net.losses] for net in nets ]
+    plt.xlim(1, max(len(lst) for lst in all_losses)) # X : epochs
+    plt.ylim(0, max(max(lst) for lst in all_losses)) # Y : valeurs de pertes
 
     # --- Tracé des courbes de pertes pour chaque réseau ---
     for k, net in enumerate(nets):
         steps = np.linspace(1, len(net.losses), len(net.losses))  # epochs
-        ax_loss.plot(np.arange(1, len(all_losses[k])+1), all_losses[k])
+        plt.plot(np.arange(1, len(all_losses[k])+1), all_losses[k])
 
     # --- Affichage ---
     plt.legend()
