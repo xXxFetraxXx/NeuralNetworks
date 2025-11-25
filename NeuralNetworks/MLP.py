@@ -189,7 +189,7 @@ class MLP():
         # --- Sélection de l’optimiseur ---
         self.optim = optim_list(self, learning_rate).get(optim)
         if self.optim is None:
-            rint("")
+            print("")
             print (f"{optim} n'est pas reconnu")
             self.optim = optim_list(self, learning_rate).get("Adam")
             print (f"Retour au paramètre par défaut: 'Adam'")
