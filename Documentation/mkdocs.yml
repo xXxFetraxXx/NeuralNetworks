@@ -24,9 +24,6 @@ nav:
 
 plugins:
   - search
-  - mkdocstrings:
-      handlers:
-        python: python
 
 markdown_extensions:
   - toc:
