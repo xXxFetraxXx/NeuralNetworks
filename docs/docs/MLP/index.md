@@ -67,8 +67,6 @@ Cette classe fournit :
 | **"Sigmoid"**       | `nn.Sigmoid()`            | Fonction d'activation Sigmoid, qui produit une sortie entre 0 et 1.                                       |
 | **"Tanh"**          | `nn.Tanh()`               | Fonction d'activation Tanh, avec une sortie dans l'intervalle [-1, 1].                                    |
 | **"Hardtanh"**      | `nn.Hardtanh()`           | Variante de Tanh, avec des sorties limitées entre une plage spécifiée.                                    |
-| **"PReLU"**         | `nn.PReLU()`              | Parametric ReLU, une version de ReLU où le coefficient `slope` est appris.                                |
-| **"RReLU"**         | `nn.RReLU()`              | Randomized ReLU, une version de PReLU avec un paramètre de pente aléatoire pendant l'entraînement.        |
 | **"Softplus"**      | `nn.Softplus()`           | Fonction d'activation qui approxime ReLU mais de manière lissée.                                          |
 | **"Softsign"**      | `nn.Softsign()`           | Fonction d'activation similaire à Tanh mais plus souple, avec des valeurs dans [-1, 1].                   |
 
@@ -83,8 +81,6 @@ Cette classe fournit :
 | **"SmoothL1"**                 | `nn.SmoothL1Loss()`                 | Smooth L1 Loss, une combinaison de L1 et de MSE, moins sensible aux outliers.                                              |
 | **"Huber"**                    | `nn.HuberLoss()`                    | Fonction de perte Huber, une version lissée de L1 et MSE, moins affectée par les grands écarts.                            |
 | **"CrossEntropy"**             | `nn.CrossEntropyLoss()`             | Perte de Cross-Entropy, utilisée pour les problèmes de classification multi-classes.                                       |
-| **"BCE"**                      | `nn.BCELoss()`                      | Binary Cross-Entropy Loss, utilisée pour les tâches de classification binaire.                                             |
-| **"BCEWithLogits"**            | `nn.BCEWithLogitsLoss()`            | BCE Loss combinée avec un calcul de logits, plus stable numériquement que l'utilisation séparée de `Sigmoid` et `BCELoss`. |
 | **"KLDiv"**                    | `nn.KLDivLoss()`                    | Perte de divergence de Kullback-Leibler, souvent utilisée pour des modèles probabilistes.                                  |
 | **"PoissonNLL"**               | `nn.PoissonNLLLoss()`               | Perte de log-vraisemblance pour une distribution de Poisson, utilisée pour la modélisation de comptages.                   |
 | **"MultiLabelSoftMargin"**     | `nn.MultiLabelSoftMarginLoss()`     | Perte utilisée pour les problèmes de classification multi-étiquettes.                                                      |

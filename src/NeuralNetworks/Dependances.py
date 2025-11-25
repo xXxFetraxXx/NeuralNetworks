@@ -178,8 +178,6 @@ norms = lambda: print("""
 "Sigmoid"
 "Tanh"
 "Hardtanh"
-"PReLU"
-"RReLU"
 "Softplus"
 "Softsign"
 """
@@ -192,8 +190,6 @@ crit_list = {
     "SmoothL1": nn.SmoothL1Loss(),
     "Huber": nn.HuberLoss(),
     "CrossEntropy": nn.CrossEntropyLoss(),
-    "BCE": nn.BCELoss(),
-    "BCEWithLogits": nn.BCEWithLogitsLoss(),
     "KLDiv": nn.KLDivLoss(),
     "PoissonNLL": nn.PoissonNLLLoss(),
     "MultiLabelSoftMargin": nn.MultiLabelSoftMarginLoss(),
@@ -204,8 +200,6 @@ crits = lambda: print("""
 "SmoothL1"
 "Huber"
 "CrossEntropy"
-"BCE"
-"BCEWithLogits"
 "KLDiv"
 "PoissonNLL"
 "MultiLabelSoftMargin"
