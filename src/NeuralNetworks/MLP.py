@@ -173,15 +173,15 @@ class MLP():
         if self.norm is None:
             print("")
             print (f"{norm} n'est pas reconnu")
-            self.norm = "Relu"
+            self.norm = norm_list.get("Relu")
             print (f"Retour au paramètre par défaut: 'Relu'")
     
         # --- Fonction de perte ---
-        self.crit = crit_list.get(crit).to(device)
+        self.crit = crit_list.get(crit)
         if self.crit is None:
             print("")
             print (f"{crit} n'est pas reconnu")
-            self.crit = "MSE"
+            self.crit = crit_list.get("MSE")
             print (f"Retour au paramètre par défaut: 'MSE'")
         # --- Construction du MLP ---
         self.model = self.Create_MLP(self.layers)

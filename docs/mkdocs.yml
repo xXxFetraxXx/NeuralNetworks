@@ -7,19 +7,18 @@ theme:
   name: readthedocs
 nav:
   - Accueil: index.md
-  - MLP:
-      - MLP: MLP/index.md
+  - MLP: MLP/index.md
       - MLP.params: MLP/params.md
       - MLP.neurons: MLP/neurons.md
       - MLP.nb_params: MLP/nb_params.md
       - MLP.plot: MLP/plot.md
       - MLP.train: MLP/train.md
-  - Plots:
+  - Affichages multiples:
       - plot: Plots/plot.md
       - compare: Plots/compare.md
       - losses: Plots/losses.md
       - train: Plots/train.md
-  - image_from_url: Image/image_from_url.md
+  - Chargement depuis un url: Image/image_from_url.md
   - PyPI: https://pypi.org/project/NeuralNetworks/
 
 plugins:

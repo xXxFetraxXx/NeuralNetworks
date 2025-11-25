@@ -107,7 +107,7 @@ Notes générales
 """
 
 # Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
-from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise
+from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise, norm_list, crit_list, optim_list
 
 # Fonctions de chargement/preprocessing des images
 from .Image import image_from_url
@@ -117,3 +117,5 @@ from .Plot import compare, plot, losses, train
 
 # Modèle MLP principal + fonction d'entraînement associée
 from .MLP import MLP
+
+__version__ = "0.1.10"

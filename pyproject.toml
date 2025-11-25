@@ -36,8 +36,8 @@ dependencies = [
 Documentation = "https://xxxfetraxxx.github.io/NeuralNetworks/"
 Source = "https://github.com/xXxFetraxXx/NeuralNetworks"
 
-[tool.setuptools]
-packages = ["NeuralNetworks"]
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.setuptools.dynamic]
-version = { attr = "NeuralNetworks.__version__.__version__" }
+version = { attr = "NeuralNetworks.__version__" }
