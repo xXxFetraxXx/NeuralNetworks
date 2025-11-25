@@ -73,6 +73,7 @@ try:
                                 except Exception:
                                     pytest.fail(f"MLP(Fourier={fourier},optim={optim}, crit={crit}, norm={norm},Iscompiled={compilation}) failed train()")
                                     print(Exception)
+                                print(f"MLP(Fourier={fourier},optim={optim}, crit={crit}, norm={norm},Iscompiled={compilation}) success")
                             except Exception:
                                 pytest.fail(f"MLP(Fourier={fourier},optim={optim}, crit={crit}, norm={norm},Iscompiled={compilation}) failed __init__")
                                 print(Exception)
@@ -149,6 +150,7 @@ try:
     except Exception:
         pytest.fail(f"image_from_url failed")
         print(Exception)
+    print("success")
 except Exception:
     pytest.fail(f"import NeuralNetworks failed")
     print(Exception)
