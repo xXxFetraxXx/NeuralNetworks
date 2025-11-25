@@ -1,4 +1,4 @@
-# Comparaison d'images et erreur absolue (`compare`)
+# `compare()`
 
 Affiche, pour chaque réseau, l’erreur absolue entre l’image originale et l’image reconstruite par le réseau.
 

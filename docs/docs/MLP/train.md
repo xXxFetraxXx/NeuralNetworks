@@ -1,4 +1,4 @@
-# Entraînement du MLP (`train`)
+# `MLP.train()`
 
 Entraîne le MLP sur des paires (inputs → outputs) en utilisant un schéma de mini-batchs et l'AMP (Automatic Mixed Precision).
 

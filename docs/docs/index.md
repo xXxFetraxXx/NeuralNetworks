@@ -21,20 +21,18 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 
 **Méthodes principales :**
 
-- `__init__(layers, learning_rate, Fourier, optimizer, criterion, normalizer, name, Iscompiled)`  
+- `MLP(layers, learning_rate, Fourier, optim, crit, norm, name, Iscompiled)`  
   Initialise le réseau avec toutes les options.
+
+  Les valeurs possibles de `optim`  sont disponibles avec `optims()` 
+  Les valeurs possibles de `crit`  sont disponibles avec `crits()` 
+  Les valeurs possibles de `norm`  sont disponibles avec `norms()` 
 
 - `train(inputs, outputs, num_epochs, batch_size)`  
   Entraîne le MLP sur des données (`inputs → outputs`) en utilisant AMP et mini-batchs.
 
 - `plot(inputs, img_array)`  
   Affiche l'image originale, la prédiction du MLP et la courbe des pertes.
-
-- `__call__(x)`  
-  Applique l’encodage puis le MLP pour produire une prédiction.
-
-- `Create_MLP(layers)`  
-  Construit le MLP avec normalisation/activation et Sigmoid finale.
 
 - `params()`  
   Retourne tous les poids du MLP (ligne par ligne) sous forme de liste de `numpy.ndarray`.
@@ -45,9 +43,6 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 - `neurons()`  
   Retourne la liste des biais (neurones) de toutes les couches linéaires.
 
-- `__repr__()`  
-  Affiche un schéma visuel du MLP via visualtorch et print des dimensions.
-
 ---
 
 ### Fonctions utilitaires
@@ -57,9 +52,6 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 
 - `rglen(list)`  
   Renvoie un range correspondant aux indices d'une liste.
-
-- `fPrintDoc(obj)`  
-  Crée une fonction lambda qui affiche le docstring d'un objet.
 
 - `image_from_url(url, img_size)`  
   Télécharge une image depuis une URL, la redimensionne et génère :
@@ -77,9 +69,6 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 - `compare(img_array, inputs, *nets)`  
   Affiche pour chaque réseau l'erreur absolue entre l'image originale et la prédiction,  
   et trace également les pertes cumulées. Chaque réseau doit posséder :  
-  - `encoding(x)` si RFF activé  
-  - `model()` retournant un tenseur `(N, 3)`  
-  - attribut `losses`
 
 ---
 

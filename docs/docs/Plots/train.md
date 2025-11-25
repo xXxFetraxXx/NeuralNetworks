@@ -1,4 +1,4 @@
-# Entraînement de MLP (`train_mlps`)
+# `train()`
 
 Entraîne un ou plusieurs MLP sur des paires (inputs, outputs) avec gestion optionnelle de l'affichage interactif.
 

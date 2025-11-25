@@ -1,4 +1,4 @@
-# Affichage de l’image et de la perte (`plot`)
+# `MLP.plot()`
 
 Affiche côte à côte :  
 - l’image originale  

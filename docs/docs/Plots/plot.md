@@ -1,4 +1,4 @@
-# Affichage des prédictions (`plot_predictions`)
+# `plot()`
 
 Affiche, pour chaque réseau, l’image reconstruite à partir de ses prédictions.
 

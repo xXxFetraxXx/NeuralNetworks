@@ -12,7 +12,6 @@ Cette classe fournit :
 - Suivi et affichage de la perte d'entraînement  
 - Accès aux poids, biais et nombre de paramètres  
 - Compilation du modèle via `torch.compile` pour accélérer l'inférence  
-- Méthode `__call__` permettant l'utilisation directe comme une fonction (`y = net(x)`)
 
 ---
 
@@ -46,10 +45,6 @@ Cette classe fournit :
 
 ## Methods
 
-- `__init__(...)` — Initialise le réseau, configure l’encodage, la fonction de perte et l’optimiseur  
-- `__repr__()` — Affiche un schéma visuel du MLP et ses dimensions (avec compression si nécessaire)  
-- `__call__(x)` — Applique l’encodage et le MLP sur un input x, retourne la prédiction en `ndarray`  
-- `Create_MLP(layers)` — Construit un `nn.Sequential` avec les couches linéaires, activations et normalisations  
 - `plot(inputs, img_array)` — Affiche l’image originale, l’image prédite et la courbe des pertes  
 - `train(inputs, outputs, num_epochs=1500, batch_size=1024)` — Entraîne le MLP avec mini-batchs et AMP, stocke les pertes  
 - `params()` — Retourne tous les poids du MLP sous forme de liste d’`ndarray`  
