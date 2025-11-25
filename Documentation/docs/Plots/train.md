@@ -11,14 +11,14 @@ Affiche dynamiquement si `img_array` est fourni :
 
 ## Paramètres
 
-| Paramètre | Type | Description |
-| ---------- | ---- | ----------- |
-| `inputs`  | array-like | Entrées du ou des MLP (shape: [n_samples, n_features]). |
-| `outputs` | array-like | Sorties cibles correspondantes (shape: [n_samples, output_dim]). |
-| `*nets`   | MLP ou liste de MLP | Un ou plusieurs objets MLP à entraîner. |
-| `num_epochs` | int, optional | Nombre d’époques pour l’entraînement (default=1500). |
-| `batch_size` | int, optional | Taille des mini-batchs pour la descente de gradient (default=1024). |
-| `img_array` | np.ndarray (H, W, 3), optional | Image de référence pour visualisation des prédictions (default=None). |
+| Paramètre    | Type                           | Description                                                           |
+| ------------ | ------------------------------ | --------------------------------------------------------------------- |
+| `inputs`     | array-like                     | Entrées du ou des MLP (shape: [n_samples, n_features]).               |
+| `outputs`    | array-like                     | Sorties cibles correspondantes (shape: [n_samples, output_dim]).      |
+| `num_epochs` | int, optional                  | Nombre d’époques pour l’entraînement (default=1500).                  |
+| `batch_size` | int, optional                  | Taille des mini-batchs pour la descente de gradient (default=1024).   |
+| `*nets`      | MLP ou liste de MLP            | Un ou plusieurs objets MLP à entraîner.                               |
+| `img_array`  | np.ndarray (H, W, 3), optional | Image de référence pour visualisation des prédictions (default=None). |
 
 ---
 

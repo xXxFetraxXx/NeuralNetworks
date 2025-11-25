@@ -107,13 +107,13 @@ Notes générales
 """
 
 # Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
-from .Dependances import *
+from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise
 
 # Fonctions de chargement/preprocessing des images
-from .Image import *
+from .Image import image_from_url, image_from_url.help
 
 # Fonctions d'affichage : reconstruction, comparaison, courbes de pertes
-from .Plot import *
+from .Plot import compare, plot, losses, train, compare.help, plot.help, losses.help, train.help
 
 # Modèle MLP principal + fonction d'entraînement associée
-from .MLP import *
+from .MLP import MLP, MLP.help, MLP.params.help, MLP.nb_params.help, MLP.neurons.help, MLP.plot.help, MLP.train.help

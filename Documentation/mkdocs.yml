@@ -1,26 +1,42 @@
 site_name: NeuralNetworks
 site_url: https://xXxFetraxXx.github.io/NeuralNetworks
 repo_url: https://github.com/xXxFetraxXx/NeuralNetworks
+site_description: "Multi-Layer Perceptrons with Fourier encoding, visualization and PyTorch compilation"
+site_author: "Alexandre Brun"
 theme:
-  name: material
+  name: readthedocs
 nav:
   - Accueil: index.md
   - MLP:
-      - Présentation: MLP/index.md
-      - Initialisation (__init__): MLP/__init__.md
-      - Inférence (__call__): MLP/__call__.md
-      - Représentation (__repr__): MLP/__repr__.md
-      - Poids (params): MLP/params.md
-      - Neurones (neurons): MLP/neurons.md
-      - Nombre de paramètres: MLP/nb_params.md
-      - Création MLP (Create_MLP): MLP/Create_MLP.md
-      - Affichage (plot): MLP/plot.md
-      - Entraînement (train): MLP/train.md
+      - MLP: MLP/index.md
+      - MLP.params: MLP/params.md
+      - MLP.neurons: MLP/neurons.md
+      - MLP.nb_params: MLP/nb_params.md
+      - MLP.plot: MLP/plot.md
+      - MLP.train: MLP/train.md
   - Plots:
-      - Affichage Multiples (plot): Plots/plot.md
-      - Erreur Multiples (compare): Plots/compare.md
-      - Résidus Multiples (losses): Plots/losses.md
-      - Entraînement Multiples (train): Plots/train.md
-  - Image:
-    - Téléchargement depuis un url (image_from_url): Image/image_from_url.md
-    - Reconstruction (reshape): Image/reshape.md
+      - plot: Plots/plot.md
+      - compare: Plots/compare.md
+      - losses: Plots/losses.md
+      - train: Plots/train.md
+  - image_from_url: Image/image_from_url.md
+  - PyPI: https://pypi.org/project/NeuralNetworks/
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python: python
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite:
+      guess_lang: true
+
+version: 0.1.6
+
+redirects:
+  '/numpy': 'https://numpy.org/doc/stable/'
+  '/pytorch': 'https://pytorch.org/docs/stable/'

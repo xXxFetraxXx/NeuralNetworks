@@ -184,7 +184,7 @@ def losses(*nets):
     plt.show()
 losses.help = fPrintDoc(losses)
 
-def train(inputs, outputs, *nets, num_epochs=1500, batch_size=1024, img_array=None):
+def train(inputs, outputs, num_epochs=1500, batch_size=1024, *nets, img_array=None):
     """
     Entraîne un ou plusieurs MLP sur des paires (inputs, outputs) avec gestion optionnelle de l'affichage interactif.
 
@@ -199,12 +199,12 @@ def train(inputs, outputs, *nets, num_epochs=1500, batch_size=1024, img_array=No
         Entrées du ou des MLP (shape: [n_samples, n_features]).
     outputs : array-like
         Sorties cibles correspondantes (shape: [n_samples, output_dim]).
-    *nets : MLP
-        Un ou plusieurs objets MLP à entraîner.
     num_epochs : int, optional
         Nombre d’époques pour l’entraînement (default=1500).
     batch_size : int, optional
         Taille des mini-batchs pour la descente de gradient (default=1024).
+    *nets : MLP
+        Un ou plusieurs objets MLP à entraîner.
     img_array : np.ndarray of shape (H, W, 3), optional
         Image de référence pour visualisation des prédictions (default=None).
 
@@ -277,14 +277,14 @@ def train(inputs, outputs, *nets, num_epochs=1500, batch_size=1024, img_array=No
 
                 def closure():
                     """Calcul de la loss et backpropagation pour un mini-batch."""
-                    net.optimizer.zero_grad(set_to_none=True)
+                    net.optim.zero_grad(set_to_none=True)
                     with autocast(dev):
-                        loss = net.criterion(net.model(net.encoding(inputs[idx])), outputs[idx])
+                        loss = net.crit(net.model(net.encoding(inputs[idx])), outputs[idx])
                     scaler.scale(loss).backward()
                     return loss
 
                 loss = closure()
-                scaler.step(net.optimizer)
+                scaler.step(net.optim)
                 scaler.update()
                 epoch_loss[k] += loss
 

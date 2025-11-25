@@ -11,20 +11,20 @@ Cette fonction retourne :
 
 ## Paramètres
 
-| Paramètre  | Type    | Description |
-| ---------- | ------- | ----------- |
-| `url`      | str     | URL de l'image à télécharger. |
+| Paramètre  | Type    | Description                                                            |
+| ---------- | ------- | ---------------------------------------------------------------------- |
+| `url`      | str     | URL de l'image à télécharger.                                          |
 | `img_size` | int     | Taille finale carrée de l'image (img_size x img_size). Par défaut 256. |
 
 ---
 
 ## Retours
 
-| Nom         | Type | Description |
-| ----------- | ---- | ----------- |
-| `img_array` | numpy.ndarray (H, W, 3) | Image sous forme de tableau NumPy, valeurs normalisées entre 0 et 1. |
-| `inputs`    | torch.Tensor (H*W, 2)    | Coordonnées normalisées des pixels pour l'entrée du MLP. |
-| `outputs`   | torch.Tensor (H*W, 3)    | Valeurs RGB cibles pour chaque pixel, pour la sortie du MLP. |
+| Nom         | Type                     | Description                                                          |
+| ----------- | ------------------------ | -------------------------------------------------------------------- |
+| `img_array` | numpy.ndarray (H, W, 3)  | Image sous forme de tableau NumPy, valeurs normalisées entre 0 et 1. |
+| `inputs`    | torch.Tensor (H*W, 2)    | Coordonnées normalisées des pixels pour l'entrée du MLP.             |
+| `outputs`   | torch.Tensor (H*W, 3)    | Valeurs RGB cibles pour chaque pixel, pour la sortie du MLP.         |
 
 ---
 

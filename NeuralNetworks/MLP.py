@@ -34,13 +34,13 @@ class MLP():
     Fourier : bool, optional
         Si True, applique un encodage Fourier gaussien (RFF) sur les entrées.
         Default: True
-    optimizer : str, optional
-        Nom de l’optimiseur à utiliser (doit exister dans `Optim_list`).
+    optim : str, optional
+        Nom de l’optimiseur à utiliser (doit exister dans `optim_list`).
         Default: "ADAM"
-    criterion : str, optional
-        Fonction de perte à utiliser (doit exister dans `Criterion_list`).
+    crit : str, optional
+        Fonction de perte à utiliser (doit exister dans `crit_list`).
         Default: "MSE"
-    normalizer : str, optional
+    norm : str, optional
         Type de normalisation / activation pour les couches cachées (ex: "Relu").
         Default: "Relu"
     name : str, optional
@@ -60,11 +60,11 @@ class MLP():
         Module appliquant l'encodage des entrées (RFF ou identity).
     norm : nn.Module
         Normalisation ou activation utilisée dans les couches cachées.
-    criterion : nn.Module
+    crit : nn.Module
         Fonction de perte PyTorch sur le device spécifié.
     model : nn.Sequential
         MLP complet construit dynamiquement.
-    optimizer : torch.optim.Optimizer
+    optim : torch.optim.Optimizer
         Optimiseur associé au MLP.
     name : str
         Nom du réseau.
@@ -99,7 +99,7 @@ class MLP():
     """
 
     def __init__(self, layers=[1,1,1], learning_rate=1e-3, Fourier=True,
-                 optimizer="Adam", criterion="MSE", normalizer="Relu",
+                 optim="Adam", crit="MSE", norm="Relu",
                  name="Net", Iscompiled=False):
         """
         Initialise un réseau MLP avec options avancées : encodage Fourier,
@@ -115,13 +115,13 @@ class MLP():
         Fourier : bool, optional
             Si True, applique un encodage RFF (Random Fourier Features) sur les entrées.
             Default: True
-        optimizer : str, optional
-            Nom de l’optimiseur à utiliser (doit être présent dans `Optim_list`).
-            Default: "ADAM"
-        criterion : str, optional
-            Nom de la fonction de perte à utiliser (doit être présent dans `Criterion_list`).
+        optim : str, optional
+            Nom de l’optimiseur à utiliser (doit être présent dans `optim_list`).
+            Default: "Adam"
+        crit : str, optional
+            Nom de la fonction de perte à utiliser (doit être présent dans `crit_list`).
             Default: "MSE"
-        normalizer : str, optional
+        norm : str, optional
             Type de normalisation / activation à appliquer entre les couches cachées.
             Default: "Relu"
         name : str, optional
@@ -141,11 +141,11 @@ class MLP():
             Module appliquant l’encodage des entrées (RFF ou identité).
         norm : nn.Module
             Normalisation / activation utilisée entre les couches cachées.
-        criterion : nn.Module
+        crit : nn.Module
             Fonction de perte PyTorch sur GPU.
         model : nn.Sequential
             MLP complet construit dynamiquement.
-        optimizer : torch.optim.Optimizer
+        optim : torch.optim.Optimizer
             Optimiseur associé au MLP.
         name : str
             Nom du réseau.
@@ -169,22 +169,30 @@ class MLP():
             self.encoding = nn.Identity().to(device)  # passthrough si pas de Fourier
     
         # --- Sélection du normalisateur / activation ---
-        self.norm = Norm_list.get(normalizer)
+        self.norm = norm_list.get(norm)
         if self.norm is None:
-            raise ValueError(f"{normalizer} n'est pas reconnu")
+            print("")
+            print (f"{norm} n'est pas reconnu")
+            self.norm = "Relu"
+            print (f"Retour au paramètre par défaut: 'Relu'")
     
         # --- Fonction de perte ---
-        self.criterion = Criterion_list.get(criterion).to(device)
-        if self.criterion is None:
-            raise ValueError(f"{criterion} n'est pas reconnu")
-    
+        self.crit = crit_list.get(crit).to(device)
+        if self.crit is None:
+            print("")
+            print (f"{crit} n'est pas reconnu")
+            self.crit = "MSE"
+            print (f"Retour au paramètre par défaut: 'MSE'")
         # --- Construction du MLP ---
         self.model = self.Create_MLP(self.layers)
     
         # --- Sélection de l’optimiseur ---
-        self.optimizer = Optim_list(self, learning_rate).get(optimizer)
-        if self.optimizer is None:
-            raise ValueError(f"{optimizer} n'est pas reconnu")
+        self.optim = optim_list(self, learning_rate).get(optim)
+        if self.optim is None:
+            rint("")
+            print (f"{optim} n'est pas reconnu")
+            self.optim = optim_list(self, learning_rate).get("Adam")
+            print (f"Retour au paramètre par défaut: 'Adam'")
         
         # --- Compilation optionnelle du modèle pour accélérer l’inférence ---
         if not has_gcc():
@@ -430,7 +438,7 @@ class MLP():
     
         return nn.Sequential(*layer_list)
 
-    def plot(self, inputs, img_array):
+    def plot(self, img_array, inputs):
         """
         Affiche côte à côte :
         - l’image originale,
@@ -439,11 +447,11 @@ class MLP():
     
         Parameters
         ----------
+        img_array : np.ndarray
+            Image originale sous forme de tableau (H, W, 3) utilisée comme référence.
         inputs : array-like or torch.Tensor
             Tableau des coordonnées (ou features) servant d’entrée au réseau.
             Doit correspondre à la grille permettant de reconstruire l’image.
-        img_array : np.ndarray
-            Image originale sous forme de tableau (H, W, 3) utilisée comme référence.
     
         Notes
         -----
@@ -526,8 +534,8 @@ class MLP():
         - Le réseau doit posséder :
             * self.model      : module PyTorch (MLP)
             * self.encoding() : encodage éventuel (Fourier features)
-            * self.criterion  : fonction de perte
-            * self.optimizer  : optimiseur
+            * self.crit  : fonction de perte
+            * self.optim  : optimiseur
         """
     
         # --- Conversion en tensors et récupération du nombre d'échantillons ---
@@ -550,15 +558,15 @@ class MLP():
     
                 # Fonction interne calculant la perte et les gradients
                 def closure():
-                    self.optimizer.zero_grad(set_to_none=True)
+                    self.optim.zero_grad(set_to_none=True)
                     with autocast(dev): # AMP
-                        loss = self.criterion(self.model(self.encoding(inputs[idx])),outputs[idx])
+                        loss = self.crit(self.model(self.encoding(inputs[idx])),outputs[idx])
                     scaler.scale(loss).backward()
                     return loss
     
                 # Calcul de la perte et mise à jour des poids
                 loss = closure()
-                scaler.step(self.optimizer)
+                scaler.step(self.optim)
                 scaler.update()
     
                 # Accumulation de la perte pour l'époque
@@ -567,10 +575,10 @@ class MLP():
             # --- Stockage de la perte de l'époque ---
             self.losses.append(epoch_loss)
 
-MLP.help = fPrintDoc(MLP)
 MLP.__init__.help = fPrintDoc(MLP.__init__)
 MLP.__repr__.help = fPrintDoc(MLP.__repr__)
 MLP.__call__.help = fPrintDoc(MLP.__call__)
+MLP.help = fPrintDoc(MLP)
 MLP.params.help = fPrintDoc(MLP.params)
 MLP.nb_params.help = fPrintDoc(MLP.nb_params)
 MLP.neurons.help = fPrintDoc(MLP.neurons)

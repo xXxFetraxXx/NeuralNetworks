@@ -157,7 +157,7 @@ pi = math.pi
 e = math.e
 
 # --- Liste des normalisations/activations disponibles ---
-Norm_list = {
+norm_list = {
     "Relu": nn.ReLU(),
     "LeakyRelu": nn.LeakyReLU(),
     "ELU": nn.ELU(),
@@ -171,28 +171,51 @@ Norm_list = {
     "Softplus": nn.Softplus(),
     "Softsign": nn.Softsign()
 }
+norms = lambda: print("""
+"Relu"
+"LeakyRelu"
+"ELU"
+"SELU"
+"GELU"
+"Sigmoid"
+"Tanh"
+"Hardtanh"
+"PReLU"
+"RReLU"
+"Softplus"
+"Softsign"
+"""
+)
 
 # --- Liste des fonctions de perte disponibles ---
-Criterion_list = {
+crit_list = {
     "MSE": nn.MSELoss(),
     "L1": nn.L1Loss(),
     "SmoothL1": nn.SmoothL1Loss(),
     "Huber": nn.HuberLoss(),
     "CrossEntropy": nn.CrossEntropyLoss(),
-    "NLL": nn.NLLLoss(),
     "BCE": nn.BCELoss(),
     "BCEWithLogits": nn.BCEWithLogitsLoss(),
     "KLDiv": nn.KLDivLoss(),
     "PoissonNLL": nn.PoissonNLLLoss(),
-    "MultiMargin": nn.MultiMarginLoss(),
-    "MultiLabelMargin": nn.MultiLabelMarginLoss(),
     "MultiLabelSoftMargin": nn.MultiLabelSoftMarginLoss(),
-    "CosineEmbedding": nn.CosineEmbeddingLoss(),
-    "Triplet": nn.TripletMarginLoss(),
 }
+crits = lambda: print("""
+"MSE"
+"L1"
+"SmoothL1"
+"Huber"
+"CrossEntropy"
+"BCE"
+"BCEWithLogits"
+"KLDiv"
+"PoissonNLL"
+"MultiLabelSoftMargin"
+"""
+)
 
 # --- Création d’un dictionnaire d’optimiseurs ---
-def Optim_list(self, learning_rate):
+def optim_list(self, learning_rate):
     """
     Renvoie un dictionnaire d’optimiseurs PyTorch pour le MLP donné.
 
@@ -211,19 +234,30 @@ def Optim_list(self, learning_rate):
     return {
         "Adadelta": optim.Adadelta(self.model.parameters(), lr=learning_rate),
         "Adafactor": optim.Adafactor(self.model.parameters(), lr=learning_rate),
-        "Adagrad": optim.Adagrad(self.model.parameters(), lr=learning_rate),
-        "Adam": optim.Adam(self.model.parameters(), lr=learning_rate, fused=True),
+        "Adam": optim.Adam(self.model.parameters(), lr=learning_rate),
         "AdamW": optim.AdamW(self.model.parameters(), lr=learning_rate),
-        "SparseAdam": optim.SparseAdam(self.model.parameters(), lr=learning_rate),
         "Adamax": optim.Adamax(self.model.parameters(), lr=learning_rate),
         "ASGD": optim.ASGD(self.model.parameters(), lr=learning_rate),
-        "LBFGS": optim.LBFGS(self.model.parameters(), lr=learning_rate),
         "NAdam": optim.NAdam(self.model.parameters(), lr=learning_rate),
         "RAdam": optim.RAdam(self.model.parameters(), lr=learning_rate),
         "RMSprop": optim.RMSprop(self.model.parameters(), lr=learning_rate),
         "Rprop": optim.Rprop(self.model.parameters(), lr=learning_rate),
         "SGD": optim.SGD(self.model.parameters(), lr=learning_rate)
     }
+optims = lambda: print("""
+"Adadelta"
+"Adafactor"
+"Adam"
+"AdamW"
+"Adamax"
+"ASGD"
+"NAdam"
+"RAdam"
+"RMSprop"
+"Rprop"
+"SGD"
+"""
+)
 
 # --- Fonctions utilitaires ---
 def rglen(list):

@@ -13,6 +13,6 @@ On ignore donc les biais dans ce comptage.
 
 ## Retour
 
-| Type | Description |
-| ---- | ----------- |
+| Type  | Description                                                |
+| ----- | ---------------------------------------------------------- |
 | `int` | Nombre total de paramètres pondérés (weights) dans le MLP. |

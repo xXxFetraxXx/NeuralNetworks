@@ -6,9 +6,9 @@ Affiche les courbes de pertes (training loss) de plusieurs réseaux MLP.
 
 ## Paramètres
 
-| Paramètre | Type | Description |
-| ---------- | ---- | ----------- |
-| `nets`    | MLP ou liste de MLP | Un ou plusieurs réseaux possédant un attribut `.losses` contenant l'historique des pertes (liste de float). |
+| Paramètre  | Type                | Description                                                                                                 |
+| ---------- | ------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `*nets`    | MLP ou liste de MLP | Un ou plusieurs réseaux possédant un attribut `.losses` contenant l'historique des pertes (liste de float). |
 
 ---
 

@@ -18,6 +18,6 @@ La méthode :
 
 ## Retour
 
-| Type             | Description |
-| ---------------- | ----------- |
+| Type               | Description                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------- |
 | `list[np.ndarray]` | Liste contenant chaque ligne des matrices de poids (chaque élément est un vecteur numpy). |

@@ -9,10 +9,10 @@ Affiche côte à côte :
 
 ## Paramètres
 
-| Paramètre   | Type                  | Description |
-| ----------- | -------------------- | ----------- |
+| Paramètre   | Type                       | Description                                                                                                                         |
+| ----------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `img_array` | np.ndarray                 | Image originale sous forme de tableau `(H, W, 3)` utilisée comme référence.                                                         |
 | `inputs`    | array-like ou torch.Tensor | Tableau des coordonnées (ou features) servant d’entrée au réseau. Doit correspondre à la grille permettant de reconstruire l’image. |
-| `img_array` | np.ndarray            | Image originale sous forme de tableau `(H, W, 3)` utilisée comme référence. |
 
 ---
 

@@ -13,6 +13,6 @@ Les indices impairs correspondent donc aux biais.
 
 ## Retour
 
-| Type             | Description |
-| ---------------- | ----------- |
+| Type               | Description                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------- |
 | `list[np.ndarray]` | Liste contenant chaque neurone (chaque valeur de biais), converti en array NumPy sur CPU. |
