@@ -24,7 +24,6 @@ nav:
 
 plugins:
   - search
-  - redirects
   - mkdocstrings:
       handlers:
         python: python
@@ -33,10 +32,5 @@ markdown_extensions:
   - toc:
       permalink: true
   - admonition
-  - git-revision-date
   - codehilite:
       guess_lang: true
-
-redirects:
-  '/numpy': 'https://numpy.org/doc/stable/'
-  '/pytorch': 'https://pytorch.org/docs/stable/'
