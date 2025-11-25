@@ -244,6 +244,21 @@ def optim_list(self, learning_rate):
         "Rprop": optim.Rprop(self.model.parameters(), lr=learning_rate),
         "SGD": optim.SGD(self.model.parameters(), lr=learning_rate)
     }
+
+optims_list = {
+    "Adadelta": optim.Adadelta(self.model.parameters(), lr=learning_rate),
+    "Adafactor": optim.Adafactor(self.model.parameters(), lr=learning_rate),
+    "Adam": optim.Adam(self.model.parameters(), lr=learning_rate),
+    "AdamW": optim.AdamW(self.model.parameters(), lr=learning_rate),
+    "Adamax": optim.Adamax(self.model.parameters(), lr=learning_rate),
+    "ASGD": optim.ASGD(self.model.parameters(), lr=learning_rate),
+    "NAdam": optim.NAdam(self.model.parameters(), lr=learning_rate),
+    "RAdam": optim.RAdam(self.model.parameters(), lr=learning_rate),
+    "RMSprop": optim.RMSprop(self.model.parameters(), lr=learning_rate),
+    "Rprop": optim.Rprop(self.model.parameters(), lr=learning_rate),
+    "SGD": optim.SGD(self.model.parameters(), lr=learning_rate)
+}
+    
 optims = lambda: print("""
 "Adadelta"
 "Adafactor"
