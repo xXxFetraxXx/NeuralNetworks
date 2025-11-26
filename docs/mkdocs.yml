@@ -7,7 +7,8 @@ theme:
   name: readthedocs
 nav:
   - Accueil: index.md
-  - MLP: MLP/index.md
+  - MLP: 
+      - MLP Overview: MLP/index.md
       - MLP.params: MLP/params.md
       - MLP.neurons: MLP/neurons.md
       - MLP.nb_params: MLP/nb_params.md
