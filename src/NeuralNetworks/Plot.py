@@ -60,7 +60,7 @@ def compare(img_array, inputs, *nets):
         # Subplot pour l'erreur absolue
         ax = fig.add_subplot(gs[1, k])
         ax.axis('off')
-        ax.set_title(f"Network {k+1}")
+        ax.set_title(net.name)
 
         # Prédiction et reconstruction de l'image
         pred = net.model(net.encoding(inputs))
@@ -126,14 +126,15 @@ def plot(img_array, inputs, *nets):
         # Subplot pour l'image reconstruite
         ax = fig.add_subplot(gs[1, k])
         ax.axis('off')
-        ax.set_title(f"Network {k+1}")
+        ax.set_title(net.name)
 
         # Prédiction et reconstruction de l'image
         pred = net.model(net.encoding(inputs))
         pred_img = pred.reshape(h, w, 3).cpu().detach().numpy()
 
         # Tracé des pertes cumulées
-        ax_loss.plot(np.arange(1, len(all_losses[k])+1), all_losses[k])
+        ax_loss.plot(np.arange(1, len(all_losses[k])+1), all_losses[k],label = net.name)
+        ax_loss.legend()
 
         # Affichage de l'image prédite
         ax.imshow(pred_img)
@@ -174,7 +175,7 @@ def losses(*nets):
     # --- Tracé des courbes de pertes pour chaque réseau ---
     for k, net in enumerate(nets):
         steps = np.linspace(1, len(net.losses), len(net.losses))  # epochs
-        plt.plot(np.arange(1, len(all_losses[k])+1), all_losses[k])
+        plt.plot(np.arange(1, len(all_losses[k])+1), all_losses[k],label = net.name)
 
     # --- Affichage ---
     plt.legend()
