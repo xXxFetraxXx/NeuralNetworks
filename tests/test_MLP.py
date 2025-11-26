@@ -7,7 +7,7 @@
 
 import pytest
 try:
-    from NeuralNetworks.src.NeuralNetworks import *
+    from src.NeuralNetworks import *
     try:
         img, inputs, outputs = image_from_url("https://unesco.org.uk/site/assets/files/6266/the_forth_bridge_2.jpeg",1)
         for fourier in [False, True]:
