@@ -1,0 +1,16 @@
+.md-content {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+}
+.container {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+.content {
+    padding-left: 0;
+    padding-right: 0;
+}
+.bd-sidebar {
+    width: 250px;
+}

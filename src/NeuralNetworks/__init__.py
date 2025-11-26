@@ -125,4 +125,4 @@ from .Plot import compare, plot, losses, train
 # Modèle MLP principal + fonction d'entraînement associée
 from .MLP import MLP
 
-__version__ = "0.1.11"
+__version__ = "0.1.12"
