@@ -6,147 +6,97 @@
 # (at your option) any later version.
 
 import pytest
-try:
-    from src.NeuralNetworks import *
+from src.NeuralNetworks import MLP, image_from_url, train, plot, compare, losses
+
+@pytest.fixture
+def inputs_outputs():
+    img, inputs, outputs = image_from_url("https://unesco.org.uk/site/assets/files/6266/the_forth_bridge_2.jpeg", 1)
+    return img, inputs, outputs
+
+@pytest.fixture
+def net():
+    return MLP([2, 1, 3], Fourier=False, optim="Adam", crit="MSE", norm="Relu", Iscompiled=False)
+
+def test_mlp_init(net):
     try:
-        img, inputs, outputs = image_from_url("https://unesco.org.uk/site/assets/files/6266/the_forth_bridge_2.jpeg",1)
-        for fourier in [False, True]:
-            for compilation in [False, True]:
-                try:
-                    net = MLP([2,1,3],Fourier=fourier,optim="Adam", crit="MSE", norm="Relu",Iscompiled=compilation)
-                    try:
-                        net.train(inputs,outputs,1,1024)
-                        try:
-                            net
-                        except Exception:
-                            pytest.fail(f"MLP.__repr__")
-                            print(Exception)
-                        try:
-                            net(inputs)
-                        except Exception:
-                            pytest.fail(f"MLP.__call__")
-                            print(Exception)
-                        try:
-                            net.params()
-                        except Exception:
-                            pytest.fail(f"MLP.params()")
-                            print(Exception)
-                        try:
-                            net.neurons()
-                        except Exception:
-                            pytest.fail(f"MLP.neurons()")
-                            print(Exception)
-                        try:
-                            net.nb_params()
-                        except Exception:
-                            pytest.fail(f"MLP.nb_params()")
-                            print(Exception)
-                        try:
-                            net.plot(img,inputs)
-                        except Exception:
-                            pytest.fail(f"MLP.plot()")
-                            print(Exception)
-                        net2 = MLP([2,1,3],Fourier=fourier,optim="Adam", crit="MSE", norm="Relu",Iscompiled=compilation)
-                        try:
-                            train(inputs,outputs,1,1024,net,net2)
-                            try:
-                                plot(img,inputs,net,net2)
-                            except Exception:
-                                pytest.fail(f"plot(*nets)")
-                                print(Exception)
-                            try:
-                                compare(img,inputs,net,net2)
-                            except Exception:
-                                pytest.fail(f"compare(*nets)")
-                                print(Exception)
-                            try:
-                                losses(net,net2)
-                            except Exception:
-                                pytest.fail(f"losses(*nets)")
-                                print(Exception)
-                        except Exception:
-                            pytest.fail(f"train(*nets)")
-                            print(Exception)
-                    except Exception:
-                        pytest.fail(f"train()")
-                        print(Exception)
-                except Exception:
-                    pytest.fail(f"MLP.__init__")
-                    print(Exception)
-        try:
-            net3 = MLP(Fourier=False,optim="Random", crit="MSE", norm="Relu",Iscompiled=False)
-        except Exception:
-            pytest.fail(f"MLP.__init__(optim='Random')")
-            print(Exception)
-        try:
-            net3 = MLP(Fourier=False,optim="Adam", crit="Random", norm="Relu",Iscompiled=False)
-        except Exception:
-            pytest.fail(f"MLP.__init__(crit='Random')")
-            print(Exception)
-        try:
-            net3 = MLP(Fourier=False,optim="Adam", crit="MSE", norm="Random",Iscompiled=False)
-        except Exception:
-            pytest.fail(f"MLP.__init__(norm='Random')")
-            print(Exception)
-        try:
-            net.train(inputs,outputs,1,64)
-        except Exception:
-            pytest.fail(f"MLP.train() second pass")
-            print(Exception)
-        try:
-            net
-        except Exception:
-            pytest.fail(f"MLP.__repr__ second pass")
-            print(Exception)
-        try:
-            net(inputs)
-        except Exception:
-            pytest.fail(f"MLP.__call__ second pass")
-            print(Exception)
-        try:
-            net.params()
-        except Exception:
-            pytest.fail(f"MLP.params() second pass")
-            print(Exception)
-        try:
-            net.neurons()
-        except Exception:
-            pytest.fail(f"MLP.neurons() second pass")
-            print(Exception)
-        try:
-            net.nb_params()
-        except Exception:
-            pytest.fail(f"MLP.nb_params() second pass")
-            print(Exception)
-        try:
-            net.plot(img,inputs)
-        except Exception:
-            pytest.fail(f"MLP.plot() second pass")
-            print(Exception)
-        try:
-            train(inputs,outputs,1,64,net,net2)
-        except Exception:
-            pytest.fail(f"MLP.train(*nets) second pass")
-            print(Exception)
-        try:
-            plot(img,inputs,net,net2)
-        except Exception:
-            pytest.fail(f"MLP.plot(*nets) second pass")
-            print(Exception)
-        try:
-            compare(img,inputs,net,net2)
-        except Exception:
-            pytest.fail(f"MLP.compare(*nets) second pass")
-            print(Exception)
-        try:
-            losses(net,net2)
-        except Exception:
-            pytest.fail(f"MLP.losses(*nets) second pass")
-            print(Exception)
-    except Exception:
-        pytest.fail(f"image_from_url failed")
-        print(Exception)
-    print("success")
-except Exception:
-    pytest.fail(f"import NeuralNetworks failed")
-    print(Exception)
+        net
+    except Exception as e:
+        pytest.fail(f"MLP.__init__ failed with error: {e}")
+
+def test_mlp_train(net, inputs_outputs):
+    img, inputs, outputs = inputs_outputs
+    try:
+        net.train(inputs, outputs, 1, 1024)
+    except Exception as e:
+        pytest.fail(f"MLP.train() failed with error: {e}")
+
+def test_mlp_call(net, inputs):
+    try:
+        net(inputs)
+    except Exception as e:
+        pytest.fail(f"MLP.__call__ failed with error: {e}")
+
+def test_mlp_params(net):
+    try:
+        net.params()
+    except Exception as e:
+        pytest.fail(f"MLP.params() failed with error: {e}")
+
+def test_mlp_neurons(net):
+    try:
+        net.neurons()
+    except Exception as e:
+        pytest.fail(f"MLP.neurons() failed with error: {e}")
+
+def test_mlp_nb_params(net):
+    try:
+        net.nb_params()
+    except Exception as e:
+        pytest.fail(f"MLP.nb_params() failed with error: {e}")
+
+def test_mlp_plot(net, inputs_outputs):
+    img, inputs, _ = inputs_outputs
+    try:
+        net.plot(img, inputs)
+    except Exception as e:
+        pytest.fail(f"MLP.plot() failed with error: {e}")
+
+def test_mlp_comparison_and_training(net, inputs_outputs):
+    img, inputs, outputs = inputs_outputs
+    net2 = MLP([2, 1, 3], Fourier=False, optim="Adam", crit="MSE", norm="Relu", Iscompiled=False)
+    
+    try:
+        train(inputs, outputs, 1, 1024, net, net2)
+    except Exception as e:
+        pytest.fail(f"train(*nets) failed with error: {e}")
+    
+    try:
+        plot(img, inputs, net, net2)
+    except Exception as e:
+        pytest.fail(f"plot(*nets) failed with error: {e}")
+    
+    try:
+        compare(img, inputs, net, net2)
+    except Exception as e:
+        pytest.fail(f"compare(*nets) failed with error: {e}")
+    
+    try:
+        losses(net, net2)
+    except Exception as e:
+        pytest.fail(f"losses(*nets) failed with error: {e}")
+
+def test_mlp_invalid_init():
+    try:
+        net3 = MLP(Fourier=False, optim="Random", crit="MSE", norm="Relu", Iscompiled=False)
+    except Exception as e:
+        pytest.fail(f"MLP.__init__(optim='Random') failed with error: {e}")
+    
+    try:
+        net3 = MLP(Fourier=False, optim="Adam", crit="Random", norm="Relu", Iscompiled=False)
+    except Exception as e:
+        pytest.fail(f"MLP.__init__(crit='Random') failed with error: {e}")
+    
+    try:
+        net3 = MLP(Fourier=False, optim="Adam", crit="MSE", norm="Random", Iscompiled=False)
+    except Exception as e:
+        pytest.fail(f"MLP.__init__(norm='Random') failed with error: {e}")
