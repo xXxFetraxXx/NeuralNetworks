@@ -1,4 +1,4 @@
-# `MLP.neurons()`
+# `MLP.neurons`
 
 Extrait l'ensemble des neurones (biais) du MLP couche par couche.
 

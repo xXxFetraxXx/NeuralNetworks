@@ -1,4 +1,4 @@
-# `MLP.params()`
+# `MLP.params`
 
 Retourne la liste de tous les poids (weights) du MLP.
 

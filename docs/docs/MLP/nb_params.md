@@ -1,4 +1,4 @@
-# `MLP.nb_params()`
+# `MLP.nb_params`
 
 Calcule le nombre total de paramètres (poids) du MLP.
 

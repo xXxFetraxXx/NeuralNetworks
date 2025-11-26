@@ -52,7 +52,11 @@ def compare(img_array, inputs, *nets):
     # --- Préparation du subplot pour les courbes de pertes ---
     ax_loss = fig.add_subplot(gs[0, 1])
     all_losses = [[loss.item() for loss in net.losses] for net in nets]
-    ax_loss.set_xlim(1, max(len(lst) for lst in all_losses))
+    if max(len(lst) for lst in all_losses) == 1:
+        lenlosses = 2
+    else:
+        lenlosses = max(len(lst) for lst in all_losses)
+    ax_loss.set_xlim(1, lenlosses)
     ax_loss.set_ylim(0, max(max(lst) for lst in all_losses))
 
     # --- Boucle sur chaque réseau pour afficher l'erreur et les pertes ---
@@ -118,7 +122,11 @@ def plot(img_array, inputs, *nets):
     # --- Préparation du subplot pour les courbes de pertes ---
     ax_loss = fig.add_subplot(gs[0, 1])
     all_losses = [[loss.item() for loss in net.losses] for net in nets]
-    ax_loss.set_xlim(1, max(len(lst) for lst in all_losses))
+    if max(len(lst) for lst in all_losses) == 1:
+        lenlosses = 2
+    else:
+        lenlosses = max(len(lst) for lst in all_losses)
+    ax_loss.set_xlim(1, lenlosses)
     ax_loss.set_ylim(0, max(max(lst) for lst in all_losses))
 
     # --- Boucle sur chaque réseau pour afficher les prédictions et pertes ---
@@ -168,9 +176,13 @@ def losses(*nets):
     fig = plt.figure(figsize=(5, 5))
 
     # --- Définition des limites des axes ---
-    all_losses = [ [loss.item() for loss in net.losses] for net in nets ]
-    plt.xlim(1, max(len(lst) for lst in all_losses)) # X : epochs
-    plt.ylim(0, max(max(lst) for lst in all_losses)) # Y : valeurs de pertes
+    all_losses = [[loss.item() for loss in net.losses] for net in nets]
+    if max(len(lst) for lst in all_losses) == 1:
+        lenlosses = 2
+    else:
+        lenlosses = max(len(lst) for lst in all_losses)
+    plt.xlim(1, lenlosses)
+    plt.ylim(0, max(max(lst) for lst in all_losses))
 
     # --- Tracé des courbes de pertes pour chaque réseau ---
     for k, net in enumerate(nets):

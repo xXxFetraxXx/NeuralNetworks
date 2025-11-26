@@ -1,4 +1,4 @@
-# `image_from_url()`
+# `image_from_url`
 
 Télécharge une image depuis une URL, la redimensionne et prépare les données pour l'entraînement d'un MLP pixel-wise.
 

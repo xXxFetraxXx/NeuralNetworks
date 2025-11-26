@@ -1,4 +1,4 @@
-# `losses()`
+# `losses`
 
 Affiche les courbes de pertes (training loss) de plusieurs réseaux MLP.
 

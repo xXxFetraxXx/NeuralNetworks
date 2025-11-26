@@ -1,4 +1,4 @@
-# `MLP.plot()`
+# `MLP.plot`
 
 Affiche côte à côte :  
 - l’image originale  
