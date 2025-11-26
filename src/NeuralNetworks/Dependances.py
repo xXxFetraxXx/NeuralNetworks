@@ -83,7 +83,7 @@ def get_best_device():
     if os_name == "darwin":
         if torch.backends.mps.is_available():
             return torch.device("mps")
- 
+
     # =========== WINDOWS ===========
     if os_name == "windows":
         # 1) CUDA
@@ -236,19 +236,7 @@ def optim_list(self, learning_rate):
         "Rprop": optim.Rprop(self.model.parameters(), lr=learning_rate),
         "SGD": optim.SGD(self.model.parameters(), lr=learning_rate)
     }
-optims_list = [
-    "Adadelta",
-    "Adafactor",
-    "Adam",
-    "AdamW",
-    "Adamax",
-    "ASGD",
-    "NAdam",
-    "RAdam",
-    "RMSprop",
-    "Rprop",
-    "SGD"
-]
+
 optims = lambda: print("""
 "Adadelta"
 "Adafactor"

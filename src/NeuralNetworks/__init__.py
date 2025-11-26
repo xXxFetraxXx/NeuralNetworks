@@ -114,7 +114,7 @@ Notes générales
 """
 
 # Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
-from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise, norm_list, crit_list, optims_list
+from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise
 
 # Fonctions de chargement/preprocessing des images
 from .Image import image_from_url
