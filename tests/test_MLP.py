@@ -24,13 +24,14 @@ def test_mlp_init(net):
         pytest.fail(f"MLP.__init__ failed with error: {e}")
 
 def test_mlp_train(net, inputs_outputs):
-    img, inputs, outputs = inputs_outputs
+    _, inputs, outputs = inputs_outputs
     try:
         net.train(inputs, outputs, 1, 1024)
     except Exception as e:
         pytest.fail(f"MLP.train() failed with error: {e}")
 
-def test_mlp_call(net, inputs):
+def test_mlp_call(net, inputs_outputs):
+    _, inputs, _ = inputs_outputs
     try:
         net(inputs)
     except Exception as e:
@@ -64,22 +65,22 @@ def test_mlp_plot(net, inputs_outputs):
 def test_mlp_comparison_and_training(net, inputs_outputs):
     img, inputs, outputs = inputs_outputs
     net2 = MLP([2, 1, 3], Fourier=False, optim="Adam", crit="MSE", norm="Relu", Iscompiled=False)
-    
+
     try:
         train(inputs, outputs, 1, 1024, net, net2)
     except Exception as e:
         pytest.fail(f"train(*nets) failed with error: {e}")
-    
+
     try:
         plot(img, inputs, net, net2)
     except Exception as e:
         pytest.fail(f"plot(*nets) failed with error: {e}")
-    
+
     try:
         compare(img, inputs, net, net2)
     except Exception as e:
         pytest.fail(f"compare(*nets) failed with error: {e}")
-    
+
     try:
         losses(net, net2)
     except Exception as e:
@@ -90,12 +91,12 @@ def test_mlp_invalid_init():
         net3 = MLP(Fourier=False, optim="Random", crit="MSE", norm="Relu", Iscompiled=False)
     except Exception as e:
         pytest.fail(f"MLP.__init__(optim='Random') failed with error: {e}")
-    
+
     try:
         net3 = MLP(Fourier=False, optim="Adam", crit="Random", norm="Relu", Iscompiled=False)
     except Exception as e:
         pytest.fail(f"MLP.__init__(crit='Random') failed with error: {e}")
-    
+
     try:
         net3 = MLP(Fourier=False, optim="Adam", crit="MSE", norm="Random", Iscompiled=False)
     except Exception as e:
