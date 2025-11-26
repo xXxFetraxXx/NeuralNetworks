@@ -499,7 +499,11 @@ class MLP():
             np.linspace(1, len(self.losses), len(self.losses)),
             [loss.item() for loss in self.losses]
         )
-        los.set_xlim(1, len(self.losses))
+        if len(self.losses) ==1:
+            lenlosses = 2
+        else:
+            lenlosses = len(self.losses)
+        los.set_xlim(1, lenlosses)
     
         # Évite un ylim min = 0 pile si les pertes sont trop faibles
         maxarray = [0.00000001] + [loss.item() for loss in self.losses]
