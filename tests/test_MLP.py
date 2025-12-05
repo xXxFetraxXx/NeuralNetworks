@@ -6,7 +6,7 @@
 # (at your option) any later version.
 
 import pytest
-from src.NeuralNetworks import MLP, image
+from src.NeuralNetworks import MLP, image, losses
 
 @pytest.fixture
 def inputs_outputs():
