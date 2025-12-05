@@ -10,7 +10,7 @@ from src.NeuralNetworks import MLP, image
 
 @pytest.fixture
 def inputs_outputs():
-    img, inputs, outputs = image_from_url("https://unesco.org.uk/site/assets/files/6266/the_forth_bridge_2.jpeg", 1)
+    img, inputs, outputs = url("https://unesco.org.uk/site/assets/files/6266/the_forth_bridge_2.jpeg", 1)
     return img, inputs, outputs
 
 @pytest.fixture
