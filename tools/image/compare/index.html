@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Alexandre Brun" /><link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/tools/image/compare/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>compare - NeuralNetworks</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../css/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "compare";
+        var mkdocs_page_input_path = "tools/image/compare.md";
+        var mkdocs_page_url = "/NeuralNetworks/tools/image/compare/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> NeuralNetworks
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Accueil</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Objets</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >MLP</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../MLP/">MLP</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../MLP/params/">MLP.params</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../MLP/neurons/">MLP.neurons</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../MLP/nb_params/">MLP.nb_params</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="../../../MLP/plot.md">MLP.plot</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../MLP/train/">MLP.train</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../MLP/losses/">losses</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Latent</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../placeholder/">Latent</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../placeholder/">Latent</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../placeholder/">Latent</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tools</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >image</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../image_from_url/">image_from_url</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../plot/">plot</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">compare</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#parametres">Paramètres</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >MNIST</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../placeholder/">Latent</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../placeholder/">Latent</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >AirfRANS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../placeholder/">Latent</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../placeholder/">Latent</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Dependances</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://pypi.org/project/torch/">torch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://pypi.org/project/visualtorch/">visualtorch</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://pypi.org/project/random-fourier-features-pytorch/">rff</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://pypi.org/project/numpy/">numpy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://pypi.org/project/matplotlib/">matplotlib</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://airfrans.readthedocs.io/en/latest/">airfrans</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Liens</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://pypi.org/project/NeuralNetworks/">PyPI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://github.com/xXxFetraxXx/NeuralNetworks">Source</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">NeuralNetworks</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tools</li>
+          <li class="breadcrumb-item">image</li>
+      <li class="breadcrumb-item active">compare</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/xXxFetraxXx/NeuralNetworks/edit/master/docs/tools/image/compare.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="compare"><code>compare</code><a class="headerlink" href="#compare" title="Permanent link">&para;</a></h1>
+<p>Affiche, pour chaque réseau, l’erreur absolue entre l’image originale et l’image reconstruite par le réseau.</p>
+<p>Chaque réseau doit posséder :<br />
+- une méthode <code>encoding(x)</code> (si RFF activé),<br />
+- un module <code>model</code> retournant un tenseur de shape (N, 3),<br />
+- une reconstruction compatible avec (H, W, 3).  </p>
+<hr />
+<h2 id="parametres">Paramètres<a class="headerlink" href="#parametres" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>img_array</code></td>
+<td>np.ndarray (H, W, 3)</td>
+<td>Image originale servant de référence.</td>
+</tr>
+<tr>
+<td><code>inputs</code></td>
+<td>tensor-like (H*W, 2)</td>
+<td>Coordonnées normalisées des pixels correspondant à chaque point de l'image.</td>
+</tr>
+<tr>
+<td><code>nets</code></td>
+<td>MLP ou liste de MLP</td>
+<td>Un ou plusieurs réseaux possédant les méthodes <code>.encoding()</code> et <code>.model()</code>, et l’attribut <code>.losses</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Affiche la différence absolue entre l’image originale et la prédiction du réseau.  </li>
+<li>Les pertes cumulées sont également tracées pour chaque réseau.  </li>
+<li>Utilise matplotlib en mode interactif.  </li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../plot/" class="btn btn-neutral float-left" title="plot"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../placeholder/" class="btn btn-neutral float-right" title="Latent">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/xXxFetraxXx/NeuralNetworks" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../plot/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../placeholder/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

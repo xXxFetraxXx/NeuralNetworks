@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Multi-Layer Perceptrons with Fourier encoding, visualization and PyTorch compilation" /><meta name="author" content="Alexandre Brun" /><link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Multi-Layer Perceptrons with multi-Fourier encoding, variable learning rate, visualization and PyTorch compilation" /><meta name="author" content="Alexandre Brun" /><link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/" />
       <link rel="shortcut icon" href="img/favicon.ico" />
     <title>NeuralNetworks</title>
     <link rel="stylesheet" href="css/theme.css" />
@@ -51,10 +51,6 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#fonctions-utilitaires">Fonctions utilitaires</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#visualisation-et-comparaison">Visualisation et comparaison</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#objets-et-dictionnaires">Objets et dictionnaires</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#norms">norms()</a>
@@ -79,8 +75,6 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#parametres-matplotlib-et-pytorch">Paramètres matplotlib et PyTorch</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#notes-generales">Notes générales</a>
-    </li>
         </ul>
     </li>
     </ul>
@@ -88,30 +82,62 @@
               </ul>
               <p class="caption"><span class="caption-text">Objets</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="MLP/">MLP</a>
+                  <li class="toctree-l1"><a class="reference internal" >MLP</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="MLP/">MLP</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="MLP/params/">MLP.params</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="MLP/neurons/">MLP.neurons</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="MLP/nb_params/">MLP.nb_params</a>
+                </li>
+                <li class="toctree-l2"><a class="" href="MLP/plot.md">MLP.plot</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="MLP/train/">MLP.train</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="MLP/losses/">losses</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="MLP/params/">MLP.params</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="MLP/neurons/">MLP.neurons</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="MLP/nb_params/">MLP.nb_params</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="MLP/plot/">MLP.plot</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="MLP/train/">MLP.train</a>
+                  <li class="toctree-l1"><a class="reference internal" >Latent</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                </li>
+    </ul>
                   </li>
               </ul>
-              <p class="caption"><span class="caption-text">Fonctions</span></p>
+              <p class="caption"><span class="caption-text">Tools</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="Plots/plot/">plot</a>
+                  <li class="toctree-l1"><a class="reference internal" >image</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="tools/image/image_from_url/">image_from_url</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/image/plot/">plot</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="tools/image/compare/">compare</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Plots/compare/">compare</a>
+                  <li class="toctree-l1"><a class="reference internal" >MNIST</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Plots/losses/">losses</a>
+                  <li class="toctree-l1"><a class="reference internal" >AirfRANS</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                </li>
+    </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Plots/train/">train</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="Image/image_from_url/">image_from_url</a>
+                  <li class="toctree-l1"><a class="reference internal" href="placeholder/">Latent</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Dependances</span></p>
@@ -125,6 +151,8 @@
                   <li class="toctree-l1"><a class="" href="https://pypi.org/project/numpy/">numpy</a>
                   </li>
                   <li class="toctree-l1"><a class="" href="https://pypi.org/project/matplotlib/">matplotlib</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://airfrans.readthedocs.io/en/latest/">airfrans</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Liens</span></p>
@@ -168,10 +196,11 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 <h4 id="mlp">MLP<a class="headerlink" href="#mlp" title="Permanent link">&para;</a></h4>
 <p>Multi-Layer Perceptron (MLP) avec options avancées :</p>
 <ul>
-<li>Encodage Fourier gaussien (RFF) optionnel  </li>
-<li>Stockage automatique des pertes  </li>
-<li>Compilation Torch optionnelle pour accélérer l’inférence  </li>
-<li>Gestion flexible de l’optimiseur, de la fonction de perte et de la normalisation  </li>
+<li>Multi encodage Fourier gaussien (RFF) optionnel</li>
+<li>Stockage automatique des pertes.</li>
+<li>Compilation Torch optionnelle pour accélérer l’inférence.</li>
+<li>Gestion flexible de l’optimiseur, de la fonction de perte et de la normalisation.</li>
+<li>Adaptation du learning rate en fonction des résidus.</li>
 </ul>
 <p><strong>Méthodes principales :</strong></p>
 <ul>
@@ -184,11 +213,7 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 <ul>
 <li>
 <p><code>train(inputs, outputs, num_epochs, batch_size)</code><br />
-  Entraîne le MLP sur des données (<code>inputs → outputs</code>) en utilisant AMP et mini-batchs.</p>
-</li>
-<li>
-<p><code>plot(inputs, img_array)</code><br />
-  Affiche l'image originale, la prédiction du MLP et la courbe des pertes.</p>
+  Entraîne le MLP sur des données (<code>inputs → outputs</code>).</p>
 </li>
 <li>
 <p><code>params()</code><br />
@@ -201,38 +226,6 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 <li>
 <p><code>neurons()</code><br />
   Retourne la liste des biais (neurones) de toutes les couches linéaires.</p>
-</li>
-</ul>
-<hr />
-<h3 id="fonctions-utilitaires">Fonctions utilitaires<a class="headerlink" href="#fonctions-utilitaires" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><code>tensorise(obj)</code><br />
-  Convertit un objet array-like ou tensor en <code>torch.Tensor</code> float32 sur le device actif.</p>
-</li>
-<li>
-<p><code>rglen(list)</code><br />
-  Renvoie un range correspondant aux indices d'une liste.</p>
-</li>
-<li>
-<p><code>image_from_url(url, img_size)</code><br />
-  Télécharge une image depuis une URL, la redimensionne et génère :</p>
-</li>
-<li><code>img_array</code> : <code>np.ndarray (H, W, 3)</code> pour affichage.  </li>
-<li><code>inputs</code> : tenseur <code>(H*W, 2)</code> coordonnées normalisées.  </li>
-<li><code>outputs</code> : tenseur <code>(H*W, 3)</code> valeurs RGB cibles.</li>
-</ul>
-<hr />
-<h3 id="visualisation-et-comparaison">Visualisation et comparaison<a class="headerlink" href="#visualisation-et-comparaison" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><code>plot(img_array, inputs, *nets)</code><br />
-  Affiche pour chaque réseau l'image reconstruite à partir des entrées.</p>
-</li>
-<li>
-<p><code>compare(img_array, inputs, *nets)</code><br />
-  Affiche pour chaque réseau l'erreur absolue entre l'image originale et la prédiction,<br />
-  et trace également les pertes cumulées. Chaque réseau doit posséder :  </p>
 </li>
 </ul>
 <hr />
@@ -450,13 +443,6 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 <li>Autograd configuré pour privilégier les performances</li>
 </ul>
 <hr />
-<h3 id="notes-generales">Notes générales<a class="headerlink" href="#notes-generales" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Toutes les méthodes de MLP utilisent les tenseurs sur le device global (CPU ou GPU)  </li>
-<li>Les images doivent être normalisées entre 0 et 1  </li>
-<li>Les fonctions interactives (<code>plot</code>, <code>compare</code>) utilisent matplotlib en mode interactif  </li>
-<li>Le module est conçu pour fonctionner dans Jupyter et scripts Python classiques</li>
-</ul>
               
             </div>
           </div><footer>
@@ -509,5 +495,5 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-11-26 11:29:26.280782+00:00
+Build Date UTC : 2025-12-05 22:28:41.721415+00:00
 -->
