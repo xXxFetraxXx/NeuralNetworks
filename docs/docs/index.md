@@ -14,10 +14,11 @@ de traitement d'images pour l'apprentissage sur des images RGB.
 
 Multi-Layer Perceptron (MLP) avec options avancées :
 
-- Encodage Fourier gaussien (RFF) optionnel  
-- Stockage automatique des pertes  
-- Compilation Torch optionnelle pour accélérer l’inférence  
-- Gestion flexible de l’optimiseur, de la fonction de perte et de la normalisation  
+- Multi encodage Fourier gaussien (RFF) optionnel
+- Stockage automatique des pertes.
+- Compilation Torch optionnelle pour accélérer l’inférence.
+- Gestion flexible de l’optimiseur, de la fonction de perte et de la normalisation.
+- Adaptation du learning rate en fonction des résidus.
 
 **Méthodes principales :**
 
@@ -29,10 +30,7 @@ Multi-Layer Perceptron (MLP) avec options avancées :
   Les valeurs possibles de `norm`  sont disponibles avec `norms()` 
 
 - `train(inputs, outputs, num_epochs, batch_size)`  
-  Entraîne le MLP sur des données (`inputs → outputs`) en utilisant AMP et mini-batchs.
-
-- `plot(inputs, img_array)`  
-  Affiche l'image originale, la prédiction du MLP et la courbe des pertes.
+  Entraîne le MLP sur des données (`inputs → outputs`).
 
 - `params()`  
   Retourne tous les poids du MLP (ligne par ligne) sous forme de liste de `numpy.ndarray`.
@@ -42,33 +40,6 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 
 - `neurons()`  
   Retourne la liste des biais (neurones) de toutes les couches linéaires.
-
----
-
-### Fonctions utilitaires
-
-- `tensorise(obj)`  
-  Convertit un objet array-like ou tensor en `torch.Tensor` float32 sur le device actif.
-
-- `rglen(list)`  
-  Renvoie un range correspondant aux indices d'une liste.
-
-- `image_from_url(url, img_size)`  
-  Télécharge une image depuis une URL, la redimensionne et génère :
-  - `img_array` : `np.ndarray (H, W, 3)` pour affichage.  
-  - `inputs` : tenseur `(H*W, 2)` coordonnées normalisées.  
-  - `outputs` : tenseur `(H*W, 3)` valeurs RGB cibles.
-
----
-
-### Visualisation et comparaison
-
-- `plot(img_array, inputs, *nets)`  
-  Affiche pour chaque réseau l'image reconstruite à partir des entrées.
-
-- `compare(img_array, inputs, *nets)`  
-  Affiche pour chaque réseau l'erreur absolue entre l'image originale et la prédiction,  
-  et trace également les pertes cumulées. Chaque réseau doit posséder :  
 
 ---
 
@@ -151,10 +122,3 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 - Autograd configuré pour privilégier les performances
 
 ---
-
-### Notes générales
-
-- Toutes les méthodes de MLP utilisent les tenseurs sur le device global (CPU ou GPU)  
-- Les images doivent être normalisées entre 0 et 1  
-- Les fonctions interactives (`plot`, `compare`) utilisent matplotlib en mode interactif  
-- Le module est conçu pour fonctionner dans Jupyter et scripts Python classiques

@@ -9,3 +9,6 @@ visualtorch>=0.2
 random-fourier-features-pytorch>=1.0
 IPython>=8.16
 requests
+airfrans
+scipy
+pandas

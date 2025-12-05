@@ -116,13 +116,12 @@ Notes générales
 # Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
 from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise
 
-# Fonctions de chargement/preprocessing des images
-from .Image import image_from_url
-
-# Fonctions d'affichage : reconstruction, comparaison, courbes de pertes
-from .Plot import compare, plot, losses, train
-
 # Modèle MLP principal + fonction d'entraînement associée
-from .MLP import MLP
+from .MLP import MLP, losses
 
-__version__ = "0.1.12"
+from .Latent import Latent
+
+# Fonctions de chargement/preprocessing des images
+from .tools import image, MNIST, AirfRANS
+
+__version__ = "0.2.0"

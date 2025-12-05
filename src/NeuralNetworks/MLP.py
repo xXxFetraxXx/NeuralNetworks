@@ -28,12 +28,14 @@ class MLP():
         Dimensions successives du réseau (entrée → couches cachées → sortie).
         Exemple : [in_features, hidden1, hidden2, ..., out_features].
         Default: [1, 1, 1]
-    learning_rate : float, optional
-        Taux d’apprentissage pour l’optimiseur.
+    init_lr : float, optional
+        Taux d’apprentissage initial pour l’optimiseur.
         Default: 1e-3
-    Fourier : bool, optional
-        Si True, applique un encodage Fourier gaussien (RFF) sur les entrées.
-        Default: True
+    Fourier : list[float] or None, optional
+            Liste de valeurs sigma pour appliquer plusieurs encodages RFF
+            (Random Fourier Features).  
+            Si None : aucune transformation, l’entrée est passée via nn.Identity().
+            Chaque sigma ajoute un encodage distinct et double la dimension d’entrée.
     optim : str, optional
         Nom de l’optimiseur à utiliser (doit exister dans `optim_list`).
         Default: "ADAM"
@@ -56,8 +58,9 @@ class MLP():
         Historique des pertes cumulées lors de l'entraînement.
     layers : list[int]
         Dimensions du réseau, ajustées si encodage Fourier actif.
-    encoding : nn.Module
-        Module appliquant l'encodage des entrées (RFF ou identity).
+    encodings : list[nn.Module]
+        Liste de modules RFF GaussianEncoding ou Identity appliqués aux entrées.
+        Un module par valeur sigma dans `Fourier`.
     norm : nn.Module
         Normalisation ou activation utilisée dans les couches cachées.
     crit : nn.Module
@@ -98,57 +101,69 @@ class MLP():
     - Le suivi des pertes permet d’afficher l’évolution du training loss.
     """
 
-    def __init__(self, layers=[1,1,1], learning_rate=1e-3, Fourier=True,
+    def __init__(self, layers=[1,1,1], init_lr=1e-3, Fourier=None,
                  optim="Adam", crit="MSE", norm="Relu",
                  name="Net", Iscompiled=False):
         """
-        Initialise un réseau MLP avec options avancées : encodage Fourier,
-        normalisation, choix d’optimiseur et de fonction de perte, et compilation.
+        Initialise un réseau MLP flexible avec support multi-encodage Fourier,
+        choix d’activation, perte, optimiseur, et compilation optionnelle.
     
         Parameters
         ----------
         layers : list[int], optional
             Dimensions successives du réseau (entrée → couches cachées → sortie).
+            Le premier élément est utilisé comme input_size avant encodage Fourier.
             Default: [1, 1, 1]
-        learning_rate : float, optional
-            Taux d’apprentissage pour l’optimiseur (default: 1e-3).
-        Fourier : bool, optional
-            Si True, applique un encodage RFF (Random Fourier Features) sur les entrées.
-            Default: True
+        init_lr : float, optional
+            Taux d’apprentissage initial pour l’optimiseur.
+            Default: 1e-3
+        Fourier : list[float] or None, optional
+            Liste de valeurs sigma pour appliquer plusieurs encodages RFF
+            (Random Fourier Features).  
+            Si None : aucune transformation, l’entrée est passée via nn.Identity().
+            Chaque sigma ajoute un encodage distinct et double la dimension d’entrée.
         optim : str, optional
-            Nom de l’optimiseur à utiliser (doit être présent dans `optim_list`).
+            Nom de l’optimiseur (doit appartenir à `optim_list(self, init_lr)`).
             Default: "Adam"
         crit : str, optional
-            Nom de la fonction de perte à utiliser (doit être présent dans `crit_list`).
+            Nom de la fonction de perte (doit appartenir à `crit_list`).
             Default: "MSE"
         norm : str, optional
-            Type de normalisation / activation à appliquer entre les couches cachées.
+            Nom de la fonction d’activation entre couches cachées
+            (doit appartenir à `norm_list`).
             Default: "Relu"
         name : str, optional
-            Nom du réseau (pour identification et affichage).
+            Nom du modèle, utilisé pour l’identification.
             Default: "Net"
         Iscompiled : bool, optional
-            Si True, compile le modèle avec `torch.compile` pour accélérer l’inférence.
-            Default: True
+            Si True, compile le MLP avec `torch.compile` pour accélérer l’inférence.
+            Si GCC est absent, la compilation est automatiquement désactivée.
+            Default: False
     
         Attributes
         ----------
         losses : list
-            Historique des pertes durant l’entraînement.
+            Historique des pertes pendant l’entraînement.
         layers : list[int]
-            Dimensions du réseau après ajustement pour encodage Fourier.
-        encoding : nn.Module
-            Module appliquant l’encodage des entrées (RFF ou identité).
+            Dimensions du réseau, modifiées si un encodage Fourier est appliqué
+            (l’entrée devient 2 * encoded_size).
+        encodings : list[nn.Module]
+            Liste de modules RFF GaussianEncoding ou Identity appliqués aux entrées.
+            Un module par valeur sigma dans `Fourier`.
         norm : nn.Module
-            Normalisation / activation utilisée entre les couches cachées.
+            Fonction d’activation utilisée dans les couches cachées.
         crit : nn.Module
-            Fonction de perte PyTorch sur GPU.
+            Fonction de perte PyTorch.
         model : nn.Sequential
-            MLP complet construit dynamiquement.
+            Réseau MLP construit dynamiquement via `Create_MLP()`.
         optim : torch.optim.Optimizer
             Optimiseur associé au MLP.
         name : str
             Nom du réseau.
+        f : nn.Linear
+            Couche linéaire appliquée après le MLP, prenant en entrée
+            (nb_encodings * layers[-1]) et renvoyant layers[-1].
+            Utilisée pour agréger les sorties des différents encodages.
         """
     
         super().__init__()
@@ -158,16 +173,18 @@ class MLP():
         self.name = name
     
         # --- Encodage Fourier (RFF) ou passthrough ---
-        if self.Fourier:
-            self.encoding = rff.layers.GaussianEncoding(
-                sigma=10.0,
-                input_size=self.layers[0],
-                encoded_size=self.layers[1]
-            ).to(device)
-            self.layers[0] = self.layers[1] * 2  # chaque entrée est doublée après encodage
+        self.encodings = []
+        if self.Fourier is None:
+            self.encodings.append(nn.Identity().to(device))  # passthrough si pas de Fourier
         else:
-            self.encoding = nn.Identity().to(device)  # passthrough si pas de Fourier
-    
+            for sigma_val in Fourier:
+                self.encodings.append(rff.layers.GaussianEncoding(
+                    sigma=sigma_val,
+                    input_size=self.layers[0],
+                    encoded_size=self.layers[1]
+                ).to(device))
+            self.layers[0] = self.layers[1] * 2  # chaque entrée est doublée après encodage
+        
         # --- Sélection du normalisateur / activation ---
         self.norm = norm_list.get(norm)
         if self.norm is None:
@@ -187,11 +204,11 @@ class MLP():
         self.model = self.Create_MLP(self.layers)
     
         # --- Sélection de l’optimiseur ---
-        self.optim = optim_list(self, learning_rate).get(optim)
+        self.optim = optim_list(self, init_lr).get(optim)
         if self.optim is None:
             print("")
             print (f"{optim} n'est pas reconnu")
-            self.optim = optim_list(self, learning_rate).get("Adam")
+            self.optim = optim_list(self, init_lr).get("Adam")
             print (f"Retour au paramètre par défaut: 'Adam'")
         
         # --- Compilation optionnelle du modèle pour accélérer l’inférence ---
@@ -208,6 +225,7 @@ class MLP():
     
         # --- Envoi du modèle sur le device GPU / CPU ---
         self.model.to(device)
+        self.f = nn.Linear(len(self.encodings) * self.layers[-1], self.layers[-1]).to(device)
 
     def __repr__(self):
         """
@@ -267,37 +285,45 @@ class MLP():
                 background_fill=(0, 0, 0, 0),
                 opacity=255
             )
-        )
-    
-        plt.show()
-        return ""
+        ); plt.show(); return ""
 
     def __call__(self, x):
         """
-        Effectue une inférence complète : encodage éventuel, passage
-        dans le MLP, puis retour en numpy.
+        Effectue une inférence complète en appliquant :
+        - chaque encodage d'entrée défini dans `self.encodings`,
+        - un passage dans le MLP (`self.model`) pour chaque encodage,
+        - une concaténation des sorties,
+        - une couche linéaire finale (`self.f`) pour produire la prédiction.
     
-        Cette méthode permet d’utiliser l’objet comme une fonction
-        directement : `y = net(x)`.
+        Cette méthode permet d’utiliser l’objet comme une fonction :
+            y = net(x)
     
-        Paramètres
+        Parameters
         ----------
         x : array-like
-            Entrée(s) à prédire. Peut être un tableau numpy, une liste,
-            ou déjà un tenseur compatible.
+            Entrée(s) à prédire. Peut être un tableau NumPy, une liste Python
+            ou un tenseur PyTorch convertible par `tensorise()`.
     
         Returns
         -------
         np.ndarray
-            Sortie du MLP après encodage et propagation avant,
-            convertie en tableau numpy sur CPU.
+            Sortie finale du modèle après :
+            encodage(s) → MLP → concaténation → couche finale.
+            Résultat renvoyé sous forme de tableau NumPy CPU aplati.
         """
         
         # Inférence sans calcul de gradient (plus rapide et évite la construction du graphe)
         with torch.no_grad():
-            return self.model(
-                self.encoding(tensorise(x))
-            ).cpu().numpy()
+            inputs = tensorise(x)
+            if inputs.dim() == 1:
+                inputs = inputs.unsqueeze(0) 
+            
+            # --- Initialisation du scaler pour l'entraînement en précision mixte ---
+
+            results_list = []
+            for encoding in self.encodings:
+                results_list.append(self.model(encoding(inputs)))
+            return self.f(torch.cat(results_list, dim=1)).cpu().numpy().flatten()
 
     def params(self):
         """
@@ -430,154 +456,140 @@ class MLP():
                 self.norm
             ])
     
-        # Ajout de la couche finale : Linear → Sigmoid
+        # Ajout de la couche finale : Linear
         layer_list.extend([
-            nn.Linear(layers[-2], layers[-1]),
-            nn.Sigmoid()
+            nn.Linear(layers[-2], layers[-1])
         ])
     
         return nn.Sequential(*layer_list)
 
-    def plot(self, img_array, inputs):
-        """
-        Affiche côte à côte :
-        - l’image originale,
-        - l’image prédite par le MLP,
-        - l’évolution de la fonction de perte (loss) au cours de l’entraînement.
-    
-        Parameters
-        ----------
-        img_array : np.ndarray
-            Image originale sous forme de tableau (H, W, 3) utilisée comme référence.
-        inputs : array-like or torch.Tensor
-            Tableau des coordonnées (ou features) servant d’entrée au réseau.
-            Doit correspondre à la grille permettant de reconstruire l’image.
-    
-        Notes
-        -----
-        Cette méthode :
-        - tensorise les entrées puis les encode avant passage dans le MLP,
-        - reshape la sortie du modèle pour retrouver la forme (H, W, 3),
-        - trace également la courbe de pertes stockée dans `self.losses`.
-        """
-        
-        # Conversion des inputs en tenseur + récupération du nombre d'échantillons
-        inputs, n_samples = tensorise(inputs), inputs.size(0)
-        
-        # Dimensions de l'image originale
-        h, w = img_array.shape[:2]
-    
-        # Figure principale avec 3 panneaux : original / prédiction / loss
-        fig = plt.figure(figsize=(15, 5))
-        gs = GridSpec(1, 3, figure=fig)
-        
-        # --- Image originale ---
-        ax_orig = fig.add_subplot(gs[0,0])
-        ax_orig.axis('off')
-        ax_orig.set_title("Original Image")
-        ax_orig.imshow(img_array)
-    
-        # --- Image prédite ---
-        ax = fig.add_subplot(gs[0,1])
-        ax.axis('off')
-        ax.set_title("Predicted Image")
-        # Prédiction → CPU → numpy → reshape en (H, W, 3)
-        ax.imshow(
-            self.model(self.encoding(inputs))
-            .cpu()
-            .detach()
-            .numpy()
-            .reshape(h, w, 3)
-        )
-    
-        # --- Courbe de loss ---
-        los = fig.add_subplot(gs[0,2])
-        los.set_title("Loss")
-    
-        # Axe X = 1..N
-        los.plot(
-            np.linspace(1, len(self.losses), len(self.losses)),
-            [loss.item() for loss in self.losses]
-        )
-        if len(self.losses) ==1:
-            lenlosses = 2
-        else:
-            lenlosses = len(self.losses)
-        los.set_xlim(1, lenlosses)
-    
-        # Évite un ylim min = 0 pile si les pertes sont trop faibles
-        maxarray = [0.00000001] + [loss.item() for loss in self.losses]
-        los.set_ylim(0, max(maxarray))
-    
-        # Rafraîchissement non bloquant
-        fig.canvas.draw_idle()
-        plt.tight_layout()
-        plt.ion()
-        plt.show()
-
     def train(self, inputs, outputs, num_epochs=1500, batch_size=1024):
         """
-        Entraîne le MLP sur des paires (inputs → outputs) en utilisant un 
-        schéma de mini-batchs et l'AMP (Automatic Mixed Precision).
+        Entraîne le modèle en utilisant un schéma mini-batch et la précision
+        mixte (AMP). Chaque batch subit :
+    
+            encodages multiples → MLP → concaténation → couche finale → perte
+    
+        Ce training met également à jour dynamiquement le learning rate.
     
         Parameters
         ----------
-        inputs : array-like or tensor
-            Données d'entrée du réseau, de shape (N, input_dim).
-        outputs : array-like or tensor
-            Cibles associées, de shape (N, output_dim).
+        inputs : array-like or torch.Tensor
+            Données d'entrée, shape (N, input_dim). Sont converties en
+            tenseur PyTorch et envoyées sur `device`.
+        outputs : array-like or torch.Tensor
+            Cibles correspondantes, shape (N, output_dim).
         num_epochs : int, optional
-            Nombre total d'époques d'entraînement (default: 1500).
+            Nombre total d'époques d'entraînement.
+            Default: 1500.
         batch_size : int, optional
-            Taille des mini-batchs utilisés à chaque itération (default: 1024).
+            Taille des mini-batchs. Default: 1024.
     
         Notes
         -----
-        - Utilise torch.amp.autocast + GradScaler pour un entraînement accéléré en FP16.
-        - Les pertes par époque sont stockées dans `self.losses`.
-        - Le réseau doit posséder :
-            * self.model      : module PyTorch (MLP)
-            * self.encoding() : encodage éventuel (Fourier features)
-            * self.crit  : fonction de perte
-            * self.optim  : optimiseur
+        - Utilise `torch.amp.autocast` et `GradScaler` pour un entraînement
+          accéléré et stable en précision mixte (FP16/FP32).
+        - Pour chaque mini-batch :
+            * chaque module dans `self.encodings` est appliqué aux entrées,
+            * chaque encodage passe dans `self.model`,
+            * les sorties sont concaténées,
+            * la couche finale `self.f` produit la prédiction,
+            * la perte est évaluée via `self.crit`.
+        - Le learning rate est ajusté après chaque époque.
+        - Les pertes d'époques sont enregistrées dans `self.losses`.
         """
     
         # --- Conversion en tensors et récupération du nombre d'échantillons ---
-        inputs, outputs, n_samples = tensorise(inputs).to(device), tensorise(outputs).to(device), inputs.size(0)
+        inputs, outputs = tensorise(inputs).to(device), tensorise(outputs).to(device)
         self.model = self.model.to(device)
-    
+        n_samples = inputs.size(0)
+
         # --- Initialisation du scaler pour l'entraînement en précision mixte ---
         dev = str(device)
         scaler = GradScaler(dev)
-    
+
+        def update_lr(optimizer, loss):
+            for param_group in optimizer.param_groups:
+                param_group['lr'] = 0.005*np.where(loss <=0, 0,
+                np.where(loss >=1, 1,
+                np.sqrt(loss)/(2 - loss**2)))
+
         # --- Boucle principale sur les époques ---
         for epoch in tqdm(range(num_epochs), desc="train epoch"):
             # Génération d'un ordre aléatoire des indices
             perm = torch.randperm(n_samples, device=device)
             epoch_loss = 0.0
-    
+
             # --- Parcours des mini-batchs ---
             for i in range(0, n_samples, batch_size):
                 idx = perm[i:i+batch_size]
-    
+
                 # Fonction interne calculant la perte et les gradients
                 def closure():
                     self.optim.zero_grad(set_to_none=True)
                     with autocast(dev): # AMP
-                        loss = self.crit(self.model(self.encoding(inputs[idx])),outputs[idx])
+                        results_list = []
+                        for encoding in self.encodings:
+                            results_list.append(self.model(encoding(inputs[idx])))
+                        loss = self.crit(self.f(torch.cat(results_list, dim=1)),outputs[idx])
                     scaler.scale(loss).backward()
                     return loss
-    
+
                 # Calcul de la perte et mise à jour des poids
                 loss = closure()
                 scaler.step(self.optim)
                 scaler.update()
-    
+
                 # Accumulation de la perte pour l'époque
-                epoch_loss += loss
-    
+                epoch_loss += loss.item()
+
             # --- Stockage de la perte de l'époque ---
             self.losses.append(epoch_loss)
+            update_lr(self.optim,self.losses[-1])
+
+def losses(*nets):
+    """
+    Affiche les courbes de pertes (training loss) de plusieurs réseaux MLP.
+
+    Parameters
+    ----------
+    nets : MLP
+        Un ou plusieurs réseaux possédant un attribut `.losses`
+        contenant l'historique des pertes (liste de float).
+
+    Notes
+    -----
+    - L’axe X correspond aux itérations (epochs ou steps).
+    - L’axe Y correspond à la valeur de la perte.
+    - La fonction utilise matplotlib en mode interactif pour affichage dynamique.
+    """
+
+    # --- Initialisation de la figure ---
+    fig = plt.figure(figsize=(5, 5))
+
+    # --- Définition des limites des axes ---
+    all_losses = [[loss for loss in net.losses] for net in nets]
+    if max(len(lst) for lst in all_losses) == 1:
+        lenlosses = 2
+    else:
+        lenlosses = max(len(lst) for lst in all_losses)
+    plt.xlim(1, lenlosses)
+
+    # --- Tracé des courbes de pertes pour chaque réseau ---
+    for k, net in enumerate(nets):
+        steps = np.linspace(1, len(net.losses), len(net.losses))  # epochs
+        plt.plot(np.arange(1, len(all_losses[k])+1), all_losses[k],label = net.name)
+    plt.yscale('log', nonpositive='mask')
+    # --- Affichage ---
+    plt.legend()
+    plt.xlabel("Epoch")
+    plt.ylabel("Résidus")
+    fig.canvas.draw_idle()
+    plt.tight_layout()
+    plt.ion()  # mode interactif
+    plt.show()
+
+losses.help = fPrintDoc(losses)
 
 MLP.__init__.help = fPrintDoc(MLP.__init__)
 MLP.__repr__.help = fPrintDoc(MLP.__repr__)
@@ -586,6 +598,4 @@ MLP.help = fPrintDoc(MLP)
 MLP.params.help = fPrintDoc(MLP.params)
 MLP.nb_params.help = fPrintDoc(MLP.nb_params)
 MLP.neurons.help = fPrintDoc(MLP.neurons)
-MLP.Create_MLP.help = fPrintDoc(MLP.Create_MLP)
-MLP.plot.help = fPrintDoc(MLP.plot)
 MLP.train.help = fPrintDoc(MLP.train)

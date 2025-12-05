@@ -20,8 +20,8 @@ Cette classe fournit :
 | Parameter      | Type          | Optional | Description                                                                                                                                                |
 |----------------|---------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `layers`       | list[int]     | Yes      | Dimensions successives du réseau (entrée → couches cachées → sortie). Exemple : `[in_features, hidden1, hidden2, ..., out_features]`. Default: `[1, 1, 1]` |
-| `learning_rate`| float         | Yes      | Taux d’apprentissage pour l’optimiseur. Default: `1e-3`                                                                                                    |
-| `Fourier`      | bool          | Yes      | Si True, applique un encodage Fourier gaussien (RFF) sur les entrées. Default: `True`                                                                      |
+| `init_lr`      | float         | Yes      | Taux d’apprentissage initial pour l’optimiseur. Default: `1e-3`                                                                                            |
+| `Fourier`      | list[float]   | Oui      | Liste de sigma pour encodages RFF. Si None : passthrough. Default: `None`                                                                                  |
 | `optim`        | str           | Yes      | Nom de l’optimiseur à utiliser (doit exister dans `optims()`). Default: `"Adam"`                                                                           |
 | `crit`         | str           | Yes      | Fonction de perte à utiliser (doit exister dans `crits()`). Default: `"MSE"`                                                                               |
 | `norm`         | str           | Yes      | Type de normalisation / activation pour les couches cachées (ex: `"Relu"`). Default: `"Relu"`                                                              |
@@ -34,12 +34,13 @@ Cette classe fournit :
 
 - `losses : list[torch.Tensor]` — Historique des pertes cumulées lors de l'entraînement  
 - `layers : list[int]` — Dimensions du réseau, ajustées si encodage Fourier actif  
-- `encoding : nn.Module` — Module appliquant l'encodage des entrées (RFF ou identity)  
+- `encodings` : liste de modules d'encodage (`RFF` ou `Identity`)  
 - `norm : nn.Module` — Normalisation ou activation utilisée dans les couches cachées  
 - `crit : nn.Module` — Fonction de perte PyTorch sur le device spécifié  
 - `model : nn.Sequential` — MLP complet construit dynamiquement  
 - `optim : torch.optim.Optimizer` — Optimiseur associé au MLP  
-- `name : str` — Nom du réseau  
+- `name : str` — Nom du réseau
+- `f` : couche linéaire finale combinant sorties encodages  
 
 ---
 
@@ -104,10 +105,3 @@ Cette classe fournit :
 | **"SGD"**           | `optim.SGD()`                        | Descente de gradient stochastique classique, souvent utilisée avec un taux d'apprentissage constant ou ajusté.                     |
 
 ---
-
-## Notes
-
-- La classe supporte un entraînement sur GPU via `device`  
-- Les fonctions de visualisation utilisent matplotlib et visualtorch  
-- Les sorties sont compatibles avec des images normalisées entre 0 et 1  
-- Le suivi des pertes permet d’afficher l’évolution du training loss
