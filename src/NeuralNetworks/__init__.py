@@ -20,4 +20,4 @@ from .Latent import Latent
 # Fonctions de chargement/preprocessing des images
 from .tools import image, MNIST, AirfRANS
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"

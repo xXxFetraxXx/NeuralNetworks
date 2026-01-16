@@ -39,12 +39,6 @@ Cette classe fournit :
 | `norm`               | str           | Yes      | Type de normalisation / activation pour les couches cachées (ex: `"Relu"`). Default: `"Relu"` |
 | `name`               | str           | Yes      | Nom du réseau pour identification ou affichage. Default: `"Net"`                              |
 
-
-
-| `init_lr`      | float         | Yes      | Taux d’apprentissage initial pour l’optimiseur. Default: `1e-3`                                                                                            |
-| `Fourier`      | list[float]   | Oui      | Liste de sigma pour encodages RFF. Si None : passthrough. Default: `None`                                                                                  |
-| `optim`        | str           | Yes      | Nom de l’optimiseur à utiliser (doit exister dans `optims()`). Default: `"Adam"`                                                                           |
-| `crit`         | str           | Yes      | Fonction de perte à utiliser (doit exister dans `crits()`). Default: `"MSE"`                                                                               |
 ---
 
 ##### Attributes
