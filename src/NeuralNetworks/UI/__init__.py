@@ -5,14 +5,5 @@
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-# Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
-from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise
-
-# Modèle MLP principal + fonction d'entraînement associée
-from .MLP import MLP
-
-from .Trainer import Trainer
-
-from .UI import *
-
-__version__ = "0.2.0"
+from .Losses import losses
+from .Learnings import learnings

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "NeuralNetworks"
 dynamic = ["version"]
-description = "Multi-Layer Perceptrons with Fourier encoding, visualization and PyTorch compilation"
+description = "Multi-Layer Perceptrons with multi-Fourier encoding and variable learning rate"
 authors = [
     { name = "Alexandre Brun", email = "alexandre51160@gmail.com" }
 ]
@@ -26,10 +26,10 @@ dependencies = [
     "torchvision>=0.24,<1.0",
     "torchaudio>=2.9,<3.0",
     "torchmetrics>=1.8",
-    "visualtorch>=0.2",
-    "random-fourier-features-pytorch>=1.0",
     "IPython>=8.16",
-    "requests"
+    "requests",
+    "scipy",
+    "scikit-learn>=1.4"
 ]
 
 [project.urls]

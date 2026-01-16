@@ -10,92 +10,107 @@ de traitement d'images pour l'apprentissage sur des images RGB.
 
 ### Classes
 
-#### MLP
+#### `MLP`
 
-Multi-Layer Perceptron (MLP) avec options avancées :
+Multi-Layer Perceptron (MLP) avec encodage optionnel Fourier (RFF),  
+suivi automatique des pertes, visualisation et compilation PyTorch.
 
-- Encodage Fourier gaussien (RFF) optionnel  
-- Stockage automatique des pertes  
-- Compilation Torch optionnelle pour accélérer l’inférence  
-- Gestion flexible de l’optimiseur, de la fonction de perte et de la normalisation  
+Cette classe fournit :
 
-**Méthodes principales :**
-
-- `MLP(layers, learning_rate, Fourier, optim, crit, norm, name, Iscompiled)`  
-  Initialise le réseau avec toutes les options.
-
-  Les valeurs possibles de `optim`  sont disponibles avec `optims()` 
-  Les valeurs possibles de `crit`  sont disponibles avec `crits()` 
-  Les valeurs possibles de `norm`  sont disponibles avec `norms()` 
-
-- `train(inputs, outputs, num_epochs, batch_size)`  
-  Entraîne le MLP sur des données (`inputs → outputs`) en utilisant AMP et mini-batchs.
-
-- `plot(inputs, img_array)`  
-  Affiche l'image originale, la prédiction du MLP et la courbe des pertes.
-
-- `params()`  
-  Retourne tous les poids du MLP (ligne par ligne) sous forme de liste de `numpy.ndarray`.
-
-- `nb_params()`  
-  Calcule le nombre total de poids dans le MLP.
-
-- `neurons()`  
-  Retourne la liste des biais (neurones) de toutes les couches linéaires.
+- Un MLP entièrement configurable (dimensions, normalisation, activation)  
+- Option d'encodage Fourier (Random Fourier Features) sur les entrées  
+- Méthodes pour entraîner le réseau avec mini-batchs et AMP (Automatic Mixed Precision)  
+- Visualisation de l'architecture via visualtorch  
+- Suivi et affichage de la perte d'entraînement  
+- Accès aux poids, biais et nombre de paramètres  
 
 ---
 
-### Fonctions utilitaires
+##### Parameters
 
-- `tensorise(obj)`  
-  Convertit un objet array-like ou tensor en `torch.Tensor` float32 sur le device actif.
+| Parameter            | Type          | Optional | Description                                                                                   |
+|----------------------|---------------|----------|-----------------------------------------------------------------------------------------------|
+| `input_size`         | int           | Yes      | Taille des données en entrée au réseau. Default: `1`                                   |
+| `output_size`        | int           | Yes      | Taille des données en sortie au réseau. Default: `1`                                   |
+| `hidden_layers`      | list[int]     | Yes      | Dimensions successives des couches intermédiaires du réseau. Default: `[1]`                   |
+| `sigmas`             | list[float]   | Yes      | Liste de sigma pour encodages RFF. Si None : passthrough. Default: `None`                     |
+| `fourier_input_size` | int           | Yes      | WIP. Default: `2`                                                                             |
+| `nb_fourier`         | int           | Yes      | Nombre de fréquences utilisées pour les Fourier Features. Default: `8`                        |
+| `norm`               | str           | Yes      | Type de normalisation / activation pour les couches cachées (ex: `"Relu"`). Default: `"Relu"` |
+| `name`               | str           | Yes      | Nom du réseau pour identification ou affichage. Default: `"Net"`                              |
 
-- `rglen(list)`  
-  Renvoie un range correspondant aux indices d'une liste.
 
-- `image_from_url(url, img_size)`  
-  Télécharge une image depuis une URL, la redimensionne et génère :
-  - `img_array` : `np.ndarray (H, W, 3)` pour affichage.  
-  - `inputs` : tenseur `(H*W, 2)` coordonnées normalisées.  
-  - `outputs` : tenseur `(H*W, 3)` valeurs RGB cibles.
+
+| `init_lr`      | float         | Yes      | Taux d’apprentissage initial pour l’optimiseur. Default: `1e-3`                                                                                            |
+| `Fourier`      | list[float]   | Oui      | Liste de sigma pour encodages RFF. Si None : passthrough. Default: `None`                                                                                  |
+| `optim`        | str           | Yes      | Nom de l’optimiseur à utiliser (doit exister dans `optims()`). Default: `"Adam"`                                                                           |
+| `crit`         | str           | Yes      | Fonction de perte à utiliser (doit exister dans `crits()`). Default: `"MSE"`                                                                               |
+---
+
+##### Attributes
+
+- `losses : list[float]` — Historique des pertes cumulées lors de l'entraînement  
+- `learnings : list[float]` — Historique des taux d'apprentissage utilisées lors de l'entraînement  
+- `model : nn.Sequential` — MLP complet construit dynamiquement 
+- `name : str` — Nom du réseau
 
 ---
 
-### Visualisation et comparaison
-
-- `plot(img_array, inputs, *nets)`  
-  Affiche pour chaque réseau l'image reconstruite à partir des entrées.
-
-- `compare(img_array, inputs, *nets)`  
-  Affiche pour chaque réseau l'erreur absolue entre l'image originale et la prédiction,  
-  et trace également les pertes cumulées. Chaque réseau doit posséder :  
+#### `Trainer`
 
 ---
 
-### Objets et dictionnaires
+##### Parameters
 
-#### **norms()**
-
-| **Valeurs**         | **Module PyTorch**        | **Description**                                                                                           |
-|---------------------|---------------------------|-----------------------------------------------------------------------------------------------------------|
-| **"Relu"**          | `nn.ReLU()`               | Fonction d'activation ReLU classique (Rectified Linear Unit).                                             |
-| **"LeakyRelu"**     | `nn.LeakyReLU()`          | ReLU avec un petit coefficient pour les valeurs négatives (paramètre `negative_slope`).                   |
-| **"ELU"**           | `nn.ELU()`                | Fonction d'activation ELU (Exponential Linear Unit), qui a une meilleure gestion des valeurs négatives.   |
-| **"SELU"**          | `nn.SELU()`               | SELU (Scaled Exponential Linear Unit), une version améliorée de l'ELU pour des réseaux auto-normalisants. |
-| **"GELU"**          | `nn.GELU()`               | GELU (Gaussian Error Linear Unit), une activation probabiliste basée sur une fonction gaussienne.         |
-| **"Sigmoid"**       | `nn.Sigmoid()`            | Fonction d'activation Sigmoid, qui produit une sortie entre 0 et 1.                                       |
-| **"Tanh"**          | `nn.Tanh()`               | Fonction d'activation Tanh, avec une sortie dans l'intervalle [-1, 1].                                    |
-| **"Hardtanh"**      | `nn.Hardtanh()`           | Variante de Tanh, avec des sorties limitées entre une plage spécifiée.                                    |
-| **"Softplus"**      | `nn.Softplus()`           | Fonction d'activation qui approxime ReLU mais de manière lissée.                                          |
-| **"Softsign"**      | `nn.Softsign()`           | Fonction d'activation similaire à Tanh mais plus souple, avec des valeurs dans [-1, 1].                   |
+| Parameter    | Type            | Optional | Description                                                                                                     |
+|--------------|-----------------|----------|-----------------------------------------------------------------------------------------------------------------|
+| `*nets`      | *MLP            | No       | Réseaux pour lesquels le trainer va entrainer.                                                                  |
+| `inputs`     | np.array(float) | No       | Données en entrée au réseau.                                                                                    |
+| `outputs`    | np.array(float) | No       | Données en sortie au réseau.                                                                                    |
+| `test_size`  | float           | Yes      | Proportion des données à utiliser pendant l'entrainement. Si None : utilise toutes les données. Default: `None` |
+| `optim`      | str             | Yes      | Nom de l’optimiseur à utiliser (doit exister dans `optims()`). Default: `"Adam"`                                |
+| `init_lr`    | float           | Yes      | Taux d’apprentissage initial pour l’optimiseur. Default: `1e-3`                                                 |
+| `crit`       | str             | Yes      | Fonction de perte à utiliser (doit exister dans `crits()`). Default: `"MSE"`                                    |
+| `batch_size` | float           | Yes      | Taille des minibatchs. Default: `1024`                                                                          |
 
 ---
 
-#### **crits()**
+##### `Trainer.train`
+
+Lancement d'un entrainement avec le trainer définit
+
+| Parameter       | Type    | Optional | Description                             |
+|-----------------|---------|----------|-----------------------------------------|
+| `num_epochs`    | int     | Yes      | Nombres d'itérations à effectuer.       |
+| `activate_tqdm` | boolean | Yes      | Utilisation d'une barre de progression. |
+  
+---
+
+### Dictionnaires
+
+#### `norms()`
+
+| **Valeurs**         | **Module PyTorch**                                                                         | **Description**                                                                                           |
+|---------------------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| **"ReLU"**          | [`nn.ReLU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.ReLU.html)           | Fonction d'activation ReLU classique (Rectified Linear Unit).                                             |
+| **"LeakyReLU"**     | [`nn.LeakyReLU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.LeakyReLU.html) | ReLU avec un petit coefficient pour les valeurs négatives (paramètre `negative_slope`).                   |
+| **"ELU"**           | [`nn.ELU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.ELU.html)             | Fonction d'activation ELU (Exponential Linear Unit), qui a une meilleure gestion des valeurs négatives.   |
+| **"SELU"**          | [`nn.SELU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.SELU.html)           | SELU (Scaled Exponential Linear Unit), une version améliorée de l'ELU pour des réseaux auto-normalisants. |
+| **"GELU"**          | [`nn.GELU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.GELU.html)           | GELU (Gaussian Error Linear Unit), une activation probabiliste basée sur une fonction gaussienne.         |
+| **"Mish"**          | [`nn.Mish()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Mish.html)           | ReLU différentiable en tout points avec passage négatif.                                                  |
+| **"Softplus"**      | [`nn.Softplus()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Softplus.html)   | Fonction d'activation qui approxime ReLU mais de manière lissée.                                          |
+| **"Sigmoid"**       | [`nn.Sigmoid()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html)     | Fonction d'activation Sigmoid, qui produit une sortie entre 0 et 1.                                       |
+| **"Tanh"**          | [`nn.Tanh()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Tanh.html)           | Fonction d'activation Tanh, avec une sortie dans l'intervalle [-1, 1].                                    |
+| **"Hardtanh"**      | [`nn.Hardtanh()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Hardtanh.html)   | Variante de Tanh, avec des sorties limitées entre une plage spécifiée.                                    |
+| **"Softsign"**      | [`nn.Softsign()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Softsign.html)   | Fonction d'activation similaire à Tanh mais plus souple, avec des valeurs dans [-1, 1].                   |
+
+---
+
+#### `crits()`
 
 | **Valeurs**                    | **Module PyTorch**                  | **Description**                                                                                                            |
 |--------------------------------|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| **"MSE"**                      | `nn.MSELoss()`                      | Mean Squared Error Loss, utilisée pour les régressions.                                                                    |
+| **"MSE"**                      | [`nn.MSELoss`](https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html) | Mean Squared Error Loss, utilisée pour les régressions.                        |
 | **"L1"**                       | `nn.L1Loss()`                       | L1 Loss (erreur absolue), souvent utilisée pour la régularisation.                                                         |
 | **"SmoothL1"**                 | `nn.SmoothL1Loss()`                 | Smooth L1 Loss, une combinaison de L1 et de MSE, moins sensible aux outliers.                                              |
 | **"Huber"**                    | `nn.HuberLoss()`                    | Fonction de perte Huber, une version lissée de L1 et MSE, moins affectée par les grands écarts.                            |
@@ -106,7 +121,7 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 
 ---
 
-#### **optims()**
+#### `optims()`
 
 | **Valeurs**         | **Module PyTorch**                   | **Description**                                                                                                                    |
 |---------------------|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
@@ -124,7 +139,9 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 
 ---
 
-### Device et configuration
+### `device`
+
+variable principale d'allocation des performances
 
 #### **Apple Silicon (macOS)**
 - Si le système d'exploitation est macOS (nommé `darwin` dans `platform.system()`), la fonction vérifie si l'accélérateur **Metal Performance Shaders** (MPS) est disponible sur l'appareil.
@@ -151,10 +168,3 @@ Multi-Layer Perceptron (MLP) avec options avancées :
 - Autograd configuré pour privilégier les performances
 
 ---
-
-### Notes générales
-
-- Toutes les méthodes de MLP utilisent les tenseurs sur le device global (CPU ou GPU)  
-- Les images doivent être normalisées entre 0 et 1  
-- Les fonctions interactives (`plot`, `compare`) utilisent matplotlib en mode interactif  
-- Le module est conçu pour fonctionner dans Jupyter et scripts Python classiques

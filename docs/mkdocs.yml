@@ -1,31 +1,20 @@
 site_name: NeuralNetworks
 site_url: https://xXxFetraxXx.github.io/NeuralNetworks
 repo_url: https://github.com/xXxFetraxXx/NeuralNetworks
-site_description: "Multi-Layer Perceptrons with Fourier encoding, visualization and PyTorch compilation"
+site_description: "Multi-Layer Perceptrons with multi-Fourier encoding, variable learning rate, visualization and PyTorch compilation"
 site_author: "Alexandre Brun"
 theme:
   name: readthedocs
+
 nav:
+
   - Accueil: index.md
-  - Objets: 
-      - MLP: MLP/index.md
-      - MLP.params: MLP/params.md
-      - MLP.neurons: MLP/neurons.md
-      - MLP.nb_params: MLP/nb_params.md
-      - MLP.plot: MLP/plot.md
-      - MLP.train: MLP/train.md
-  - Fonctions:
-      - plot: Plots/plot.md
-      - compare: Plots/compare.md
-      - losses: Plots/losses.md
-      - train: Plots/train.md
-      - image_from_url: Image/image_from_url.md
+
   - Dependances:
       - torch: https://pypi.org/project/torch/
-      - visualtorch: https://pypi.org/project/visualtorch/
-      - rff: https://pypi.org/project/random-fourier-features-pytorch/
       - numpy: https://pypi.org/project/numpy/
       - matplotlib: https://pypi.org/project/matplotlib/
+
   - Liens:
       - PyPI: https://pypi.org/project/NeuralNetworks/
       - Source: https://github.com/xXxFetraxXx/NeuralNetworks

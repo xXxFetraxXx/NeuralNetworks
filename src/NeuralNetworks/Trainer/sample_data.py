@@ -5,14 +5,15 @@
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-# Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
-from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise
+from ..Dependances import train_test_split
 
-# Modèle MLP principal + fonction d'entraînement associée
-from .MLP import MLP
-
-from .Trainer import Trainer
-
-from .UI import *
-
-__version__ = "0.2.0"
+def sample_data (inputs, outputs, test_size):
+    if test_size is None:
+        return inputs, inputs, outputs, outputs
+    else:
+        return train_test_split (
+            inputs,
+            outputs,
+            test_size = test_size,
+            random_state = 42
+        )
