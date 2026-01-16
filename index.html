@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/theme.css" />
     <link rel="stylesheet" href="css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="css/custom.css" rel="stylesheet" />
     
       <script>
         // Current page data
@@ -49,9 +48,11 @@
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#mlp">MLP</a>
     </li>
+    <li class="toctree-l4"><a class="reference internal" href="#trainer">Trainer</a>
+    </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#objets-et-dictionnaires">Objets et dictionnaires</a>
+    <li class="toctree-l3"><a class="reference internal" href="#dictionnaires">Dictionnaires</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#norms">norms()</a>
     </li>
@@ -61,7 +62,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#device-et-configuration">Device et configuration</a>
+    <li class="toctree-l3"><a class="reference internal" href="#device">device</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#apple-silicon-macos">Apple Silicon (macOS)</a>
     </li>
@@ -80,64 +81,33 @@
     </ul>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Objets</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" >MLP</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="MLP/">MLP</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="MLP/params/">MLP.params</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="MLP/neurons/">MLP.neurons</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="MLP/nb_params/">MLP.nb_params</a>
-                </li>
-                <li class="toctree-l2"><a class="" href="MLP/plot.md">MLP.plot</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="MLP/train/">MLP.train</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="MLP/losses/">losses</a>
-                </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" >Latent</a>
-    <ul>
-                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
-                </li>
-    </ul>
-                  </li>
-              </ul>
               <p class="caption"><span class="caption-text">Tools</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" >image</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="tools/image/image_from_url/">image_from_url</a>
+                <li class="toctree-l2"><a class="" href="tools/image/image_from_url.md">image_from_url</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="tools/image/plot/">plot</a>
+                <li class="toctree-l2"><a class="" href="tools/image/plot.md">plot</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="tools/image/compare/">compare</a>
+                <li class="toctree-l2"><a class="" href="tools/image/compare.md">compare</a>
                 </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >MNIST</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                <li class="toctree-l2"><a class="" href="placeholder.md">data</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                <li class="toctree-l2"><a class="" href="placeholder.md">evaluate</a>
                 </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" >AirfRANS</a>
     <ul>
-                <li class="toctree-l2"><a class="reference internal" href="placeholder/">Latent</a>
+                <li class="toctree-l2"><a class="" href="placeholder.md">download</a>
                 </li>
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="placeholder/">Latent</a>
+                  <li class="toctree-l1"><a class="" href="placeholder.md">VKI-LS59</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Dependances</span></p>
@@ -193,44 +163,182 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 <hr />
 <h2 id="contenu-principal">Contenu principal<a class="headerlink" href="#contenu-principal" title="Permanent link">&para;</a></h2>
 <h3 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h3>
-<h4 id="mlp">MLP<a class="headerlink" href="#mlp" title="Permanent link">&para;</a></h4>
-<p>Multi-Layer Perceptron (MLP) avec options avancées :</p>
+<h4 id="mlp"><code>MLP</code><a class="headerlink" href="#mlp" title="Permanent link">&para;</a></h4>
+<p>Multi-Layer Perceptron (MLP) avec encodage optionnel Fourier (RFF),<br />
+suivi automatique des pertes, visualisation et compilation PyTorch.</p>
+<p>Cette classe fournit :</p>
 <ul>
-<li>Multi encodage Fourier gaussien (RFF) optionnel</li>
-<li>Stockage automatique des pertes.</li>
-<li>Compilation Torch optionnelle pour accélérer l’inférence.</li>
-<li>Gestion flexible de l’optimiseur, de la fonction de perte et de la normalisation.</li>
-<li>Adaptation du learning rate en fonction des résidus.</li>
-</ul>
-<p><strong>Méthodes principales :</strong></p>
-<ul>
-<li><code>MLP(layers, learning_rate, Fourier, optim, crit, norm, name, Iscompiled)</code><br />
-  Initialise le réseau avec toutes les options.</li>
-</ul>
-<p>Les valeurs possibles de <code>optim</code>  sont disponibles avec <code>optims()</code> 
-  Les valeurs possibles de <code>crit</code>  sont disponibles avec <code>crits()</code> 
-  Les valeurs possibles de <code>norm</code>  sont disponibles avec <code>norms()</code> </p>
-<ul>
-<li>
-<p><code>train(inputs, outputs, num_epochs, batch_size)</code><br />
-  Entraîne le MLP sur des données (<code>inputs → outputs</code>).</p>
-</li>
-<li>
-<p><code>params()</code><br />
-  Retourne tous les poids du MLP (ligne par ligne) sous forme de liste de <code>numpy.ndarray</code>.</p>
-</li>
-<li>
-<p><code>nb_params()</code><br />
-  Calcule le nombre total de poids dans le MLP.</p>
-</li>
-<li>
-<p><code>neurons()</code><br />
-  Retourne la liste des biais (neurones) de toutes les couches linéaires.</p>
-</li>
+<li>Un MLP entièrement configurable (dimensions, normalisation, activation)  </li>
+<li>Option d'encodage Fourier (Random Fourier Features) sur les entrées  </li>
+<li>Méthodes pour entraîner le réseau avec mini-batchs et AMP (Automatic Mixed Precision)  </li>
+<li>Visualisation de l'architecture via visualtorch  </li>
+<li>Suivi et affichage de la perte d'entraînement  </li>
+<li>Accès aux poids, biais et nombre de paramètres  </li>
 </ul>
 <hr />
-<h3 id="objets-et-dictionnaires">Objets et dictionnaires<a class="headerlink" href="#objets-et-dictionnaires" title="Permanent link">&para;</a></h3>
-<h4 id="norms"><strong>norms()</strong><a class="headerlink" href="#norms" title="Permanent link">&para;</a></h4>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>input_size</code></td>
+<td>int</td>
+<td>Yes</td>
+<td>Taille des données en entrée au réseau. Default: <code>1</code></td>
+</tr>
+<tr>
+<td><code>output_size</code></td>
+<td>int</td>
+<td>Yes</td>
+<td>Taille des données en sortie au réseau. Default: <code>1</code></td>
+</tr>
+<tr>
+<td><code>hidden_layers</code></td>
+<td>list[int]</td>
+<td>Yes</td>
+<td>Dimensions successives des couches intermédiaires du réseau. Default: <code>[1]</code></td>
+</tr>
+<tr>
+<td><code>sigmas</code></td>
+<td>list[float]</td>
+<td>Yes</td>
+<td>Liste de sigma pour encodages RFF. Si None : passthrough. Default: <code>None</code></td>
+</tr>
+<tr>
+<td><code>fourier_input_size</code></td>
+<td>int</td>
+<td>Yes</td>
+<td>WIP. Default: <code>2</code></td>
+</tr>
+<tr>
+<td><code>nb_fourier</code></td>
+<td>int</td>
+<td>Yes</td>
+<td>Nombre de fréquences utilisées pour les Fourier Features. Default: <code>8</code></td>
+</tr>
+<tr>
+<td><code>norm</code></td>
+<td>str</td>
+<td>Yes</td>
+<td>Type de normalisation / activation pour les couches cachées (ex: <code>"Relu"</code>). Default: <code>"Relu"</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>str</td>
+<td>Yes</td>
+<td>Nom du réseau pour identification ou affichage. Default: <code>"Net"</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h5 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>losses : list[float]</code> — Historique des pertes cumulées lors de l'entraînement  </li>
+<li><code>learnings : list[float]</code> — Historique des taux d'apprentissage utilisées lors de l'entraînement  </li>
+<li><code>model : nn.Sequential</code> — MLP complet construit dynamiquement </li>
+<li><code>name : str</code> — Nom du réseau</li>
+</ul>
+<hr />
+<h4 id="trainer"><code>Trainer</code><a class="headerlink" href="#trainer" title="Permanent link">&para;</a></h4>
+<hr />
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*nets</code></td>
+<td>*MLP</td>
+<td>No</td>
+<td>Réseaux pour lesquels le trainer va entrainer.</td>
+</tr>
+<tr>
+<td><code>inputs</code></td>
+<td>np.array(float)</td>
+<td>No</td>
+<td>Données en entrée au réseau.</td>
+</tr>
+<tr>
+<td><code>outputs</code></td>
+<td>np.array(float)</td>
+<td>No</td>
+<td>Données en sortie au réseau.</td>
+</tr>
+<tr>
+<td><code>test_size</code></td>
+<td>float</td>
+<td>Yes</td>
+<td>Proportion des données à utiliser pendant l'entrainement. Si None : utilise toutes les données. Default: <code>None</code></td>
+</tr>
+<tr>
+<td><code>optim</code></td>
+<td>str</td>
+<td>Yes</td>
+<td>Nom de l’optimiseur à utiliser (doit exister dans <code>optims()</code>). Default: <code>"Adam"</code></td>
+</tr>
+<tr>
+<td><code>init_lr</code></td>
+<td>float</td>
+<td>Yes</td>
+<td>Taux d’apprentissage initial pour l’optimiseur. Default: <code>1e-3</code></td>
+</tr>
+<tr>
+<td><code>crit</code></td>
+<td>str</td>
+<td>Yes</td>
+<td>Fonction de perte à utiliser (doit exister dans <code>crits()</code>). Default: <code>"MSE"</code></td>
+</tr>
+<tr>
+<td><code>batch_size</code></td>
+<td>float</td>
+<td>Yes</td>
+<td>Taille des minibatchs. Default: <code>1024</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h5 id="trainertrain"><code>Trainer.train</code><a class="headerlink" href="#trainertrain" title="Permanent link">&para;</a></h5>
+<p>Lancement d'un entrainement avec le trainer définit</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>num_epochs</code></td>
+<td>int</td>
+<td>Yes</td>
+<td>Nombres d'itérations à effectuer.</td>
+</tr>
+<tr>
+<td><code>activate_tqdm</code></td>
+<td>boolean</td>
+<td>Yes</td>
+<td>Utilisation d'une barre de progression.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="dictionnaires">Dictionnaires<a class="headerlink" href="#dictionnaires" title="Permanent link">&para;</a></h3>
+<h4 id="norms"><code>norms()</code><a class="headerlink" href="#norms" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -241,59 +349,64 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong>"Relu"</strong></td>
-<td><code>nn.ReLU()</code></td>
+<td><strong>"ReLU"</strong></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.ReLU.html"><code>nn.ReLU()</code></a></td>
 <td>Fonction d'activation ReLU classique (Rectified Linear Unit).</td>
 </tr>
 <tr>
-<td><strong>"LeakyRelu"</strong></td>
-<td><code>nn.LeakyReLU()</code></td>
+<td><strong>"LeakyReLU"</strong></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.LeakyReLU.html"><code>nn.LeakyReLU()</code></a></td>
 <td>ReLU avec un petit coefficient pour les valeurs négatives (paramètre <code>negative_slope</code>).</td>
 </tr>
 <tr>
 <td><strong>"ELU"</strong></td>
-<td><code>nn.ELU()</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.ELU.html"><code>nn.ELU()</code></a></td>
 <td>Fonction d'activation ELU (Exponential Linear Unit), qui a une meilleure gestion des valeurs négatives.</td>
 </tr>
 <tr>
 <td><strong>"SELU"</strong></td>
-<td><code>nn.SELU()</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.SELU.html"><code>nn.SELU()</code></a></td>
 <td>SELU (Scaled Exponential Linear Unit), une version améliorée de l'ELU pour des réseaux auto-normalisants.</td>
 </tr>
 <tr>
 <td><strong>"GELU"</strong></td>
-<td><code>nn.GELU()</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.GELU.html"><code>nn.GELU()</code></a></td>
 <td>GELU (Gaussian Error Linear Unit), une activation probabiliste basée sur une fonction gaussienne.</td>
 </tr>
 <tr>
+<td><strong>"Mish"</strong></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Mish.html"><code>nn.Mish()</code></a></td>
+<td>ReLU différentiable en tout points avec passage négatif.</td>
+</tr>
+<tr>
+<td><strong>"Softplus"</strong></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Softplus.html"><code>nn.Softplus()</code></a></td>
+<td>Fonction d'activation qui approxime ReLU mais de manière lissée.</td>
+</tr>
+<tr>
 <td><strong>"Sigmoid"</strong></td>
-<td><code>nn.Sigmoid()</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html"><code>nn.Sigmoid()</code></a></td>
 <td>Fonction d'activation Sigmoid, qui produit une sortie entre 0 et 1.</td>
 </tr>
 <tr>
 <td><strong>"Tanh"</strong></td>
-<td><code>nn.Tanh()</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Tanh.html"><code>nn.Tanh()</code></a></td>
 <td>Fonction d'activation Tanh, avec une sortie dans l'intervalle [-1, 1].</td>
 </tr>
 <tr>
 <td><strong>"Hardtanh"</strong></td>
-<td><code>nn.Hardtanh()</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Hardtanh.html"><code>nn.Hardtanh()</code></a></td>
 <td>Variante de Tanh, avec des sorties limitées entre une plage spécifiée.</td>
 </tr>
 <tr>
-<td><strong>"Softplus"</strong></td>
-<td><code>nn.Softplus()</code></td>
-<td>Fonction d'activation qui approxime ReLU mais de manière lissée.</td>
-</tr>
-<tr>
 <td><strong>"Softsign"</strong></td>
-<td><code>nn.Softsign()</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Softsign.html"><code>nn.Softsign()</code></a></td>
 <td>Fonction d'activation similaire à Tanh mais plus souple, avec des valeurs dans [-1, 1].</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h4 id="crits"><strong>crits()</strong><a class="headerlink" href="#crits" title="Permanent link">&para;</a></h4>
+<h4 id="crits"><code>crits()</code><a class="headerlink" href="#crits" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -305,7 +418,7 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 <tbody>
 <tr>
 <td><strong>"MSE"</strong></td>
-<td><code>nn.MSELoss()</code></td>
+<td><a href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html"><code>nn.MSELoss</code></a></td>
 <td>Mean Squared Error Loss, utilisée pour les régressions.</td>
 </tr>
 <tr>
@@ -346,7 +459,7 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 </tbody>
 </table>
 <hr />
-<h4 id="optims"><strong>optims()</strong><a class="headerlink" href="#optims" title="Permanent link">&para;</a></h4>
+<h4 id="optims"><code>optims()</code><a class="headerlink" href="#optims" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -414,7 +527,8 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 </tbody>
 </table>
 <hr />
-<h3 id="device-et-configuration">Device et configuration<a class="headerlink" href="#device-et-configuration" title="Permanent link">&para;</a></h3>
+<h3 id="device"><code>device</code><a class="headerlink" href="#device" title="Permanent link">&para;</a></h3>
+<p>variable principale d'allocation des performances</p>
 <h4 id="apple-silicon-macos"><strong>Apple Silicon (macOS)</strong><a class="headerlink" href="#apple-silicon-macos" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Si le système d'exploitation est macOS (nommé <code>darwin</code> dans <code>platform.system()</code>), la fonction vérifie si l'accélérateur <strong>Metal Performance Shaders</strong> (MPS) est disponible sur l'appareil.</li>
@@ -446,9 +560,6 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="MLP/" class="btn btn-neutral float-right" title="MLP">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -475,8 +586,6 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
     
     
     
-      <span><a href="MLP/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
   </span>
 </div>
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -495,5 +604,5 @@ de traitement d'images pour l'apprentissage sur des images RGB.</p>
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-12-05 22:28:41.721415+00:00
+Build Date UTC : 2026-01-16 18:26:01.933488+00:00
 -->
