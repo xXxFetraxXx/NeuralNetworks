@@ -5,7 +5,10 @@ torch>=2.9.1,<3.0
 torchvision>=0.24,<1.0
 torchaudio>=2.9,<3.0
 torchmetrics>=1.8
+visualtorch>=0.2
+random-fourier-features-pytorch>=1.0
 IPython>=8.16
 requests
+airfrans
 scipy
-scikit-learn>=1.4
+pandas

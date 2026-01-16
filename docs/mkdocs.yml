@@ -10,10 +10,44 @@ nav:
 
   - Accueil: index.md
 
+  - Objets:
+
+      - MLP:
+          - MLP: MLP/index.md
+          - MLP.params: MLP/params.md
+          - MLP.neurons: MLP/neurons.md
+          - MLP.nb_params: MLP/nb_params.md
+          - MLP.plot: MLP/plot.md
+          - MLP.train: MLP/train.md
+          - losses: MLP/losses.md
+
+      - Latent:
+          - Latent: placeholder.md
+          - Latent.encode: placeholder.md
+          - Latent.decode: placeholder.md
+
+  - Tools:
+      - image:
+          - image_from_url: tools/image/image_from_url.md
+          - plot: tools/image/plot.md
+          - compare: tools/image/compare.md
+
+      - MNIST:
+          - data: placeholder.md
+          - evaluate: placeholder.md
+
+      - AirfRANS: 
+          - download: placeholder.md
+
+      - VKI-LS59: placeholder.md
+
   - Dependances:
       - torch: https://pypi.org/project/torch/
+      - visualtorch: https://pypi.org/project/visualtorch/
+      - rff: https://pypi.org/project/random-fourier-features-pytorch/
       - numpy: https://pypi.org/project/numpy/
       - matplotlib: https://pypi.org/project/matplotlib/
+      - airfrans: https://airfrans.readthedocs.io/en/latest/
 
   - Liens:
       - PyPI: https://pypi.org/project/NeuralNetworks/
