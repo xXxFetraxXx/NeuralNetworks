@@ -52,10 +52,10 @@ class MLP (nn.Module):
         super ().__init__ ()
 
         # --- Activation ---
-        self.norm = norm_list.get (norm, nn.ReLU)
+        self.norm = norm_list.get (norm)
         if self.norm is None:
-            print (f"Warning: '{norm}' not recognized, falling back to 'ReLU'")
-            self.norm = norm_list.get (norm, "Relu")
+            print (f"Warning: '{norm}' not recognized, falling back to 'm is'")
+            self.norm = norm_list.get ("Relu")
 
         # --- Attributs ---
         self.losses = []

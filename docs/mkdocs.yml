@@ -1,7 +1,7 @@
 site_name: NeuralNetworks
 site_url: https://xXxFetraxXx.github.io/NeuralNetworks
 repo_url: https://github.com/xXxFetraxXx/NeuralNetworks
-site_description: "Multi-Layer Perceptrons with multi-Fourier encoding, variable learning rate, visualization and PyTorch compilation"
+site_description: "Multi-Layer Perceptrons with multi-Fourier encoding and variable learning rate"
 site_author: "Alexandre Brun"
 theme:
   name: readthedocs
@@ -10,28 +10,10 @@ nav:
 
   - Accueil: index.md
 
-  - Tools:
-      - image:
-          - image_from_url: tools/image/image_from_url.md
-          - plot: tools/image/plot.md
-          - compare: tools/image/compare.md
-
-      - MNIST:
-          - data: placeholder.md
-          - evaluate: placeholder.md
-
-      - AirfRANS: 
-          - download: placeholder.md
-
-      - VKI-LS59: placeholder.md
-
   - Dependances:
       - torch: https://pypi.org/project/torch/
-      - visualtorch: https://pypi.org/project/visualtorch/
-      - rff: https://pypi.org/project/random-fourier-features-pytorch/
       - numpy: https://pypi.org/project/numpy/
       - matplotlib: https://pypi.org/project/matplotlib/
-      - airfrans: https://airfrans.readthedocs.io/en/latest/
 
   - Liens:
       - PyPI: https://pypi.org/project/NeuralNetworks/
