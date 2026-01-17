@@ -42,45 +42,53 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Accueil</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#contenu-principal">Contenu principal</a>
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#mlp">MLP</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#mlp-mlp">MLP {#MLP}</a>
+    <li class="toctree-l4"><a class="reference internal" href="#parametres">Paramètres</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#trainer">Trainer</a>
+    <li class="toctree-l4"><a class="reference internal" href="#attributs">Attributs</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#methodes">Méthodes</a>
+    <li class="toctree-l3"><a class="reference internal" href="#trainer">Trainer</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#losses">losses</a>
+    <li class="toctree-l4"><a class="reference internal" href="#parametres_1">Paramètres</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#learnings">learnings</a>
+    <li class="toctree-l4"><a class="reference internal" href="#trainertrain">Trainer.train</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#dictionnaires">Dictionnaires</a>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methodes">Méthodes</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#norms-norms">norms() {#norms}</a>
+    <li class="toctree-l3"><a class="reference internal" href="#losses">losses</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#crits-crits">crits() {#crits}</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#optims-optims">optims() {#optims}</a>
+    <li class="toctree-l3"><a class="reference internal" href="#learnings">learnings</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#device">device</a>
+    <li class="toctree-l2"><a class="reference internal" href="#dictionnaires">Dictionnaires</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#apple-silicon-macos">Apple Silicon (macOS)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#norms">norms</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a>
+    <li class="toctree-l3"><a class="reference internal" href="#optims">optims</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#systeme-non-reconnu">Système non reconnu</a>
+    <li class="toctree-l3"><a class="reference internal" href="#crits">crits</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#device">device</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#apple-silicon-macos">Apple Silicon (macOS)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#systeme-non-reconnu">Système non reconnu</a>
     </li>
         </ul>
     </li>
@@ -131,16 +139,15 @@
 <p>Module complet pour la création et l'entraînement de <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MultiLayer Perceptrons</a> (MLP)<br />
 avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Random_Fourier_feature">Fourier Features</a> et gestion automatique des pertes.</p>
 <hr />
-<h2 id="contenu-principal">Contenu principal<a class="headerlink" href="#contenu-principal" title="Permanent link">&para;</a></h2>
-<h3 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h3>
-<h4 id="mlp-mlp"><code>MLP</code> {#MLP}<a class="headerlink" href="#mlp-mlp" title="Permanent link">&para;</a></h4>
+<h2 id="classes"><strong>Classes</strong><a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="mlp"><strong>MLP</strong><a class="headerlink" href="#mlp" title="Permanent link">&para;</a></h3>
 <p>Cette classe fournit :</p>
 <ul>
 <li>Un <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">MLP</a> entièrement configurable (dimensions, activation).</li>
 <li>Option d'encodage <a href="https://en.wikipedia.org/wiki/Random_feature#Random_Fourier_feature">Fourier Features</a> sur les entrées.</li>
 </ul>
 <hr />
-<h5 id="parametres">Paramètres<a class="headerlink" href="#parametres" title="Permanent link">&para;</a></h5>
+<h4 id="parametres"><strong>Paramètres</strong><a class="headerlink" href="#parametres" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -189,7 +196,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 <tr>
 <td><code>norm</code></td>
-<td><a href="#norms"><code>norm</code></a></td>
+<td><a href="#norms-norms"><code>norm</code></a></td>
 <td>Oui</td>
 <td>Type de normalisation / activation pour les couches cachées. Default: <code>'Relu'</code></td>
 </tr>
@@ -201,20 +208,51 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 </tbody>
 </table>
-<h5 id="attributs">Attributs<a class="headerlink" href="#attributs" title="Permanent link">&para;</a></h5>
+<h4 id="attributs"><strong>Attributs</strong><a class="headerlink" href="#attributs" title="Permanent link">&para;</a></h4>
 <ul>
-<li><code>losses : list[float]</code> — Historique des pertes cumulées lors de l'entraînement  </li>
+<li><code>losses : list[float]</code>    — Historique des pertes cumulées lors de l'entraînement  </li>
 <li><code>learnings : list[float]</code> — Historique des taux d'apprentissage utilisées lors de l'entraînement  </li>
-<li><code>model : nn.Sequential</code> — MLP complet construit dynamiquement </li>
-<li><code>name : str</code> — Nom du réseau</li>
+<li><code>model : nn.Sequential</code>   — MLP complet construit dynamiquement </li>
+<li><code>name : str</code>              — Nom du réseau</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th><strong>Attributs</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>losses</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range"><code>list[float]</code></a></td>
+<td>Historique des pertes cumulées lors de l'entraînement</td>
+</tr>
+<tr>
+<td><code>learnings</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range"><code>list[float]</code></a></td>
+<td>Historique des taux d'apprentissage utilisées lors de l'entraînement</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html"><code>nn.Sequential</code></a></td>
+<td>MLP complet construit dynamiquement</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code>str</code></a></td>
+<td>Nom du réseau</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h4 id="trainer"><code>Trainer</code><a class="headerlink" href="#trainer" title="Permanent link">&para;</a></h4>
+<h3 id="trainer"><strong>Trainer</strong><a class="headerlink" href="#trainer" title="Permanent link">&para;</a></h3>
 <p>Cette classe fournit :</p>
 <ul>
 <li>Méthode pour entraîner des réseaux avec mini-batchs et <a href="https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html">Automatic Mixed Precision</a></li>
 </ul>
-<h5 id="parametres_1">Paramètres<a class="headerlink" href="#parametres_1" title="Permanent link">&para;</a></h5>
+<h4 id="parametres_1"><strong>Paramètres</strong><a class="headerlink" href="#parametres_1" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -227,7 +265,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 <tbody>
 <tr>
 <td><code>*nets</code></td>
-<td><a href="#MLP"><code>MLP</code></a></td>
+<td><a href="#mlp-mlp"><code>MLP</code></a></td>
 <td>Non</td>
 <td>Réseaux pour lesquels le trainer va entrainer.</td>
 </tr>
@@ -251,7 +289,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 <tr>
 <td><code>optim</code></td>
-<td><a href="#optims"><code>optim</code></a></td>
+<td><a href="#optims-optims"><code>optim</code></a></td>
 <td>Oui</td>
 <td>Nom de l’optimiseur à utiliser (doit exister dans <code>optims()</code>). Default: <code>'Adam'</code></td>
 </tr>
@@ -263,7 +301,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 <tr>
 <td><code>crit</code></td>
-<td><a href="#crits"><code>crit</code></a></td>
+<td><a href="#crits-crits"><code>crit</code></a></td>
 <td>Oui</td>
 <td>Fonction de perte à utiliser (doit exister dans <code>crits()</code>). Default: <code>MSE'</code></td>
 </tr>
@@ -275,7 +313,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 </tbody>
 </table>
-<h5 id="trainertrain"><code>Trainer.train</code><a class="headerlink" href="#trainertrain" title="Permanent link">&para;</a></h5>
+<h4 id="trainertrain"><strong>Trainer.train</strong><a class="headerlink" href="#trainertrain" title="Permanent link">&para;</a></h4>
 <p>Lancement d'un entrainement avec le trainer définit</p>
 <table>
 <thead>
@@ -302,14 +340,14 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tbody>
 </table>
 <hr />
-<h3 id="methodes">Méthodes<a class="headerlink" href="#methodes" title="Permanent link">&para;</a></h3>
-<h4 id="losses"><code>losses</code><a class="headerlink" href="#losses" title="Permanent link">&para;</a></h4>
+<h2 id="methodes"><strong>Méthodes</strong><a class="headerlink" href="#methodes" title="Permanent link">&para;</a></h2>
+<h3 id="losses"><strong>losses</strong><a class="headerlink" href="#losses" title="Permanent link">&para;</a></h3>
 <p>Affiche les résidus en fonction des époques d'entrainement des réseaux.</p>
-<h4 id="learnings"><code>learnings</code><a class="headerlink" href="#learnings" title="Permanent link">&para;</a></h4>
+<h3 id="learnings"><strong>learnings</strong><a class="headerlink" href="#learnings" title="Permanent link">&para;</a></h3>
 <p>Affiche les taux d'apprentissage en fonction des époques d'entrainement des réseaux.</p>
 <hr />
-<h3 id="dictionnaires">Dictionnaires<a class="headerlink" href="#dictionnaires" title="Permanent link">&para;</a></h3>
-<h4 id="norms-norms"><code>norms()</code> {#norms}<a class="headerlink" href="#norms-norms" title="Permanent link">&para;</a></h4>
+<h2 id="dictionnaires"><strong>Dictionnaires</strong><a class="headerlink" href="#dictionnaires" title="Permanent link">&para;</a></h2>
+<h3 id="norms"><strong>norms</strong><a class="headerlink" href="#norms" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -376,59 +414,8 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 </tbody>
 </table>
-<h4 id="crits-crits"><code>crits()</code> {#crits}<a class="headerlink" href="#crits-crits" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th><strong>Valeurs</strong></th>
-<th><strong>Module PyTorch</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>'MSE'</code></td>
-<td><a href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html"><code>nn.MSELoss</code></a></td>
-<td>Perte utilisée pour les régressions.</td>
-</tr>
-<tr>
-<td><code>'L1'</code></td>
-<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.L1Loss.html"><code>nn.L1Loss()</code></a></td>
-<td>Perte utilisée pour la régularisation.</td>
-</tr>
-<tr>
-<td><code>'SmoothL1'</code></td>
-<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html"><code>nn.SmoothL1Loss()</code></a></td>
-<td>Perte moins sensible aux outliers.</td>
-</tr>
-<tr>
-<td><code>'Huber'</code></td>
-<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html"><code>nn.HuberLoss()</code></a></td>
-<td>Perte moins affectée par les grands écarts.</td>
-</tr>
-<tr>
-<td><code>'CrossEntropy'</code></td>
-<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html"><code>nn.CrossEntropyLoss()</code></a></td>
-<td>Perte utilisée pour les problèmes de classification multi-classes.</td>
-</tr>
-<tr>
-<td><code>'KLDiv'</code></td>
-<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html"><code>nn.KLDivLoss()</code></a></td>
-<td>Perte utilisée pour des modèles probabilistes.</td>
-</tr>
-<tr>
-<td><code>'PoissonNLL'</code></td>
-<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.PoissonNLLLoss.html"><code>nn.PoissonNLLLoss()</code></a></td>
-<td>Perte utilisée pour la modélisation de comptages.</td>
-</tr>
-<tr>
-<td><code>'MultiLabelSoftMargin'</code></td>
-<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.MultiLabelSoftMarginLoss.html"><code>nn.MultiLabelSoftMarginLoss()</code></a></td>
-<td>Perte utilisée pour les problèmes de classification multi-étiquettes.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="optims-optims"><code>optims()</code> {#optims}<a class="headerlink" href="#optims-optims" title="Permanent link">&para;</a></h4>
+<hr />
+<h3 id="optims"><strong>optims</strong><a class="headerlink" href="#optims" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -496,27 +483,80 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tbody>
 </table>
 <hr />
-<h3 id="device"><code>device</code><a class="headerlink" href="#device" title="Permanent link">&para;</a></h3>
+<h3 id="crits"><strong>crits</strong><a class="headerlink" href="#crits" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Valeurs</strong></th>
+<th><strong>Module PyTorch</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>'MSE'</code></td>
+<td><a href="https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html"><code>nn.MSELoss</code></a></td>
+<td>Perte utilisée pour les régressions.</td>
+</tr>
+<tr>
+<td><code>'L1'</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.L1Loss.html"><code>nn.L1Loss()</code></a></td>
+<td>Perte utilisée pour la régularisation.</td>
+</tr>
+<tr>
+<td><code>'SmoothL1'</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html"><code>nn.SmoothL1Loss()</code></a></td>
+<td>Perte moins sensible aux outliers.</td>
+</tr>
+<tr>
+<td><code>'Huber'</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html"><code>nn.HuberLoss()</code></a></td>
+<td>Perte moins affectée par les grands écarts.</td>
+</tr>
+<tr>
+<td><code>'CrossEntropy'</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html"><code>nn.CrossEntropyLoss()</code></a></td>
+<td>Perte utilisée pour les problèmes de classification multi-classes.</td>
+</tr>
+<tr>
+<td><code>'KLDiv'</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html"><code>nn.KLDivLoss()</code></a></td>
+<td>Perte utilisée pour des modèles probabilistes.</td>
+</tr>
+<tr>
+<td><code>'PoissonNLL'</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.PoissonNLLLoss.html"><code>nn.PoissonNLLLoss()</code></a></td>
+<td>Perte utilisée pour la modélisation de comptages.</td>
+</tr>
+<tr>
+<td><code>'MultiLabelSoftMargin'</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.MultiLabelSoftMarginLoss.html"><code>nn.MultiLabelSoftMarginLoss()</code></a></td>
+<td>Perte utilisée pour les problèmes de classification multi-étiquettes.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="device"><strong>device</strong><a class="headerlink" href="#device" title="Permanent link">&para;</a></h2>
 <p>variable principale d'allocation des performances</p>
-<h4 id="apple-silicon-macos"><strong>Apple Silicon (macOS)</strong><a class="headerlink" href="#apple-silicon-macos" title="Permanent link">&para;</a></h4>
+<h3 id="apple-silicon-macos"><strong>Apple Silicon (macOS)</strong><a class="headerlink" href="#apple-silicon-macos" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Si le système d'exploitation est macOS (nommé <code>darwin</code> dans <code>platform.system()</code>), la fonction vérifie si l'accélérateur <strong>Metal Performance Shaders</strong> (MPS) est disponible sur l'appareil.</li>
-<li>Si MPS est disponible (<code>torch.backends.mps.is_available()</code>), l'appareil cible sera défini sur <code>'MPS'</code> (c'est un équivalent de CUDA pour les appareils Apple Silicon).</li>
+<li>Si MPS est disponible (<code>torch.backends.mps.is_available()</code>), l'appareil cible sera défini sur <code>'mps'</code> (c'est un équivalent de CUDA pour les appareils Apple Silicon).</li>
 </ul>
-<h4 id="windows"><strong>Windows</strong><a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
+<h3 id="windows"><strong>Windows</strong><a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Si le système d'exploitation est Windows, la fonction vérifie d'abord si <strong>CUDA</strong> (NVIDIA) est disponible avec <code>torch.cuda.is_available()</code>. Si c'est le cas, le périphérique sera défini sur <strong>CUDA</strong>.</li>
 </ul>
-<h4 id="linux"><strong>Linux</strong><a class="headerlink" href="#linux" title="Permanent link">&para;</a></h4>
+<h3 id="linux"><strong>Linux</strong><a class="headerlink" href="#linux" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Si le système d'exploitation est Linux, plusieurs vérifications sont effectuées :</li>
-<li><strong>CUDA</strong> (NVIDIA) : Si <code>torch.cuda.is_available()</code> renvoie <code>True</code>, le périphérique sera défini sur <code>'CUDA'</code>.</li>
-<li><strong>ROCm</strong> (AMD) : Si le système supporte <strong>ROCm</strong> via <code>torch.backends.hip.is_available()</code>, l'appareil sera défini sur <code>'CUDA'</code> (ROCm est utilisé pour les cartes AMD dans le cadre de l'API CUDA).</li>
+<li><strong>CUDA</strong> (NVIDIA) : Si <code>torch.cuda.is_available()</code> renvoie <code>True</code>, le périphérique sera défini sur <code>'cuda'</code>.</li>
+<li><strong>ROCm</strong> (AMD) : Si le système supporte <strong>ROCm</strong> via <code>torch.backends.hip.is_available()</code>, l'appareil sera défini sur <code>'cuda'</code> (ROCm est utilisé pour les cartes AMD dans le cadre de l'API CUDA).</li>
 <li><strong>Intel oneAPI / XPU</strong> : Si le système prend en charge <strong>Intel oneAPI</strong> ou <strong>XPU</strong> via <code>torch.xpu.is_available()</code>, le périphérique sera défini sur <strong>XPU</strong>.</li>
 </ul>
-<h4 id="systeme-non-reconnu"><strong>Système non reconnu</strong><a class="headerlink" href="#systeme-non-reconnu" title="Permanent link">&para;</a></h4>
+<h3 id="systeme-non-reconnu"><strong>Système non reconnu</strong><a class="headerlink" href="#systeme-non-reconnu" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Si aucune des conditions ci-dessus n'est remplie, la fonction retourne <code>'CPU'</code> comme périphérique par défaut.</li>
+<li>Si aucune des conditions ci-dessus n'est remplie, la fonction retourne <code>'cpu'</code> comme périphérique par défaut.</li>
 </ul>
 <hr />
               
@@ -566,5 +606,5 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-01-17 20:42:56.230183+00:00
+Build Date UTC : 2026-01-17 21:03:10.444009+00:00
 -->
