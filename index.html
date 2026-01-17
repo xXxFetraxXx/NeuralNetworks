@@ -45,17 +45,9 @@
     <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#mlp">MLP</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#parametres">Paramètres</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#attributs">Attributs</a>
-    </li>
-        </ul>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#trainer">Trainer</a>
         <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#parametres_1">Paramètres</a>
-    </li>
     <li class="toctree-l4"><a class="reference internal" href="#trainertrain">Trainer.train</a>
     </li>
         </ul>
@@ -147,7 +139,6 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 <li>Option d'encodage <a href="https://en.wikipedia.org/wiki/Random_feature#Random_Fourier_feature">Fourier Features</a> sur les entrées.</li>
 </ul>
 <hr />
-<h4 id="parametres"><strong>Paramètres</strong><a class="headerlink" href="#parametres" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -196,7 +187,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 <tr>
 <td><code>norm</code></td>
-<td><a href="#norms-norms"><code>norm</code></a></td>
+<td><a href="#norms"><code>norm</code></a></td>
 <td>Oui</td>
 <td>Type de normalisation / activation pour les couches cachées. Default: <code>'Relu'</code></td>
 </tr>
@@ -208,13 +199,6 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 </tbody>
 </table>
-<h4 id="attributs"><strong>Attributs</strong><a class="headerlink" href="#attributs" title="Permanent link">&para;</a></h4>
-<ul>
-<li><code>losses : list[float]</code>    — Historique des pertes cumulées lors de l'entraînement  </li>
-<li><code>learnings : list[float]</code> — Historique des taux d'apprentissage utilisées lors de l'entraînement  </li>
-<li><code>model : nn.Sequential</code>   — MLP complet construit dynamiquement </li>
-<li><code>name : str</code>              — Nom du réseau</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -225,22 +209,22 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </thead>
 <tbody>
 <tr>
-<td><code>losses</code></td>
+<td><code>MLP.losses</code></td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range"><code>list[float]</code></a></td>
 <td>Historique des pertes cumulées lors de l'entraînement</td>
 </tr>
 <tr>
-<td><code>learnings</code></td>
+<td><code>MLP.learnings</code></td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range"><code>list[float]</code></a></td>
 <td>Historique des taux d'apprentissage utilisées lors de l'entraînement</td>
 </tr>
 <tr>
-<td><code>model</code></td>
+<td><code>MLP.model</code></td>
 <td><a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html"><code>nn.Sequential</code></a></td>
 <td>MLP complet construit dynamiquement</td>
 </tr>
 <tr>
-<td><code>name</code></td>
+<td><code>MLP.name</code></td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code>str</code></a></td>
 <td>Nom du réseau</td>
 </tr>
@@ -248,11 +232,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </table>
 <hr />
 <h3 id="trainer"><strong>Trainer</strong><a class="headerlink" href="#trainer" title="Permanent link">&para;</a></h3>
-<p>Cette classe fournit :</p>
-<ul>
-<li>Méthode pour entraîner des réseaux avec mini-batchs et <a href="https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html">Automatic Mixed Precision</a></li>
-</ul>
-<h4 id="parametres_1"><strong>Paramètres</strong><a class="headerlink" href="#parametres_1" title="Permanent link">&para;</a></h4>
+<p>Classe pour entraîner des réseaux avec mini-batchs et <a href="https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html">Automatic Mixed Precision</a>.</p>
 <table>
 <thead>
 <tr>
@@ -265,7 +245,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 <tbody>
 <tr>
 <td><code>*nets</code></td>
-<td><a href="#mlp-mlp"><code>MLP</code></a></td>
+<td><a href="#mlp"><code>MLP</code></a></td>
 <td>Non</td>
 <td>Réseaux pour lesquels le trainer va entrainer.</td>
 </tr>
@@ -289,7 +269,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 <tr>
 <td><code>optim</code></td>
-<td><a href="#optims-optims"><code>optim</code></a></td>
+<td><a href="#optims"><code>optim</code></a></td>
 <td>Oui</td>
 <td>Nom de l’optimiseur à utiliser (doit exister dans <code>optims()</code>). Default: <code>'Adam'</code></td>
 </tr>
@@ -301,7 +281,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tr>
 <tr>
 <td><code>crit</code></td>
-<td><a href="#crits-crits"><code>crit</code></a></td>
+<td><a href="#crits"><code>crit</code></a></td>
 <td>Oui</td>
 <td>Fonction de perte à utiliser (doit exister dans <code>crits()</code>). Default: <code>MSE'</code></td>
 </tr>
@@ -314,7 +294,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </tbody>
 </table>
 <h4 id="trainertrain"><strong>Trainer.train</strong><a class="headerlink" href="#trainertrain" title="Permanent link">&para;</a></h4>
-<p>Lancement d'un entrainement avec le trainer définit</p>
+<p>Lancement d'un entrainement avec le trainer définit.</p>
 <table>
 <thead>
 <tr>
@@ -537,7 +517,7 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 </table>
 <hr />
 <h2 id="device"><strong>device</strong><a class="headerlink" href="#device" title="Permanent link">&para;</a></h2>
-<p>variable principale d'allocation des performances</p>
+<p>Variable principale d'allocation des performances.</p>
 <h3 id="apple-silicon-macos"><strong>Apple Silicon (macOS)</strong><a class="headerlink" href="#apple-silicon-macos" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Si le système d'exploitation est macOS (nommé <code>darwin</code> dans <code>platform.system()</code>), la fonction vérifie si l'accélérateur <strong>Metal Performance Shaders</strong> (MPS) est disponible sur l'appareil.</li>
@@ -606,5 +586,5 @@ avec encodage optionnel <a href="https://en.wikipedia.org/wiki/Random_feature#Ra
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-01-17 21:03:10.444009+00:00
+Build Date UTC : 2026-01-17 21:17:17.297045+00:00
 -->
