@@ -9,15 +9,10 @@
 from .Dependances import norms, crits, optims, rglen, device, pi, e, tensorise
 
 # Modèle MLP principal + fonction d'entraînement associée
-from .MLP import MLP, losses
+from .MLP import MLP
 
 from .Trainer import Trainer
 
 from .UI import *
 
-from .Latent import Latent
-
-# Fonctions de chargement/preprocessing des images
-from .tools import image, MNIST, AirfRANS
-
-__version__ = "0.2.2"
+__version__ = "0.2.4"
