@@ -27,7 +27,8 @@ def train_f (Trainer, num_epochs = 1, activate_tqdm = True):
             pbar = tqdm (
                 range (num_epochs),
                 desc = f"train epoch",
-                disable = not (activate_tqdm)
+                disable = not (activate_tqdm),
+                mininterval=0.5
             )
 
             for epoch in pbar:
@@ -43,14 +44,8 @@ def train_f (Trainer, num_epochs = 1, activate_tqdm = True):
                     def closure ():
                         Trainer.optims [k].zero_grad (set_to_none = True)
                         with autocast (dev):
-                            loss = Trainer.crit (
-                                net.f (
-                                    torch.cat (
-            [net.model (encoding (Trainer.X_train [idx]))for encoding in net.encodings],
-            dim = 1
-                                    )
-                                ),
-                                Trainer.y_train[idx]
+                            loss = Trainer.crit (net.train_forward (Trainer.X_train [idx]),
+                                Trainer.y_train [idx]
                             )
                             scaler.scale (loss).backward ()
                             return loss
@@ -66,7 +61,7 @@ def train_f (Trainer, num_epochs = 1, activate_tqdm = True):
                 for param_group in Trainer.optims [k].param_groups:
                     param_group ['lr'] = net.learnings[-1]
                 
-                pbar.set_postfix(loss=f"{epoch_loss:.5f}",lr=f"{net.learnings[-1]:.5f}")
+                #pbar.set_postfix(loss=f"{epoch_loss:.5f}",lr=f"{net.learnings[-1]:.5f}")
                 
             net = net.to ('cpu')
             net.learnings.pop(-1)

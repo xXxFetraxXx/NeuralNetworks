@@ -6,7 +6,6 @@
 # (at your option) any later version.
 
 import os
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 import platform
 
@@ -19,6 +18,8 @@ from torch.utils.data import TensorDataset, DataLoader
 
 from torchmetrics.image import PeakSignalNoiseRatio as PSNR
 from torchvision.transforms import ToTensor, Resize, Compose
+
+import visualtorch
 
 torch.cuda.empty_cache()
 def get_best_device():
@@ -51,6 +52,7 @@ def get_best_device():
 
     # =========== Unknown OS ===========
     return torch.device("cpu")
+    
 device = get_best_device()
 
 # --- Optimisations CUDA ---

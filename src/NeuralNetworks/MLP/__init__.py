@@ -10,7 +10,9 @@ from .FourierFeatures import encode
 from .Layers import create_layers
 from .inference import infer
 
-class MLP (nn.Module):
+from ..shared import Module
+
+class MLP (Module):
     """
     Multi-Layer Perceptron avec encodage de Fourier optionnel.
 
@@ -49,18 +51,13 @@ class MLP (nn.Module):
         nb_fourier = 8,
         norm = "Relu",
         name = "Net"):
-        super ().__init__ ()
+        super ().__init__ (name)
 
         # --- Activation ---
         self.norm = norm_list.get (norm)
         if self.norm is None:
-            print (f"Warning: '{norm}' not recognized, falling back to 'Relu'")
+            print (f"Warning: '{norm}' not recognized, fRelung back to 'm is'")
             self.norm = norm_list.get ("Relu")
-
-        # --- Attributs ---
-        self.losses = []
-        self.learnings = []
-        self.name = name
         
         ## --- Encodage Fourier ou passthrough ---
         self.encodings, self.f = encode (
@@ -82,18 +79,8 @@ class MLP (nn.Module):
             self.norm
         )
 
-    def forward (self, x):
-        """
-        Effectue une passe avant du réseau.
+    def _forward (self, x):
+        return infer (self, x)
 
-        Parameters
-        ----------
-        x : torch.Tensor
-            Entrées du réseau de shape `(N, input_size)`.
-
-        Returns
-        -------
-        torch.Tensor
-            Sortie du MLP de shape `(N, output_size)`.
-        """
+    def train_forward (self, x):
         return infer (self, x)

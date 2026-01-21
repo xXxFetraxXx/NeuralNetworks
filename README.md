@@ -16,8 +16,6 @@ Cette classe fournit :
 
 ---
 
-#### **Paramètres**
-
 | **Paramètres**       | **Type**                                                                                         | **Optionnel** | **Description**                                                                |
 |----------------------|--------------------------------------------------------------------------------------------------|---------------|--------------------------------------------------------------------------------|
 | `input_size`         | [`int`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)         | Oui           | Taille des données en entrée au réseau. Default: `1`                           |
@@ -26,47 +24,36 @@ Cette classe fournit :
 | `sigmas`             | [`list[float]`](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) | Oui           | Liste de sigma pour encodages RFF. Si None : passthrough. Default: `None`      |
 | `fourier_input_size` | [`int`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)         | Oui           | WIP. Default: `2`                                                              |
 | `nb_fourier`         | [`int`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)         | Oui           | Nombre de fréquences utilisées pour les Fourier Features. Default: `8`         |
-| `norm`               | [`norm`](#norms-norms)                                                                           | Oui           | Type de normalisation / activation pour les couches cachées. Default: `'Relu'` |
+| `norm`               | [`norm`](#norms)                                                                                 | Oui           | Type de normalisation / activation pour les couches cachées. Default: `'Relu'` |
 | `name`               | [`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)                  | Oui           | Nom du réseau pour identification ou affichage. Default: `'Net'`               |
 
-#### **Attributs**
-
-- `losses : list[float]`    — Historique des pertes cumulées lors de l'entraînement  
-- `learnings : list[float]` — Historique des taux d'apprentissage utilisées lors de l'entraînement  
-- `model : nn.Sequential`   — MLP complet construit dynamiquement 
-- `name : str`              — Nom du réseau
-
-| **Attributs** | **Type**                                                                                         | **Description**                                                                |
-|---------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| `losses`      | [`list[float]`](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) | Historique des pertes cumulées lors de l'entraînement                          |
-| `learnings`   | [`list[float]`](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) | Historique des taux d'apprentissage utilisées lors de l'entraînement           |
-| `model`       | [`nn.Sequential`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html)       | MLP complet construit dynamiquement                                            |
-| `name`        | [`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)                  | Nom du réseau                                                                  |
+| **Attributs**   | **Type**                                                                                         | **Description**                                                                |
+|-----------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| `MLP.losses`    | [`list[float]`](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) | Historique des pertes cumulées lors de l'entraînement                          |
+| `MLP.learnings` | [`list[float]`](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range) | Historique des taux d'apprentissage utilisées lors de l'entraînement           |
+| `MLP.model`     | [`nn.Sequential`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sequential.html)       | MLP complet construit dynamiquement                                            |
+| `MLP.name`      | [`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)                  | Nom du réseau                                                                  |
 
 ---
 
 ### **Trainer**
 
-Cette classe fournit :
-
-- Méthode pour entraîner des réseaux avec mini-batchs et [Automatic Mixed Precision](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html)
-
-#### **Paramètres**
+Classe pour entraîner des réseaux avec mini-batchs et [Automatic Mixed Precision](https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html).
 
 | **Paramètres** | **Type**                                                                                        | **Optionnel** | **Description**                                                                                                 |
 |----------------|-------------------------------------------------------------------------------------------------|---------------|-----------------------------------------------------------------------------------------------------------------|
-| `*nets`        | [`MLP`](#mlp-mlp)                                                                               | Non           | Réseaux pour lesquels le trainer va entrainer.                                                                  |
+| `*nets`        | [`MLP`](#mlp)                                                                                   | Non           | Réseaux pour lesquels le trainer va entrainer.                                                                  |
 | `inputs`       | [`numpy.array(list[float])`](https://numpy.org/doc/stable/reference/generated/numpy.array.html) | Non           | Données en entrée au réseau.                                                                                    |
 | `outputs`      | [`numpy.array(list[float])`](https://numpy.org/doc/stable/reference/generated/numpy.array.html) | Non           | Données en sortie au réseau.                                                                                    |
 | `test_size`    | [`float`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)      | Oui           | Proportion des données à utiliser pendant l'entrainement. Si None : utilise toutes les données. Default: `None` |
-| `optim`        | [`optim`](#optims-optims)                                                                       | Oui           | Nom de l’optimiseur à utiliser (doit exister dans `optims()`). Default: `'Adam'`                                |
+| `optim`        | [`optim`](#optims)                                                                              | Oui           | Nom de l’optimiseur à utiliser (doit exister dans `optims()`). Default: `'Adam'`                                |
 | `init_lr`      | [`float`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)      | Oui           | Taux d’apprentissage initial pour l’optimiseur. Default: `1e-3`                                                 |
-| `crit`         | [`crit`](#crits-crits)                                                                          | Oui           | Fonction de perte à utiliser (doit exister dans `crits()`). Default: `MSE'`                                     |
+| `crit`         | [`crit`](#crits)                                                                                | Oui           | Fonction de perte à utiliser (doit exister dans `crits()`). Default: `MSE'`                                     |
 | `batch_size`   | [`int`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)        | Oui           | Taille des minibatchs. Default: `1024`                                                                          |
 
 #### **Trainer.train**
 
-Lancement d'un entrainement avec le trainer définit
+Lancement d'un entrainement avec le trainer définit.
 
 | **Paramètres**  | **Type**                                                                                 | **Optionnel** | **Description**                         |
 |-----------------|------------------------------------------------------------------------------------------|---------------|-----------------------------------------|
@@ -142,7 +129,7 @@ Affiche les taux d'apprentissage en fonction des époques d'entrainement des ré
 
 ## **device**
 
-variable principale d'allocation des performances
+Variable principale d'allocation des performances.
 
 ### **Apple Silicon (macOS)**
 - Si le système d'exploitation est macOS (nommé `darwin` dans `platform.system()`), la fonction vérifie si l'accélérateur **Metal Performance Shaders** (MPS) est disponible sur l'appareil.

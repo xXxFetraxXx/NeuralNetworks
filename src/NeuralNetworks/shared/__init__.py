@@ -5,8 +5,4 @@
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-from ..Dependances import torch, np, device
-
-def infer (net, x):
-    results_list = [net.model (encoding (x)) for encoding in net.encodings]
-    return net.f (torch.cat (results_list, dim = 1))
+from .module import Module

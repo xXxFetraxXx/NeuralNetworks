@@ -5,7 +5,7 @@
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-from ..Dependances import crit_list, optim_list
+from ..Dependances import crit_list, optim_list, np
 from .train import train_f
 from .sample_data import sample_data
 
@@ -15,7 +15,7 @@ class Trainer:
         *nets,
         inputs,
         outputs,
-        test_size = None,
+        train_size = None,
         optim = 'Adam',
         init_lr = 0.01,
         crit = 'MSE',
@@ -24,12 +24,19 @@ class Trainer:
         self.batch_size = batch_size
         self.nets = nets
         self.init_lr = init_lr
+        if train_size is None:
 
-        self.X_train, self.X_test, self.y_train, self.y_test = sample_data (
-            inputs,
-            outputs,
-            test_size
-        )
+            self.X_train = inputs
+            self.X_test  = inputs
+            self.y_train = outputs
+            self.y_test  = outputs
+        else:
+            
+            self.X_train, self.X_test, self.y_train, self.y_test = sample_data (
+                inputs,
+                outputs,
+                min(1,np.abs(1 - train_size))
+            )
 
         # --- Fonction de perte ---
         self.crit = crit_list.get(crit)
