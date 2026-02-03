@@ -1,0 +1,22 @@
+.md-typeset table {
+    border-collapse: collapse; /* fusionne les bordures */
+}
+
+.md-typeset th,
+.md-typeset td {
+    border: 1px solid var(--md-default-fg-color); /* bordures autour de chaque cellule */
+    padding: 0.5em;
+}
+
+/* Par défaut, cacher l'image sombre */
+.theme-dark {
+    display: none;
+}
+
+/* Quand le thème est sombre (toggle Material) */
+body.md-dark .theme-light {
+    display: none;
+}
+body.md-dark .theme-dark {
+    display: inline;
+}

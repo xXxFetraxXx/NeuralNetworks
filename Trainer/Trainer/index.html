@@ -12,25 +12,31 @@
         <meta name="author" content="Alexandre Brun">
       
       
+        <link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/Trainer/Trainer/">
       
+      
+        <link rel="prev" href="../../module/vae/">
+      
+      
+        <link rel="next" href="../train/">
       
       
         
       
       
-      <link rel="icon" href="/NeuralNetworks/assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>NeuralNetworks</title>
+        <title>NeuralNetworks.Trainer - NeuralNetworks</title>
       
     
     
-      <link rel="stylesheet" href="/NeuralNetworks/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="/NeuralNetworks/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,11 +55,11 @@
       
     
     
-      <link rel="stylesheet" href="/NeuralNetworks/assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="/NeuralNetworks/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/NeuralNetworks/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -77,6 +83,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#neuralnetworkstrainer" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -87,7 +98,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/NeuralNetworks/." title="NeuralNetworks" class="md-header__button md-logo" aria-label="NeuralNetworks" data-md-component="logo">
+    <a href="../.." title="NeuralNetworks" class="md-header__button md-logo" aria-label="NeuralNetworks" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -107,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              NeuralNetworks.Trainer
             
           </span>
         </div>
@@ -227,7 +238,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/NeuralNetworks/." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   
@@ -247,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/NeuralNetworks/module/module/" class="md-tabs__link">
+        <a href="../../module/module/" class="md-tabs__link">
           
   
   
@@ -263,11 +274,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/NeuralNetworks/Trainer/Trainer/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -287,7 +300,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/NeuralNetworks/Containers/concept/" class="md-tabs__link">
+        <a href="../../Containers/concept/" class="md-tabs__link">
           
   
   
@@ -307,7 +320,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/NeuralNetworks/UI/losses/" class="md-tabs__link">
+        <a href="../../UI/losses/" class="md-tabs__link">
           
   
   
@@ -341,7 +354,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/NeuralNetworks/." title="NeuralNetworks" class="md-nav__button md-logo" aria-label="NeuralNetworks" data-md-component="logo">
+    <a href="../.." title="NeuralNetworks" class="md-nav__button md-logo" aria-label="NeuralNetworks" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -421,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -762,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/module/module/" class="md-nav__link">
+      <a href="../../module/module/" class="md-nav__link">
         
   
   
@@ -790,7 +803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/module/mlp/" class="md-nav__link">
+      <a href="../../module/mlp/" class="md-nav__link">
         
   
   
@@ -818,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/module/vae/" class="md-nav__link">
+      <a href="../../module/vae/" class="md-nav__link">
         
   
   
@@ -850,24 +863,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -885,7 +903,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -900,10 +918,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/NeuralNetworks/Trainer/Trainer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -919,6 +946,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -931,7 +959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/Trainer/train/" class="md-nav__link">
+      <a href="../train/" class="md-nav__link">
         
   
   
@@ -959,7 +987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/Trainer/lr/" class="md-nav__link">
+      <a href="../lr/" class="md-nav__link">
         
   
   
@@ -1044,7 +1072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/Containers/concept/" class="md-nav__link">
+      <a href="../../Containers/concept/" class="md-nav__link">
         
   
   
@@ -1072,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/Containers/norms/" class="md-nav__link">
+      <a href="../../Containers/norms/" class="md-nav__link">
         
   
   
@@ -1100,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/Containers/crits/" class="md-nav__link">
+      <a href="../../Containers/crits/" class="md-nav__link">
         
   
   
@@ -1128,7 +1156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/Containers/optims/" class="md-nav__link">
+      <a href="../../Containers/optims/" class="md-nav__link">
         
   
   
@@ -1213,7 +1241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/UI/losses/" class="md-nav__link">
+      <a href="../../UI/losses/" class="md-nav__link">
         
   
   
@@ -1241,7 +1269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/NeuralNetworks/UI/learnings/" class="md-nav__link">
+      <a href="../../UI/learnings/" class="md-nav__link">
         
   
   
@@ -1286,6 +1314,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -1298,8 +1328,137 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  
+  
+
+
+<h1 id="neuralnetworkstrainer"><strong>NeuralNetworks.Trainer</strong></h1>
+<p><code>NeuralNetworks.Trainer (*nets, inputs, outputs, init_train_size, final_train_size, optim, init_lr, final_lr, crit, batch_size)</code> <a href="https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/Trainer/Trainer.py#L15">[source]</a></p>
+<p>Classe pour entraîner des réseaux avec mini-batchs et <a href="https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html">Automatic Mixed Precision</a>.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Paramètres</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Optionnel</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*nets</code></td>
+<td><a href="../../module/module/"><code>Module</code></a></td>
+<td>Non</td>
+<td>Réseaux pour lesquels le trainer va entrainer.</td>
+</tr>
+<tr>
+<td><code>inputs</code></td>
+<td><a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html"><code>torch.Tensor([float])</code></a></td>
+<td>Non</td>
+<td>Données en entrée au réseau.</td>
+</tr>
+<tr>
+<td><code>outputs</code></td>
+<td><a href="https://numpy.org/doc/stable/reference/generated/numpy.array.html"><code>torch.Tensor([float])</code></a></td>
+<td>Non</td>
+<td>Données en sortie au réseau.</td>
+</tr>
+<tr>
+<td><code>init_train_size</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>float</code></a></td>
+<td>Oui</td>
+<td>Fraction du dataset initiale.  Default: <code>0.01</code></td>
+</tr>
+<tr>
+<td><code>final_train_size</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>float</code></a></td>
+<td>Oui</td>
+<td>Fraction du dataset finale.  Default: <code>1</code></td>
+</tr>
+<tr>
+<td><code>optim</code></td>
+<td><a href="../../Containers/optims/"><code>optim</code></a></td>
+<td>Oui</td>
+<td>Nom de l’optimiseur à utiliser (doit exister dans <code>optims()</code>). Default: <code>'Adam'</code></td>
+</tr>
+<tr>
+<td><code>init_lr</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>float</code></a></td>
+<td>Oui</td>
+<td>Taux d’apprentissage initial pour l’optimiseur. Default: <code>1e-3</code></td>
+</tr>
+<tr>
+<td><code>final_lr</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>float</code></a></td>
+<td>Oui</td>
+<td>Taux d’apprentissage final pour l’optimiseur. Default: <code>1e-5</code></td>
+</tr>
+<tr>
+<td><code>crit</code></td>
+<td><a href="../../Containers/crits/"><code>crit</code></a></td>
+<td>Oui</td>
+<td>Fonction de perte à utiliser (doit exister dans <code>crits()</code>). Default: <code>'MSE'</code></td>
+</tr>
+<tr>
+<td><code>batch_size</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>int</code></a></td>
+<td>Oui</td>
+<td>Taille des minibatchs. Default: <code>1024</code></td>
+</tr>
+</tbody>
+</table>
+<details class="example" open="open">
+<summary>Initialisation d'un trainer</summary>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Trainer_exemple.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">NeuralNetworks</span><span class="w"> </span><span class="kn">import</span> <span class="n">Trainer</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">T</span> <span class="o">=</span> <span class="n">Trainer</span> <span class="p">(</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="n">net</span>                       <span class="p">,</span> <span class="c1"># (1)!</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="n">inputs</span>           <span class="o">=</span> <span class="n">inputs</span> <span class="p">,</span> <span class="c1"># (2)!</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="n">outputs</span>          <span class="o">=</span> <span class="n">outputs</span><span class="p">,</span> <span class="c1"># (3)!</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="n">init_train_size</span>  <span class="o">=</span> <span class="mf">0.001</span>  <span class="p">,</span> 
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="n">final_train_size</span> <span class="o">=</span> <span class="mi">1</span>      <span class="p">,</span> 
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">init_lr</span>          <span class="o">=</span> <span class="mf">1e-3</span>   <span class="p">,</span> 
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="n">final_lr</span>         <span class="o">=</span> <span class="mf">1e-5</span>   <span class="p">,</span> 
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="n">optim</span>            <span class="o">=</span> <span class="s1">&#39;Adam&#39;</span> <span class="p">,</span> 
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="n">crit</span>             <span class="o">=</span> <span class="s1">&#39;MSE&#39;</span>  <span class="p">,</span> 
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="n">batch_size</span>       <span class="o">=</span> <span class="mi">163840</span>   
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>Voir <a href="../../module/module/"><code>Module</code></a></li>
+<li>La définition de inputs n'est pas explicitée ici</li>
+<li>La définition de outputs n'est pas explicitée ici</li>
+</ol>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1361,16 +1520,16 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/NeuralNetworks/", "features": ["content.tabs.link", "navigation.tabs", "navigation.instant", "navigation.tracking", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "content.code.copy", "content.code.select", "content.code.annotate", "content.annotations", "search.suggest", "search.highlight", "search.share"], "search": "/NeuralNetworks/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.tabs.link", "navigation.tabs", "navigation.instant", "navigation.tracking", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "content.code.copy", "content.code.select", "content.code.annotate", "content.annotations", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/NeuralNetworks/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="/NeuralNetworks/javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="/NeuralNetworks/javascripts/extra.js"></script>
+        <script src="../../javascripts/extra.js"></script>
       
     
   </body>
