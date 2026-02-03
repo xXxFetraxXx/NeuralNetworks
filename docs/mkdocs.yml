@@ -1,30 +1,116 @@
 site_name: NeuralNetworks
-site_url: https://xXxFetraxXx.github.io/NeuralNetworks
+site_url: https://xXxFetraxXx.github.io/NeuralNetworks/
+use_directory_urls: true
+repo_name: NeuralNetworks
 repo_url: https://github.com/xXxFetraxXx/NeuralNetworks
 site_description: "Multi-Layer Perceptrons with multi-Fourier encoding and variable learning rate"
 site_author: "Alexandre Brun"
 theme:
-  name: readthedocs
+  name: material
+  features:
+    - content.tabs.link
+    - navigation.tabs
+    - navigation.instant
+    - navigation.tracking
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.instant.preview
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.annotations
+    - search.suggest
+    - search.highlight
+    - search.share
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
 
 nav:
 
-  - Accueil: index.md
+  - Accueil:
+      - index.md
+      - Dependances:
+          - torch: https://pypi.org/project/torch/
+          - numpy: https://pypi.org/project/numpy/
+          - matplotlib: https://pypi.org/project/matplotlib/
+      - Liens:
+          - PyPI: https://pypi.org/project/NeuralNetworks/
+          - Source: https://github.com/xXxFetraxXx/NeuralNetworks
+  - Modèles:
+      - NeuralNetworks.Module: module/module.md
+      - NeuralNetworks.MLP: module/mlp.md
+      - NeuralNetworks.VAE: module/vae.md
+  - Trainer:
+      - NeuralNetworks.Trainer: Trainer/Trainer.md
+      - NeuralNetworks.Trainer.train: Trainer/train.md
+      - Dynamique du learning rate: Trainer/lr.md
 
-  - Dependances:
-      - torch: https://pypi.org/project/torch/
-      - numpy: https://pypi.org/project/numpy/
-      - matplotlib: https://pypi.org/project/matplotlib/
+  - Containers:
+      - Concept: Containers/concept.md
+      - norms: Containers/norms.md
+      - crits: Containers/crits.md
+      - optims: Containers/optims.md
 
-  - Liens:
-      - PyPI: https://pypi.org/project/NeuralNetworks/
-      - Source: https://github.com/xXxFetraxXx/NeuralNetworks
 
+  - visuels:
+      - NeuralNetworks.losses: UI/losses.md
+      - NeuralNetworks.learnings: UI/learnings.md
 plugins:
-  - search
+  - search:
+      enabled: true
+  - mkdocstrings:
+      handlers:
+          python:
+            options:
+              show_source: true
+              source_url_template: "https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/{{ module_path }}.py#L{{ line }}"
+
+extra:
+  viewport: width=device-width, initial-scale=1
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/xXxFetraxXx/NeuralNetworks
+      name: GitHub
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/NeuralNetworks/
+      name: PyPI
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/extra.js
 
 markdown_extensions:
-  - toc:
-      permalink: true
   - admonition
-  - codehilite:
-      guess_lang: true
+  - abbr
+  - attr_list
+  - md_in_html
+  - footnotes
+  - pymdownx.details
+  - tables
+  - pymdownx.blocks.caption
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true

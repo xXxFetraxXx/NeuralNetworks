@@ -1,0 +1,15 @@
+# **NeuralNetworks.norms**
+
+| **Valeurs**   | **Module PyTorch**                                                                         | **Description**                                                                                           |
+|---------------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| `'ReLU'`      | [`nn.ReLU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.ReLU.html)           | Fonction d'activation ReLU classique (Rectified Linear Unit).                                             |
+| `'LeakyReLU'` | [`nn.LeakyReLU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.LeakyReLU.html) | ReLU avec un petit coefficient pour les valeurs négatives (paramètre `negative_slope`).                   |
+| `'ELU'`       | [`nn.ELU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.ELU.html)             | Fonction d'activation ELU (Exponential Linear Unit), qui a une meilleure gestion des valeurs négatives.   |
+| `'SELU'`      | [`nn.SELU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.SELU.html)           | SELU (Scaled Exponential Linear Unit), une version améliorée de l'ELU pour des réseaux auto-normalisants. |
+| `'GELU'`      | [`nn.GELU()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.GELU.html)           | GELU (Gaussian Error Linear Unit), une activation probabiliste basée sur une fonction gaussienne.         |
+| `'Mish'`      | [`nn.Mish()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Mish.html)           | ReLU différentiable en tout points avec passage négatif.                                                  |
+| `'Softplus'`  | [`nn.Softplus()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Softplus.html)   | Fonction d'activation qui approxime ReLU mais de manière lissée.                                          |
+| `'Sigmoid'`   | [`nn.Sigmoid()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Sigmoid.html)     | Fonction d'activation Sigmoid, qui produit une sortie entre 0 et 1.                                       |
+| `'Tanh'`      | [`nn.Tanh()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Tanh.html)           | Fonction d'activation Tanh, avec une sortie dans l'intervalle [-1, 1].                                    |
+| `'Hardtanh'`  | [`nn.Hardtanh()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Hardtanh.html)   | Variante de Tanh, avec des sorties limitées entre une plage spécifiée.                                    |
+| `'Softsign'`  | [`nn.Softsign()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.Softsign.html)   | Fonction d'activation similaire à Tanh mais plus souple, avec des valeurs dans [-1, 1].                   |

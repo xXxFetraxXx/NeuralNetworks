@@ -5,15 +5,19 @@
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-from ..Dependances import train_test_split
+import torch
+from .pytorch import device
 
-def sample_data (inputs, outputs, test_size):
-    if test_size is None:
-        return inputs, inputs, outputs, outputs
-    else:
-        return train_test_split (
-            inputs,
-            outputs,
-            test_size = test_size,
-            random_state = 42
-        )
+pi = torch.pi
+e = torch.e
+
+def rglen(liste : list):
+    return range(len(liste))
+
+def smoothstep (
+    init_lr : float,
+    xa      : float,
+    n       : int):
+
+    t = torch.linspace(0.0, 1.0, n, device = device)
+    return init_lr + (xa - init_lr) * (6*t**5 - 15*t**4 + 10*t**3)

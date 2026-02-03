@@ -7,19 +7,24 @@
 
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
+from matplotlib.ticker import FixedLocator
 
 plt.rcParams['figure.facecolor'] = (0,0,0,0)
 plt.rcParams['axes.facecolor']   = (0,0,0,0)
-grey_color = "#888888"
-
-# Style général du texte et axes
-plt.rcParams['text.color']       = grey_color
-plt.rcParams['axes.labelcolor']  = grey_color
-plt.rcParams['xtick.color']      = grey_color
-plt.rcParams['ytick.color']      = grey_color
-plt.rcParams['axes.edgecolor']   = grey_color
-plt.rcParams['axes.titlecolor']  = grey_color
-
-# Activation de la grille globale
 plt.rcParams['axes.grid']  = True
-plt.rcParams['grid.color'] = grey_color
+
+from .pytorch import *
+from .tools import *
+
+from PIL import Image
+
+import copy
+import subprocess
+import numpy as np
+import requests
+from io import BytesIO
+from tqdm.auto import trange, tqdm
+from IPython.display import display, clear_output
+
+import onnx
+from onnxsim import simplify
