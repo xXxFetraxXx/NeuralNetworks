@@ -12,13 +12,13 @@
         <meta name="author" content="Alexandre Brun">
       
       
-        <link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/module/vae/">
+        <link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/module/save/">
       
       
-        <link rel="prev" href="../mlp/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../Trainer/">
+        <link rel="next" href="../load/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>NeuralNetworks.VAE - NeuralNetworks</title>
+        <title>NeuralNetworks.Module.save - NeuralNetworks</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#neuralnetworksvae" class="md-skip">
+        <a href="#neuralnetworksmodulesave" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NeuralNetworks.VAE
+              NeuralNetworks.Module.save
             
           </span>
         </div>
@@ -752,10 +752,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../save/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -771,6 +780,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -836,10 +846,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -854,11 +862,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1_5" >
         
           
           <label class="md-nav__link" for="__nav_3_1_5" id="__nav_3_1_5_label" tabindex="0">
@@ -879,7 +889,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -922,19 +932,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../vae/" class="md-nav__link">
         
   
   
@@ -950,7 +951,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1719,24 +1719,6 @@
   
 
       
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../mlp/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Modules préfabriqués
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
     </ol>
   </nav>
 
@@ -1750,76 +1732,11 @@
   
 
 
-<h1 id="neuralnetworksvae"><strong>NeuralNetworks.VAE</strong></h1>
+<h1 id="neuralnetworksmodulesave">NeuralNetworks.Module.save</h1>
 <hr />
-<p><code>class VAE (imsize, latentsize, labelsize, channels, linear_channels, name, norm, norm_cc)</code> <a href="https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/VAE/VAE.py#L11">[Source]</a></p>
+<p><code>NeuralNetworks.Module.save</code> <a href="https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_shared/module.py#L62">[source]</a></p>
 <hr />
-<p>inhérite des propriétés de la classe <a href="../"><code>Module</code></a>   </p>
-<p>Cette classe fournit :</p>
-<ul>
-<li>Un <a href="https://en.wikipedia.org/wiki/Variational_autoencoder">VAE</a> entièrement configurable.</li>
-</ul>
-<hr />
-<table>
-<thead>
-<tr>
-<th><strong>Paramètres</strong></th>
-<th><strong>Type</strong></th>
-<th><strong>Optionnel</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>imsize</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>int</code></a></td>
-<td>Non</td>
-</tr>
-<tr>
-<td><code>latentsize</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>int</code></a></td>
-<td>Non</td>
-</tr>
-<tr>
-<td><code>labelsize</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>int</code></a></td>
-<td>Non</td>
-</tr>
-<tr>
-<td><code>channels</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range"><code>list[int]</code></a></td>
-<td>Oui</td>
-</tr>
-<tr>
-<td><code>linear_channels</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range"><code>list[int]</code></a></td>
-<td>Oui</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code>str</code></a></td>
-<td>Oui</td>
-</tr>
-<tr>
-<td><code>norm</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code>str</code></a></td>
-<td>Oui</td>
-</tr>
-<tr>
-<td><code>norm_cc</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code>str</code></a></td>
-<td>Oui</td>
-</tr>
-</tbody>
-</table>
-<details class="example" open="open">
-<summary>Example</summary>
-<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">VAE_exemple.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">NeuralNetworks</span><span class="w"> </span><span class="kn">import</span> <span class="n">VAE</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1"># WIP</span>
-</span></code></pre></div></td></tr></table></div>
-</details>
+<p>Enregistre le réseau dans un format propriétaire sécurisé.</p>
 
 
 

@@ -12,31 +12,31 @@
         <meta name="author" content="Alexandre Brun">
       
       
-        <link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/module/vae/">
+        <link rel="canonical" href="https://xXxFetraxXx.github.io/NeuralNetworks/Trainer/">
       
       
-        <link rel="prev" href="../mlp/">
+        <link rel="prev" href="../module/vae/">
       
       
-        <link rel="next" href="../../Trainer/">
+        <link rel="next" href="train/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/MainLogo.png">
+      <link rel="icon" href="../assets/MainLogo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>NeuralNetworks.VAE - NeuralNetworks</title>
+        <title>NeuralNetworks.Trainer - NeuralNetworks</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -55,11 +55,11 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#neuralnetworksvae" class="md-skip">
+        <a href="#neuralnetworkstrainer" class="md-skip">
           Skip to content
         </a>
       
@@ -98,9 +98,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="NeuralNetworks" class="md-header__button md-logo" aria-label="NeuralNetworks" data-md-component="logo">
+    <a href=".." title="NeuralNetworks" class="md-header__button md-logo" aria-label="NeuralNetworks" data-md-component="logo">
       
-  <img src="../../assets/MainLogo.png" alt="logo">
+  <img src="../assets/MainLogo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NeuralNetworks.VAE
+              NeuralNetworks.Trainer
             
           </span>
         </div>
@@ -235,7 +235,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -256,7 +256,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../dependences/install/" class="md-tabs__link">
+        <a href="../dependences/install/" class="md-tabs__link">
           
   
   
@@ -266,6 +266,38 @@
 
         </a>
       </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../module/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Modèles
+
+        </a>
+      </li>
+    
+  
+
     
   
 
@@ -289,39 +321,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
-          
-  
-  
-    
-  
-  Modèles
-
-        </a>
-      </li>
-    
-  
-
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../Trainer/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -353,7 +353,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Container/" class="md-tabs__link">
+        <a href="../Container/" class="md-tabs__link">
           
   
   
@@ -378,7 +378,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../UI/losses/" class="md-tabs__link">
+        <a href="../UI/losses/" class="md-tabs__link">
           
   
   
@@ -414,9 +414,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="NeuralNetworks" class="md-nav__button md-logo" aria-label="NeuralNetworks" data-md-component="logo">
+    <a href=".." title="NeuralNetworks" class="md-nav__button md-logo" aria-label="NeuralNetworks" data-md-component="logo">
       
-  <img src="../../assets/MainLogo.png" alt="logo">
+  <img src="../assets/MainLogo.png" alt="logo">
 
     </a>
     NeuralNetworks
@@ -443,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dependences/install/" class="md-nav__link">
+      <a href="../dependences/install/" class="md-nav__link">
         
   
   
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dependences/dependences/" class="md-nav__link">
+      <a href="../dependences/dependences/" class="md-nav__link">
         
   
   
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dependences/support/" class="md-nav__link">
+      <a href="../dependences/support/" class="md-nav__link">
         
   
   
@@ -602,6 +602,358 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modèles
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modèles
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../module/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuralNetworks.Module
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    NeuralNetworks.Module
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module/save/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuralNetworks.Module.save
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module/load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuralNetworks.Module.load
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module/save_onnx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuralNetworks.Module.save_onnx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_5" id="__nav_3_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules préfabriqués
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules préfabriqués
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module/mlp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuralNetworks.MLP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../module/vae/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuralNetworks.VAE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -641,372 +993,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modèles
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Modèles
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NeuralNetworks.Module
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    NeuralNetworks.Module
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../save/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NeuralNetworks.Module.save
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../load/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NeuralNetworks.Module.load
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../save_onnx/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NeuralNetworks.Module.save_onnx
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_1_5" id="__nav_3_1_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modules préfabriqués
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Modules préfabriqués
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mlp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NeuralNetworks.MLP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NeuralNetworks.VAE
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -1024,7 +1014,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1039,6 +1029,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1059,17 +1051,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../Trainer/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -1087,13 +1077,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1113,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Trainer/train/" class="md-nav__link">
+      <a href="train/" class="md-nav__link">
         
   
   
@@ -1141,7 +1131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Trainer/lr/" class="md-nav__link">
+      <a href="lr/" class="md-nav__link">
         
   
   
@@ -1267,7 +1257,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../Container/" class="md-nav__link ">
+            <a href="../Container/" class="md-nav__link ">
               
   
   
@@ -1311,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Container/get/" class="md-nav__link">
+      <a href="../Container/get/" class="md-nav__link">
         
   
   
@@ -1399,7 +1389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Container/norms/" class="md-nav__link">
+      <a href="../Container/norms/" class="md-nav__link">
         
   
   
@@ -1427,7 +1417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Container/crits/" class="md-nav__link">
+      <a href="../Container/crits/" class="md-nav__link">
         
   
   
@@ -1455,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Container/optims/" class="md-nav__link">
+      <a href="../Container/optims/" class="md-nav__link">
         
   
   
@@ -1564,7 +1554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/losses/" class="md-nav__link">
+      <a href="../UI/losses/" class="md-nav__link">
         
   
   
@@ -1592,7 +1582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/learnings/" class="md-nav__link">
+      <a href="../UI/learnings/" class="md-nav__link">
         
   
   
@@ -1663,7 +1653,7 @@
   
   
     <li class="md-path__item">
-      <a href="../.." class="md-path__link">
+      <a href=".." class="md-path__link">
         
   <span class="md-ellipsis">
     Accueil
@@ -1686,10 +1676,10 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    Modèles
+    Trainer
   </span>
 
         </a>
@@ -1707,28 +1697,10 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    NeuralNetworks.Module
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../mlp/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Modules préfabriqués
+    NeuralNetworks.Trainer
   </span>
 
         </a>
@@ -1750,16 +1722,11 @@
   
 
 
-<h1 id="neuralnetworksvae"><strong>NeuralNetworks.VAE</strong></h1>
+<h1 id="neuralnetworkstrainer"><strong>NeuralNetworks.Trainer</strong></h1>
 <hr />
-<p><code>class VAE (imsize, latentsize, labelsize, channels, linear_channels, name, norm, norm_cc)</code> <a href="https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/VAE/VAE.py#L11">[Source]</a></p>
+<p><code>class NeuralNetworks.Trainer (*nets, inputs, outputs, init_train_size, final_train_size, optim, init_lr, final_lr, crit, batch_size)</code> <a href="https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/Trainer/Trainer.py#L15">[source]</a></p>
 <hr />
-<p>inhérite des propriétés de la classe <a href="../"><code>Module</code></a>   </p>
-<p>Cette classe fournit :</p>
-<ul>
-<li>Un <a href="https://en.wikipedia.org/wiki/Variational_autoencoder">VAE</a> entièrement configurable.</li>
-</ul>
-<hr />
+<p>Classe pour entraîner des réseaux avec mini-batchs et <a href="https://docs.pytorch.org/tutorials/recipes/recipes/amp_recipe.html">Automatic Mixed Precision</a>.</p>
 <table>
 <thead>
 <tr>
@@ -1770,55 +1737,93 @@
 </thead>
 <tbody>
 <tr>
-<td><code>imsize</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>int</code></a></td>
+<td><code>*nets</code></td>
+<td><a href="../module/"><code>Module</code></a></td>
 <td>Non</td>
 </tr>
 <tr>
-<td><code>latentsize</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>int</code></a></td>
+<td><code>inputs</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/tensors.html"><code>torch.Tensor([float])</code></a></td>
 <td>Non</td>
 </tr>
 <tr>
-<td><code>labelsize</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>int</code></a></td>
+<td><code>outputs</code></td>
+<td><a href="https://docs.pytorch.org/docs/stable/tensors.html"><code>torch.Tensor([float])</code></a></td>
 <td>Non</td>
 </tr>
 <tr>
-<td><code>channels</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range"><code>list[int]</code></a></td>
+<td><code>init_train_size</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>float</code></a></td>
 <td>Oui</td>
 </tr>
 <tr>
-<td><code>linear_channels</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range"><code>list[int]</code></a></td>
+<td><code>final_train_size</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>float</code></a></td>
 <td>Oui</td>
 </tr>
 <tr>
-<td><code>name</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code>str</code></a></td>
+<td><code>optim</code></td>
+<td><a href="../Container/optims/"><code>optim</code></a></td>
 <td>Oui</td>
 </tr>
 <tr>
-<td><code>norm</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code>str</code></a></td>
+<td><code>init_lr</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>float</code></a></td>
 <td>Oui</td>
 </tr>
 <tr>
-<td><code>norm_cc</code></td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str"><code>str</code></a></td>
+<td><code>final_lr</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>float</code></a></td>
+<td>Oui</td>
+</tr>
+<tr>
+<td><code>crit</code></td>
+<td><a href="../Container/crits/"><code>crit</code></a></td>
+<td>Oui</td>
+</tr>
+<tr>
+<td><code>batch_size</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex"><code>int</code></a></td>
 <td>Oui</td>
 </tr>
 </tbody>
 </table>
+<hr />
 <details class="example" open="open">
-<summary>Example</summary>
-<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">VAE_exemple.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">NeuralNetworks</span><span class="w"> </span><span class="kn">import</span> <span class="n">VAE</span>
+<summary>Initialisation d'un trainer</summary>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Trainer_exemple.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">NeuralNetworks</span><span class="w"> </span><span class="kn">import</span> <span class="n">Trainer</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1"># WIP</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">T</span> <span class="o">=</span> <span class="n">Trainer</span> <span class="p">(</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="n">net</span>                       <span class="p">,</span> <span class="c1"># (1)!</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="n">inputs</span>           <span class="o">=</span> <span class="n">inputs</span> <span class="p">,</span> <span class="c1"># (2)!</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="n">outputs</span>          <span class="o">=</span> <span class="n">outputs</span><span class="p">,</span> <span class="c1"># (3)!</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="n">init_train_size</span>  <span class="o">=</span> <span class="mf">0.001</span>  <span class="p">,</span> 
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="n">final_train_size</span> <span class="o">=</span> <span class="mi">1</span>      <span class="p">,</span> 
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">init_lr</span>          <span class="o">=</span> <span class="mf">1e-3</span>   <span class="p">,</span> 
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="n">final_lr</span>         <span class="o">=</span> <span class="mf">1e-5</span>   <span class="p">,</span> 
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="n">optim</span>            <span class="o">=</span> <span class="s1">&#39;Adam&#39;</span> <span class="p">,</span> 
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="n">crit</span>             <span class="o">=</span> <span class="s1">&#39;MSE&#39;</span>  <span class="p">,</span> 
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="n">batch_size</span>       <span class="o">=</span> <span class="mi">163840</span>   
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
+<ol>
+<li>Voir <a href="../module/"><code>Module</code></a></li>
+<li>La définition de inputs n'est pas explicitée ici</li>
+<li>La définition de outputs n'est pas explicitée ici</li>
+</ol>
 </details>
 
 
@@ -1893,16 +1898,16 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["header.autohide", "content.tabs.link", "navigation.tabs", "navigation.path", "navigation.instant", "navigation.indexes", "navigation.expand", "navigation.tracking", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "content.code.copy", "content.code.select", "content.code.annotate", "content.annotations", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["header.autohide", "content.tabs.link", "navigation.tabs", "navigation.path", "navigation.instant", "navigation.indexes", "navigation.expand", "navigation.tracking", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "content.code.copy", "content.code.select", "content.code.annotate", "content.annotations", "search.suggest", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="../javascripts/extra.js"></script>
       
     
   </body>

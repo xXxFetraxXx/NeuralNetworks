@@ -2,58 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://xXxFetraxXx.github.io/NeuralNetworks/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
-         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Containers/concept/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Container/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
-         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Containers/crits/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Container/crits/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
-         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Containers/norms/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Container/get/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
-         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Containers/optims/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Container/norms/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
-         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Trainer/Trainer/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Container/optims/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Trainer/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Trainer/lr/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://xXxFetraxXx.github.io/NeuralNetworks/Trainer/train/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://xXxFetraxXx.github.io/NeuralNetworks/UI/learnings/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://xXxFetraxXx.github.io/NeuralNetworks/UI/losses/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
-         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/dependences/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/dependences/dependences/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/dependences/install/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/dependences/support/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/module/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/module/load/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://xXxFetraxXx.github.io/NeuralNetworks/module/mlp/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
-         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/module/module/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/module/save/</loc>
+         <lastmod>2026-02-04</lastmod>
+    </url>
+    <url>
+         <loc>https://xXxFetraxXx.github.io/NeuralNetworks/module/save_onnx/</loc>
+         <lastmod>2026-02-04</lastmod>
     </url>
     <url>
          <loc>https://xXxFetraxXx.github.io/NeuralNetworks/module/vae/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-04</lastmod>
     </url>
 </urlset>
