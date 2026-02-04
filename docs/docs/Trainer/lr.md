@@ -1,5 +1,7 @@
 # **Dynamique du learning rate**
 
+---
+
 Le learning rate a une double dépendance, il varie en fonction de l'époque mais aussi en fonction du résidu de l'époque.
 Cela permet d'avoir un learning rate adapté en fonction de la taille de l'entrainement et qu'il continu à apprendre dans le cas ou les erreurs sont grandes.
 

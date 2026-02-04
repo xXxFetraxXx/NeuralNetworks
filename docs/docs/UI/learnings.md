@@ -1,14 +1,20 @@
 # **NeuralNetworks.learnings**
 
+---
+
 `NeuralNetworks.learnings (*nets, fig_size, color)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_UI/Learnings.py#L11)
+
+---
 
 Affiche les taux d'apprentissage en fonction des époques d'entrainement des réseaux.
 
-| **Paramètres** | **Type**                                                                                 | **Optionnel** | **Description**                                    |
-|----------------|------------------------------------------------------------------------------------------|---------------|----------------------------------------------------|
-| `*nets`        | [`Module`](../module/module.md)                                                                      | Non           | Réseaux pour lesquels afficher les learning rates. |
-| `fig_size`     | [`int`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex) | oui           | Taille de la figure.                               |
-| `color`        | [`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)          | oui           | Couleur des axes.                                  |
+| **Paramètres** | **Type**                                                                                 | **Optionnel** |
+|----------------|------------------------------------------------------------------------------------------|---------------|
+| `*nets`        | [`Module`](../module/index.md)                                                           | Non           | 
+| `fig_size`     | [`int`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex) | oui           |
+| `color`        | [`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)          | oui           |
+
+---
 
 ???+ example
 

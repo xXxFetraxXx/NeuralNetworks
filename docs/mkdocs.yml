@@ -5,12 +5,22 @@ repo_name: NeuralNetworks
 repo_url: https://github.com/xXxFetraxXx/NeuralNetworks
 site_description: "Multi-Layer Perceptrons with multi-Fourier encoding and variable learning rate"
 site_author: "Alexandre Brun"
+
+extra_css:
+  - stylesheets/extra.css
+
 theme:
+  logo: assets/MainLogo.png
+  favicon: assets/MainLogo.png
   name: material
   features:
+    - header.autohide
     - content.tabs.link
     - navigation.tabs
+    - navigation.path
     - navigation.instant
+    - navigation.indexes
+    - navigation.expand
     - navigation.tracking
     - navigation.instant.prefetch
     - navigation.instant.progress
@@ -23,44 +33,51 @@ theme:
     - search.highlight
     - search.share
   palette:
-    - scheme: slate
-      primary: indigo
-      accent: indigo
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: blue
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-    - scheme: default
-      primary: indigo
-      accent: indigo
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: blue
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
 
 nav:
 
-  - Accueil:
-      - index.md
-      - Dependances:
-          - torch: https://pypi.org/project/torch/
-          - numpy: https://pypi.org/project/numpy/
-          - matplotlib: https://pypi.org/project/matplotlib/
-      - Liens:
-          - PyPI: https://pypi.org/project/NeuralNetworks/
-          - Source: https://github.com/xXxFetraxXx/NeuralNetworks
+  - Accueil: index.md
+  - Prise en main:
+      - Installation: dependences/install.md
+      - Dependances: dependences/dependences.md
+      - Support: dependences/support.md
   - Modèles:
-      - NeuralNetworks.Module: module/module.md
-      - NeuralNetworks.MLP: module/mlp.md
-      - NeuralNetworks.VAE: module/vae.md
+      - NeuralNetworks.Module:
+          - module/index.md
+          - NeuralNetworks.Module.save: module/save.md
+          - NeuralNetworks.Module.load: module/load.md
+          - NeuralNetworks.Module.save_onnx: module/save_onnx.md
+          - Modules préfabriqués:
+              - NeuralNetworks.MLP: module/mlp.md
+              - NeuralNetworks.VAE: module/vae.md
   - Trainer:
-      - NeuralNetworks.Trainer: Trainer/Trainer.md
-      - NeuralNetworks.Trainer.train: Trainer/train.md
-      - Dynamique du learning rate: Trainer/lr.md
+      - NeuralNetworks.Trainer:
+          - Trainer/index.md
+          - NeuralNetworks.Trainer.train: Trainer/train.md
+          - Dynamique du learning rate: Trainer/lr.md
 
   - Containers:
-      - Concept: Containers/concept.md
-      - norms: Containers/norms.md
-      - crits: Containers/crits.md
-      - optims: Containers/optims.md
+      - NeuralNetworks.Container:
+          - Container/index.md
+          - NeuralNetworks.Container.get: Container/get.md
+          - Containers préfabriqués:
+              - NeuralNetworks.norms: Container/norms.md
+              - NeuralNetworks.crits: Container/crits.md
+              - NeuralNetworks.optims: Container/optims.md
 
 
   - visuels:
@@ -76,7 +93,10 @@ plugins:
               show_source: true
               source_url_template: "https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/{{ module_path }}.py#L{{ line }}"
 
+copyright: Copyright &copy; 2025 - 2026 Alexandre Brun
+
 extra:
+  generator: false
   viewport: width=device-width, initial-scale=1
   social:
     - icon: fontawesome/brands/github
@@ -85,9 +105,6 @@ extra:
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/NeuralNetworks/
       name: PyPI
-
-extra_css:
-  - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -114,3 +131,6 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg

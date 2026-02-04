@@ -2,12 +2,6 @@
     border-collapse: collapse; /* fusionne les bordures */
 }
 
-.md-typeset th,
-.md-typeset td {
-    border: 1px solid var(--md-default-fg-color); /* bordures autour de chaque cellule */
-    padding: 0.5em;
-}
-
 /* Par défaut, cacher l'image sombre */
 .theme-dark {
     display: none;
@@ -19,4 +13,41 @@ body.md-dark .theme-light {
 }
 body.md-dark .theme-dark {
     display: inline;
+}
+
+.md-header {
+    background-color: #335566 !important;  /* Replace with your color */
+}
+.md-tabs {
+    background-color: #335566 !important; /* your color here */
+}
+.md-social {
+    background-color: #335566 !important; /* your color here */
+}
+.md-copyright {
+    background-color: #335566 !important; /* your color here */
+}
+.md-footer-meta {
+    background-color: #335566 !important; /* your color here */
+}
+
+.md-typeset table thead tr {
+    background-color: #335566 !important; /* Mets la couleur que tu veux */
+}
+
+.md-typeset__table__thead {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem; /* optionnel, espace entre les boutons */
+}
+
+.md-button-group {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem; /* optionnel, espace entre les boutons */
+}
+
+.md-button-group .md-button {
+  flex: 1;
+  text-align: center;
 }

@@ -1,17 +1,22 @@
 # **NeuralNetworks.losses**
 
+---
+
 `NeuralNetworks.losses (*nets, fuse_losses, names, fig_size, color)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_UI/Losses.py#L11)
+
+---
 
 Affiche les résidus en fonction des époques d'entrainement des réseaux.
 
-| **Paramètres** | **Type**                                                                       | **Optionnel** | **Description**                                                          |
-|----------------|--------------------------------------------------------------------------------|---------------|--------------------------------------------------------------------------|
-| `*nets`        | [`Module`](../module/module.md)                                                            | Non           | Réseaux pour lesquels afficher les résidus.                              |
-| `fuse_losses`  | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           | Fusionner les résidus des sorties de chaques réseaux en un résidu moyen. |
-| `names`        | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           | Noms des sorties des réseaux.                                            |
-| `fig_size`     | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           | Taille de la figure.                                                     |
-| `color`        | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           | Couleur des axes.                                                        |
+| **Paramètres** | **Type**                                                                       | **Optionnel** |
+|----------------|--------------------------------------------------------------------------------|---------------|
+| `*nets`        | [`Module`](../module/index.md)                                                 | Non           |
+| `fuse_losses`  | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           |
+| `names`        | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           |
+| `fig_size`     | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           |
+| `color`        | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           |
 
+---
 
 ???+ example
 
