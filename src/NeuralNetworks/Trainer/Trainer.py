@@ -48,6 +48,7 @@ class Trainer:
         """
         Lance l'entraînement des modèles.
         """
+        inputs_size         = self.outputs.size ( ) [0]
         outputs_size         = self.outputs.size ( ) [1]
         self.inputs, self.outputs, train_losses, train_lrs, n_samples = init_train (
             inputs           = self.inputs          , # Envoi sur le device
@@ -70,6 +71,7 @@ class Trainer:
                     train_losses = train_losses       , # Résidus de l'entrainement
                     n_samples    = n_samples [epoch]  , # Taille des mini-batchs
                     inputs       = self.inputs        , # Données d'entrée
+                    inputs_size  = inputs_size        ,
                     outputs      = self.outputs       , # Données de sortie
                     outputs_size = outputs_size       , # Nombre de sorties
                     batch_size   = self.batch_size    , # Taille du batch

@@ -14,4 +14,4 @@ from .MLP import MLP
 from .VAE import VAE
 from .Trainer import Trainer
 
-__version__ = "0.2.8"
+__version__ = "1.0.0"

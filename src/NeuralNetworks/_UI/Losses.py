@@ -41,7 +41,7 @@ def losses (*nets                 , #
         if names is None:
             names = range (all_losses.shape [-1])
         for k, net in enumerate(nets):
-            for i in range (all_losses.shape [-1]):
+            for i in range (len(names)):
                 ax.plot (np.arange (1, len (all_losses [k] [:, i]) + 1),
                     all_losses [k] [:, i], label = f"{net.name} : {names [i]}")
 

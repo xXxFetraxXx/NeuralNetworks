@@ -15,6 +15,7 @@ def epoch_logic (
     train_losses : torch.Tensor          , # Résidus de l'entrainement
     n_samples    : int                   , # Nombre de donnés à prendre
     inputs       : torch.Tensor          , # Données d'entrée
+    inputs_size  : int                   ,
     outputs      : torch.Tensor          , # Données de sortie
     outputs_size : int                   , # Nombre de sorties
     batch_size   : int                   , # Taille des batchs
@@ -23,8 +24,9 @@ def epoch_logic (
     """
     Effectue une époque d'entraînement sur des mini-batchs.
     """
+    perm = torch.randint (0, inputs_size, (int(n_samples.item()),), device=device, requires_grad=False)
 
-    perm = torch.randperm (n_samples, device=device, requires_grad=False)
+    #perm = torch.randperm (inputs_size, device=device, requires_grad=False)
     
     for i in range (0, n_samples, batch_size):
         idx = perm [i : i + batch_size]
@@ -54,9 +56,9 @@ def generate_learning_rate (Nb_iter : int ):
 
     t = torch.linspace(0.0, 1.0, Nb_iter - infl, device=device, requires_grad=False)
     t4 = t*t; t3 = t4*t; t4.mul_(t4) ; t5 = t4*t
-    lr_curve[infl:]  =    0.5 * (1 - 6*t5 - 15*t4 + 10*t3)
+    lr_curve[infl:]  =    0.5 * (1 - 6*t5 + 15*t4 - 10*t3)
 
-    return lr_curve
+    return lr_curve.contiguous()
 
 def update_lr (
     init_lr      : float       , # Learning rate initial
@@ -116,20 +118,21 @@ def init_train (
     torch.autograd.profiler.profile    (benchmark)
     torch.use_deterministic_algorithms (benchmark)
 
-
     n_samples = torch.linspace(
         inputs.size(0) * init_train_size,
         inputs.size(0) * final_train_size,
         num_epochs, device = device, requires_grad=False
     ).ceil().int()
 
-    inputs  = inputs.to  (device)
-    outputs = outputs.to (device)
+    inputs  = inputs.to  (device).contiguous()
+    outputs = outputs.to (device).contiguous()
 
-    train_lrs    = generate_learning_rate (num_epochs)
+    
+
+    train_lrs    = generate_learning_rate (num_epochs).contiguous()
     train_losses = torch.zeros(
         (num_epochs, outputs.size(1)), device=device, requires_grad=False
-    )
+    ).contiguous()
     
     torch.cuda.empty_cache ()
     return inputs, outputs,train_losses, train_lrs, n_samples

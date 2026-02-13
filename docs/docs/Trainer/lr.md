@@ -8,7 +8,7 @@ Cela permet d'avoir un learning rate adapté en fonction de la taille de l'entra
 La fusion des deux dynamiques de fait de la manière suivante:
 
 $$
-lr = (\text{init_lr} - \text{final_lr}) \cdot \max (\text{lr_epoch} , \text{lr_loss}) - \text{final_lr}
+lr = (\text{init_lr} - \text{final_lr}) \cdot \max (\text{lr_epoch} , \text{lr_loss}) + \text{final_lr}
 $$
 
 ???+ abstract "Dynamique en fonction de l'époque" 

@@ -108,7 +108,14 @@ class VAE(Module):
         return output
 
     def _forward (self, x):
-        return self.Dmodel(x)
+        return self.Emodel(x)
 
     def train_forward (self, x):
         return self.Dmodel(self.Emodel(x))
+
+    @property
+    def _dummy_input(self):
+        """
+        Données d'entrées pour enregistrement en .onnx
+        """
+        return torch.randn(1,1,self.Reconstruction_data["imsize"],self.Reconstruction_data["imsize"])

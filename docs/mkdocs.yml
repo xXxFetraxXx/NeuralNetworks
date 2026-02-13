@@ -53,7 +53,7 @@ nav:
   - Accueil: index.md
   - Prise en main:
       - Installation: dependences/install.md
-      - Dependances: dependences/dependences.md
+      - Dependences: dependences/dependences.md
       - Support: dependences/support.md
   - Modèles:
       - NeuralNetworks.Module:
