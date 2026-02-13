@@ -565,7 +565,7 @@
   <span class="md-ellipsis">
     
   
-    Dependances
+    Dependences
   
 
     
@@ -1738,7 +1738,7 @@
 Cela permet d'avoir un learning rate adapté en fonction de la taille de l'entrainement et qu'il continu à apprendre dans le cas ou les erreurs sont grandes.</p>
 <p>La fusion des deux dynamiques de fait de la manière suivante:</p>
 <div class="arithmatex">\[
-lr = (\text{init_lr} - \text{final_lr}) \cdot \max (\text{lr_epoch} , \text{lr_loss}) - \text{final_lr}
+lr = (\text{init_lr} - \text{final_lr}) \cdot \max (\text{lr_epoch} , \text{lr_loss}) + \text{final_lr}
 \]</div>
 <details class="abstract" open="open">
 <summary>Dynamique en fonction de l'époque</summary>
