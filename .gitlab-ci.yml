@@ -1,0 +1,38 @@
+stages:
+  - deploy
+
+# Équivalent du job mkdocs_deploy (GitHub Actions) :
+# construit la doc MkDocs et la publie sur GitLab Pages
+# (GitLab Pages sert le contenu de l'artefact "public/")
+pages:
+  stage: deploy
+  image: python:3.9
+  script:
+    - python -m pip install --upgrade pip
+    - pip install mkdocs mkdocs-material "mkdocstrings[python]"
+    - mkdocs build -f docs/mkdocs.yml --site-dir public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+# Équivalent du job python_publish (GitHub Actions) :
+# build le package et le publie sur PyPI
+# Nécessite une variable CI/CD masquée "PYPI_API_TOKEN" dans
+# Settings > CI/CD > Variables du projet GitLab
+publish_pypi:
+  stage: deploy
+  image: python:3.13
+  needs:
+    - pages
+  variables:
+    TWINE_USERNAME: __token__
+    TWINE_PASSWORD: $PYPI_API_TOKEN
+  script:
+    - python -m pip install --upgrade pip
+    - pip install build twine
+    - python -m build
+    - python -m twine upload dist/*
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"

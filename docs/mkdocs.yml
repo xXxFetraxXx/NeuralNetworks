@@ -63,7 +63,6 @@ nav:
           - NeuralNetworks.Module.save_onnx: module/save_onnx.md
           - Modules préfabriqués:
               - NeuralNetworks.MLP: module/mlp.md
-              - NeuralNetworks.VAE: module/vae.md
   - Trainer:
       - NeuralNetworks.Trainer:
           - Trainer/index.md

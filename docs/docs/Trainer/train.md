@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.Trainer.train (num_epochs, disable_tqdm, benchmark)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/Trainer/Trainer.py#L44)
+`NeuralNetworks.Trainer.train (num_epochs, disable_tqdm, benchmark)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/Trainer/Trainer.py#L51)
 
 ---
 

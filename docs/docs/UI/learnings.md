@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.learnings (*nets, fig_size, color)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_UI/Learnings.py#L11)
+`NeuralNetworks.learnings (*nets, fig_size, color)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_UI/Learnings.py#L12)
 
 ---
 

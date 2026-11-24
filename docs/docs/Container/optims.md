@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.optims` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_Dependances/pytorch.py#L111)
+`NeuralNetworks.optims` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_Dependances/pytorch.py#L137)
 
 ---
 

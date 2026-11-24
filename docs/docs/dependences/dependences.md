@@ -62,20 +62,6 @@ S'installent automatiquement lors de l'installation du module.
 
 ---
 
-???+ abstract "onnx-simplifier"
-
-    ```bash
-    pip install onnx-simplifier
-    ```
-
-    <div class="md-button-group">
-    [:simple-python:](https://pypi.org/project/onnx-simplifier/){ .md-button .md-button--primary }
-    [:simple-github:](https://github.com/daquexian/onnx-simplifier){ .md-button .md-button--primary }
-    [:fontawesome-solid-book:](https://github.com/daquexian/onnx-simplifier?tab=readme-ov-file#readme){ .md-button .md-button--primary }
-    </div>
-
----
-
 ???+ abstract "tqdm"
 
     ```bash

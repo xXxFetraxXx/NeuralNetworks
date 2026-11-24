@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.Module.load (path, device)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_shared/module.py#L74)
+`NeuralNetworks.Module.load (path, device)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_shared/module.py#L81)
 
 ---
 

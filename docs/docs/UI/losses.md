@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.losses (*nets, fuse_losses, names, fig_size, color)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_UI/Losses.py#L11)
+`NeuralNetworks.losses (*nets, fuse_losses, names, fig_size, color)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_UI/Losses.py#L12)
 
 ---
 
@@ -10,11 +10,11 @@ Affiche les résidus en fonction des époques d'entrainement des réseaux.
 
 | **Paramètres** | **Type**                                                                       | **Optionnel** |
 |----------------|--------------------------------------------------------------------------------|---------------|
-| `*nets`        | [`Module`](../module/index.md)                                                 | Non           |
-| `fuse_losses`  | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           |
-| `names`        | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           |
-| `fig_size`     | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           |
-| `color`        | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool) | oui           |
+| `*nets`        | [`Module`](../module/index.md)                                                                       | Non           |
+| `fuse_losses`  | [`boolean`](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)                       | oui           |
+| `names`        | [`list[str]`](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range)        | oui           |
+| `fig_size`     | [`int`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)             | oui           |
+| `color`        | [`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)                      | oui           |
 
 ---
 

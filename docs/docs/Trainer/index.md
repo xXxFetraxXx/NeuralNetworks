@@ -2,7 +2,7 @@
 
 ---
 
-`class NeuralNetworks.Trainer (*nets, inputs, outputs, init_train_size, final_train_size, optim, init_lr, final_lr, crit, batch_size)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/Trainer/Trainer.py#L15)
+`class NeuralNetworks.Trainer (*nets, inputs, outputs, init_train_size, final_train_size, optim, init_lr, final_lr, crit, batch_size)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/Trainer/Trainer.py#L16)
 
 ---
 
@@ -20,6 +20,14 @@ Classe pour entraîner des réseaux avec mini-batchs et [Automatic Mixed Precisi
 | `final_lr`         | [`float`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex) | Oui           | 
 | `crit`             | [`crit`](../Container/crits.md)                                                            | Oui           |
 | `batch_size`       | [`int`](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)   | Oui           |
+
+---
+
+## Taille d'entraînement progressive
+
+`init_train_size` et `final_train_size` sont des fractions du dataset (entre `0` et `1`). Le nombre d'échantillons utilisés croît **linéairement** de `init_train_size × N` à `final_train_size × N` sur les époques (arrondi à l'entier supérieur), où `N` est le nombre total d'échantillons.
+
+À chaque époque, les échantillons sont tirés par [**Latin Hypercube Sampling**](https://en.wikipedia.org/wiki/Latin_hypercube_sampling) 1D : l'intervalle `[0, N)` est divisé en strates égales et un indice aléatoire est tiré dans chaque strate, assurant une couverture uniforme de l'ensemble des données.
 
 ---
 

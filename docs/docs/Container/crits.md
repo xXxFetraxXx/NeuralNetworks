@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.crits` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_Dependances/pytorch.py#L99)
+`NeuralNetworks.crits` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_Dependances/pytorch.py#L123)
 
 ---
 
@@ -13,6 +13,7 @@ inhérite des propriétés de la classe [`Container`](index.md)
 | `'MSE'`                  | [`nn.MSELoss`](https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html)                                          |
 | `'L1'`                   | [`nn.L1Loss()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.L1Loss.html)                                     |
 | `'SmoothL1'`             | [`nn.SmoothL1Loss()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html)                         |
+| `'SoftMarginLoss'`       | [`nn.SoftMarginLoss()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.SoftMarginLoss.html)                     |
 | `'Huber'`                | [`nn.HuberLoss()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.HuberLoss.html)                               |
 | `'CrossEntropy'`         | [`nn.CrossEntropyLoss()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html)                 |
 | `'KLDiv'`                | [`nn.KLDivLoss()`](https://docs.pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html)                               |
