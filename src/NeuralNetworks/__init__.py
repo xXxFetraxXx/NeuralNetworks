@@ -6,12 +6,11 @@
 # (at your option) any later version.
 
 # Import des dépendances et utilitaires globaux (device, settings, tensorise, etc.)
-from ._Dependances import norms, crits, optims, rglen, device, pi, e, tensorise
+from ._Dependances import norms, crits, optims, rglen, device, PI, E, tensorise
 from ._UI import losses, learnings
 
 from ._shared import Module
 from .MLP import MLP
-from .VAE import VAE
 from .Trainer import Trainer
 
 __version__ = "1.0.0"

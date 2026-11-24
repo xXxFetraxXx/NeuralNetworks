@@ -6,10 +6,10 @@
 # (at your option) any later version.
 
 import torch
-from .pytorch import device
 
-pi = torch.pi
-e = torch.e
+PI = torch.pi
+E = torch.e
 
-def rglen(liste : list):
+
+def rglen(liste: list):
     return range(len(liste))

@@ -6,20 +6,17 @@
 # (at your option) any later version.
 
 import matplotlib.pyplot as plt
-from matplotlib.gridspec import GridSpec
 from matplotlib.ticker import FixedLocator
 
-plt.rcParams['figure.facecolor'] = (0,0,0,0)
-plt.rcParams['axes.facecolor']   = (0,0,0,0)
-plt.rcParams['axes.grid']  = True
+import numpy as np
+
+from tqdm.auto import trange
+
+import onnx
 
 from .pytorch import *
 from .tools import *
 
-import numpy as np
-
-from tqdm.auto import trange, tqdm
-
-
-import onnx
-from onnxsim import simplify
+plt.rcParams['figure.facecolor'] = (0, 0, 0, 0)
+plt.rcParams['axes.facecolor'] = (0, 0, 0, 0)
+plt.rcParams['axes.grid'] = True

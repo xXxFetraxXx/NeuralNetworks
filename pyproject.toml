@@ -23,7 +23,6 @@ dependencies = [
     "numpy",
     "matplotlib",
     "onnx",
-    "onnx-simplifier",
     "tqdm",
     "visualtorch"
 ]
