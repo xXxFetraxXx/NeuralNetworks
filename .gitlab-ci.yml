@@ -21,7 +21,9 @@ pages:
       if [ "$UPDATE_DOC" = "True" ]; then
         python -m pip install --upgrade pip
         pip install mkdocs mkdocs-material "mkdocstrings[python]"
-        mkdocs build -f docs/mkdocs.yml --site-dir public
+        # --site-dir est résolu relatif au dossier de docs/mkdocs.yml depuis MkDocs 1.6 :
+        # utiliser un chemin absolu pour bien créer "public/" à la racine du dépôt
+        mkdocs build -f docs/mkdocs.yml --site-dir "$PWD/public"
       else
         # Le job "pages" échoue si l'artefact "public" est absent ou vide :
         # on déploie une page placeholder quand la doc n'est pas mise à jour
