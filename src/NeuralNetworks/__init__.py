@@ -14,3 +14,5 @@ from .MLP import MLP
 from .Trainer import Trainer
 
 __version__ = "1.0.0"
+__update_doc__ = False
+__update_package__ = False

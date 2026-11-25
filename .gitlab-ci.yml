@@ -1,6 +1,13 @@
 stages:
   - deploy
 
+# Les deux jobs de déploiement sont contrôlés par des flags définis dans
+# src/NeuralNetworks/__init__.py (les rules GitLab ne peuvent pas lire un
+# fichier, donc la valeur est extraite avec grep dans le script) :
+#   __update_doc__     -> job "pages" (build + publication de la doc MkDocs)
+#   __update_package__ -> job "publish_pypi" (build + upload sur PyPI)
+# Passer le flag à True dans __init__.py pour activer le job correspondant.
+
 # Équivalent du job mkdocs_deploy (GitHub Actions) :
 # construit la doc MkDocs et la publie sur GitLab Pages
 # (GitLab Pages sert le contenu de l'artefact "public/")
@@ -8,9 +15,16 @@ pages:
   stage: deploy
   image: python:3.9
   script:
-    - python -m pip install --upgrade pip
-    - pip install mkdocs mkdocs-material "mkdocstrings[python]"
-    - mkdocs build -f docs/mkdocs.yml --site-dir public
+    - UPDATE_DOC=$(grep -E '^__update_doc__' src/NeuralNetworks/__init__.py | sed -E 's/.*=[[:space:]]*//')
+    - echo "__update_doc__ = $UPDATE_DOC"
+    - |
+      if [ "$UPDATE_DOC" = "True" ]; then
+        python -m pip install --upgrade pip
+        pip install mkdocs mkdocs-material "mkdocstrings[python]"
+        mkdocs build -f docs/mkdocs.yml --site-dir public
+      else
+        echo "Doc non mise à jour : __update_doc__ = False dans src/NeuralNetworks/__init__.py"
+      fi
   artifacts:
     paths:
       - public
@@ -30,9 +44,16 @@ publish_pypi:
     TWINE_USERNAME: __token__
     TWINE_PASSWORD: $PYPI_API_TOKEN
   script:
-    - python -m pip install --upgrade pip
-    - pip install build twine
-    - python -m build
-    - python -m twine upload dist/*
+    - UPDATE_PACKAGE=$(grep -E '^__update_package__' src/NeuralNetworks/__init__.py | sed -E 's/.*=[[:space:]]*//')
+    - echo "__update_package__ = $UPDATE_PACKAGE"
+    - |
+      if [ "$UPDATE_PACKAGE" = "True" ]; then
+        python -m pip install --upgrade pip
+        pip install build twine
+        python -m build
+        python -m twine upload dist/*
+      else
+        echo "Package non publié : __update_package__ = False dans src/NeuralNetworks/__init__.py"
+      fi
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
