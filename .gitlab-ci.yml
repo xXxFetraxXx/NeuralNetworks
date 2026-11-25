@@ -17,6 +17,8 @@ pages:
   script:
     - UPDATE_DOC=$(grep -E '^__update_doc__' src/NeuralNetworks/__init__.py | sed -E 's/.*=[[:space:]]*//')
     - echo "__update_doc__ = $UPDATE_DOC"
+    # Le job "pages" échoue si l'artefact "public" n'existe pas : toujours créer le dossier
+    - mkdir -p public
     - |
       if [ "$UPDATE_DOC" = "True" ]; then
         python -m pip install --upgrade pip
