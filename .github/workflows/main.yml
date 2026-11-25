@@ -7,7 +7,23 @@ on:
 
 jobs:
 
+  # Lit les flags __update_doc__ et __update_package__ définis dans
+  # src/NeuralNetworks/__init__.py et les expose aux autres jobs.
+  read_flags:
+    runs-on: ubuntu-latest
+    outputs:
+      update_doc: ${{ steps.flags.outputs.update_doc }}
+      update_package: ${{ steps.flags.outputs.update_package }}
+    steps:
+      - uses: actions/checkout@v3
+      - id: flags
+        run: |
+          echo "update_doc=$(grep -E '^__update_doc__' src/NeuralNetworks/__init__.py | sed -E 's/.*=[[:space:]]*//' | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+          echo "update_package=$(grep -E '^__update_package__' src/NeuralNetworks/__init__.py | sed -E 's/.*=[[:space:]]*//' | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+
   mkdocs_deploy:
+    needs: read_flags
+    if: needs.read_flags.outputs.update_doc == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -29,8 +45,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: /home/runner/work/NeuralNetworks/NeuralNetworks/docs/site
 
+  # needs: read_flags (et plus mkdocs_deploy) car un job skippé dans "needs"
+  # ferait aussi skip ce job, même si __update_package__ = True
   python_publish:
-    needs: mkdocs_deploy
+    needs: read_flags
+    if: needs.read_flags.outputs.update_package == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
