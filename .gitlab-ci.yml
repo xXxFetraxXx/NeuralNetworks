@@ -17,16 +17,19 @@ pages:
   script:
     - UPDATE_DOC=$(grep -E '^__update_doc__' src/NeuralNetworks/__init__.py | sed -E 's/.*=[[:space:]]*//')
     - echo "__update_doc__ = $UPDATE_DOC"
-    # Le job "pages" échoue si l'artefact "public" n'existe pas : toujours créer le dossier
-    - mkdir -p public
     - |
       if [ "$UPDATE_DOC" = "True" ]; then
         python -m pip install --upgrade pip
         pip install mkdocs mkdocs-material "mkdocstrings[python]"
         mkdocs build -f docs/mkdocs.yml --site-dir public
       else
+        # Le job "pages" échoue si l'artefact "public" est absent ou vide :
+        # on déploie une page placeholder quand la doc n'est pas mise à jour
+        mkdir -p public
+        echo "<h1>Documentation non déployée (__update_doc__ = False)</h1>" > public/index.html
         echo "Doc non mise à jour : __update_doc__ = False dans src/NeuralNetworks/__init__.py"
       fi
+  publish: public
   artifacts:
     paths:
       - public
