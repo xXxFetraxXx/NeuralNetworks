@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.norms` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_Dependances/pytorch.py#L109)
+`NeuralNetworks.norms` [[source]](https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks/-/blob/main/src/NeuralNetworks/_Dependances/pytorch.py#L109)
 
 ---
 

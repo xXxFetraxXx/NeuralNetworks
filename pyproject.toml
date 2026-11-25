@@ -28,8 +28,8 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://xxxfetraxxx.github.io/NeuralNetworks/"
-Source = "https://github.com/xXxFetraxXx/NeuralNetworks"
+Documentation = "https://a.brun.gitlab.isae-supaero.fr/NeuralNetworks/"
+Source = "https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -77,6 +77,10 @@ class Container:
             value = self.D.get(fall_back)
         return value
 
+    def add(self, name: str, value):
+        """Ajoute une entrée au conteneur."""
+        self.D[str(name)] = value
+
 
 class StandardCriterion:
     """Adapte une loss PyTorch à la signature commune (net, inputs, outputs)."""

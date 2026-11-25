@@ -5,5 +5,5 @@ avec encodage optionnel [Fourier Features](https://en.wikipedia.org/wiki/Random_
 
 ---
 
-[Documentation](https://xxxfetraxxx.github.io/NeuralNetworks/)
+[Documentation](https://a.brun.gitlab.isae-supaero.fr/NeuralNetworks/)
 

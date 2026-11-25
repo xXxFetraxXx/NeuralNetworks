@@ -22,7 +22,7 @@ class Trainer:
         self,
         *nets: Module,
         inputs: torch.Tensor,
-        outputs: torch.Tensor,
+        outputs: torch.Tensor | None = None,
         init_train_size: float = 0.01,
         final_train_size: float = 1.0,
         optim: str = 'Adam',
@@ -55,12 +55,13 @@ class Trainer:
         benchmark: bool = False,
     ):
         """Lance l'entraînement des modèles."""
-        inputs_size = self.outputs.size()[0]
-        outputs_size = self.outputs.size()[1]
-        self.inputs, self.outputs, train_losses, train_lrs, n_samples = (
+        outputs = self.outputs if self.outputs is not None else self.inputs
+        inputs_size = outputs.size(0)
+        outputs_size = outputs.size(1)
+        self.inputs, outputs, train_losses, train_lrs, n_samples = (
             init_train(
                 inputs=self.inputs,
-                outputs=self.outputs,
+                outputs=outputs,
                 init_train_size=self.init_train_size,
                 final_train_size=self.final_train_size,
                 num_epochs=num_epochs,
@@ -83,7 +84,7 @@ class Trainer:
                     n_samples=n_samples[epoch],
                     inputs=self.inputs,
                     inputs_size=inputs_size,
-                    outputs=self.outputs,
+                    outputs=outputs,
                     outputs_size=outputs_size,
                     batch_size=self.batch_size,
                     optim=self.optim_list[k],
@@ -106,7 +107,6 @@ class Trainer:
             )
             net.eval()
         self.inputs = self.inputs.to(torch.device("cpu"))
-        self.outputs = self.outputs.to(torch.device("cpu"))
         torch.cuda.empty_cache()
 
     def __repr__(self):

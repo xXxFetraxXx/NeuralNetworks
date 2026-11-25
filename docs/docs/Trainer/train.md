@@ -2,11 +2,13 @@
 
 ---
 
-`NeuralNetworks.Trainer.train (num_epochs, disable_tqdm, benchmark)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/Trainer/Trainer.py#L51)
+`NeuralNetworks.Trainer.train (num_epochs, disable_tqdm, benchmark)` [[source]](https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks/-/blob/main/src/NeuralNetworks/Trainer/Trainer.py#L51)
 
 ---
 
 Lancement d'un entrainement avec le trainer définit.
+
+Si `outputs` vaut `None` (apprentissage non supervisé), un dummy égal à `inputs` est substitué en interne : aucune branche n'est ajoutée dans la boucle d'entraînement.
 
 | **Paramètres** | **Type**                                                                                 | **Optionnel** |
 |----------------|------------------------------------------------------------------------------------------|---------------|

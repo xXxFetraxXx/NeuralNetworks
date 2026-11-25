@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.losses (*nets, fuse_losses, names, fig_size, color)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_UI/Losses.py#L12)
+`NeuralNetworks.losses (*nets, fuse_losses, names, fig_size, color)` [[source]](https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks/-/blob/main/src/NeuralNetworks/_UI/Losses.py#L12)
 
 ---
 

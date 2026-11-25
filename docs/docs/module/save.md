@@ -2,7 +2,7 @@
 
 ---
 
-`NeuralNetworks.Module.save` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_shared/module.py#L66)
+`NeuralNetworks.Module.save` [[source]](https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks/-/blob/main/src/NeuralNetworks/_shared/module.py#L66)
 
 ---
 

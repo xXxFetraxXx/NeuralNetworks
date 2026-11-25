@@ -1,9 +1,9 @@
 site_name: NeuralNetworks
-site_url: https://xXxFetraxXx.github.io/NeuralNetworks/
+site_url: https://a.brun.gitlab.isae-supaero.fr/NeuralNetworks/
 use_directory_urls: true
 repo_name: NeuralNetworks
-repo_url: https://github.com/xXxFetraxXx/NeuralNetworks
-site_description: "Multi-Layer Perceptrons with multi-Fourier encoding and variable learning rate"
+repo_url: https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks
+site_description: "MLP and CNN with multi-Fourier encoding, variable learning rate, PINN and unsupervised training"
 site_author: "Alexandre Brun"
 
 extra_css:
@@ -63,6 +63,8 @@ nav:
           - NeuralNetworks.Module.save_onnx: module/save_onnx.md
           - Modules préfabriqués:
               - NeuralNetworks.MLP: module/mlp.md
+              - NeuralNetworks.CNN: module/cnn.md
+  - Exemples: exemples/index.md
   - Trainer:
       - NeuralNetworks.Trainer:
           - Trainer/index.md
@@ -73,6 +75,7 @@ nav:
       - NeuralNetworks.Container:
           - Container/index.md
           - NeuralNetworks.Container.get: Container/get.md
+          - NeuralNetworks.Container.add: Container/add.md
           - Containers préfabriqués:
               - NeuralNetworks.norms: Container/norms.md
               - NeuralNetworks.crits: Container/crits.md
@@ -90,7 +93,7 @@ plugins:
           python:
             options:
               show_source: true
-              source_url_template: "https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/{{ module_path }}.py#L{{ line }}"
+              source_url_template: "https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks/-/blob/main/src/NeuralNetworks/{{ module_path }}.py#L{{ line }}"
 
 copyright: Copyright &copy; 2025 - 2026 Alexandre Brun
 
@@ -98,9 +101,9 @@ extra:
   generator: false
   viewport: width=device-width, initial-scale=1
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/xXxFetraxXx/NeuralNetworks
-      name: GitHub
+    - icon: fontawesome/brands/gitlab
+      link: https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks
+      name: GitLab
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/NeuralNetworks/
       name: PyPI

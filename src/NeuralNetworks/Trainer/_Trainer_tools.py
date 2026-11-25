@@ -51,7 +51,7 @@ def epoch_logic(
     n_samples: int,
     inputs: torch.Tensor,
     inputs_size: int,
-    outputs: torch.Tensor,
+    outputs: torch.Tensor | None,
     outputs_size: int,
     batch_size: int,
     optim: torch.optim,
@@ -102,7 +102,7 @@ def generate_learning_rate(nb_iter: int):
 def update_lr(
     init_lr: float,
     final_lr: float,
-    optim: torch.optim,
+    optim: torch.optim ,
     outputs_size: int,
     train_losses: torch.Tensor,
     train_lrs: torch.Tensor,

@@ -2,7 +2,7 @@
 
 ---
 
-`class NeuralNetworks.Module (_name, **Reconstruction_data)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_shared/module.py#L11)
+`class NeuralNetworks.Module (_name, **Reconstruction_data)` [[source]](https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks/-/blob/main/src/NeuralNetworks/_shared/module.py#L11)
 
 ---
 
@@ -11,6 +11,7 @@ Module complet pour faciliter la création et l'entraînement de modèles [pytor
 | **sous-classes** | **Description**                                                                                     |
 | :--------------- | :-------------------------------------------------------------------------------------------------- |
 | [`MLP`](mlp.md)  | Classe préfabriquée de [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron) |
+| [`CNN`](cnn.md)  | Classe préfabriquée de [réseau convolutif](https://en.wikipedia.org/wiki/Convolutional_neural_network) |
 
 ---
 

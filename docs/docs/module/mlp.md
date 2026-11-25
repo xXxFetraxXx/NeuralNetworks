@@ -2,7 +2,7 @@
 
 ---
 
-`class MLP (input_size, output_size, hidden_layers, sigmas, fourier_input_size, nb_fourier, norm, name)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/MLP/MLP.py#L12)
+`class MLP (input_size, output_size, hidden_layers, sigmas, fourier_input_size, nb_fourier, norm, name)` [[source]](https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks/-/blob/main/src/NeuralNetworks/MLP/MLP.py#L12)
 
 ---
 

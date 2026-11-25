@@ -2,7 +2,7 @@
 
 ---
 
-`class NeuralNetworks.Container (dictionnaire)` [[source]](https://github.com/xXxFetraxXx/NeuralNetworks/blob/main/src/NeuralNetworks/_Dependances/pytorch.py#L64)
+`class NeuralNetworks.Container (dictionnaire)` [[source]](https://gitlab.isae-supaero.fr/a.brun/NeuralNetworks/-/blob/main/src/NeuralNetworks/_Dependances/pytorch.py#L64)
 
 ---
 
